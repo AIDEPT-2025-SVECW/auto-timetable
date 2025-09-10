@@ -1,0 +1,11 @@
+[
+    { "date": "2025-08-15", "description": "Independence Day" },
+    { "date": "2025-08-28", "description": "Ganesh Chaturthi" },
+    { "date": "2025-10-02", "description": "Gandhi Jayanti" },
+    { "date": "2025-10-21", "description": "Diwali (Deepavali)" },
+    { "date": "2025-12-25", "description": "Christmas" },
+    { "date": "2026-01-01", "description": "New Year's Day" },
+    { "date": "2026-01-26", "description": "Republic Day" },
+    { "date": "2026-03-19", "description": "Ugadi / Gudi Padwa" },
+    { "date": "2026-05-01", "description": "May Day (Labour Day)" }
+  ]

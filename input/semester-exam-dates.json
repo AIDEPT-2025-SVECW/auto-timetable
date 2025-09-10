@@ -1,0 +1,10 @@
+[
+  { "id": "1-1", "semesterId": "1-1", "startDate": "2025-11-15", "endDate": "2025-11-25" },
+  { "id": "1-2", "semesterId": "1-2", "startDate": "2026-05-20", "endDate": "2026-05-30" },
+  { "id": "2-1", "semesterId": "2-1", "startDate": "2026-11-15", "endDate": "2026-11-25" },
+  { "id": "2-2", "semesterId": "2-2", "startDate": "2027-05-20", "endDate": "2027-05-30" },
+  { "id": "3-1", "semesterId": "3-1", "startDate": "2027-11-15", "endDate": "2027-11-25" },
+  { "id": "3-2", "semesterId": "3-2", "startDate": "2028-05-20", "endDate": "2028-05-30" },
+  { "id": "4-1", "semesterId": "4-1", "startDate": "2028-11-15", "endDate": "2028-11-25" },
+  { "id": "4-2", "semesterId": "4-2", "startDate": "2029-05-20", "endDate": "2029-05-30" }
+]

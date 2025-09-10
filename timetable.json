@@ -1,0 +1,2442 @@
+{
+  "aiml-1b": {
+    "section_name": "AI&ML 1b",
+    "schedule": {
+      "Monday": {
+        "Period_2": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC001",
+          "subject_code": "MATH101",
+          "classroom_id": "1"
+        },
+        "Period_3": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC023",
+          "subject_code": "MATH101",
+          "classroom_id": "7"
+        },
+        "Period_4": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC013",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        },
+        "Period_5": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC004",
+          "subject_code": "MATH101",
+          "classroom_id": "5"
+        },
+        "Period_6": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Engineering Physics",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC016",
+          "subject_code": "PHY101",
+          "classroom_id": "3"
+        },
+        "Period_7": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC019",
+          "subject_code": "CYBER301",
+          "classroom_id": "8"
+        },
+        "Period_8": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Engineering Physics",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC012",
+          "subject_code": "PHY101",
+          "classroom_id": "14"
+        }
+      },
+      "Wednesday": {
+        "Period_2": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Introduction to Computer Science",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC006",
+          "subject_code": "CS101",
+          "classroom_id": "3"
+        },
+        "Period_3": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC020",
+          "subject_code": "CYBER301",
+          "classroom_id": "1"
+        },
+        "Period_4": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "3"
+        },
+        "Period_5": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Introduction to Computer Science",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC001",
+          "subject_code": "CS101",
+          "classroom_id": "14"
+        },
+        "Period_6": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Internet of Things",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC012",
+          "subject_code": "IOT301",
+          "classroom_id": "15"
+        },
+        "Period_7": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC020",
+          "subject_code": "CYBER301",
+          "classroom_id": "7"
+        },
+        "Period_8": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        }
+      },
+      "Tuesday": {
+        "Period_1": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC017",
+          "subject_code": "IOT301",
+          "classroom_id": "2"
+        },
+        "Period_2": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC018",
+          "subject_code": "MATH101",
+          "classroom_id": "2"
+        },
+        "Period_4": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Introduction to Computer Science",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC002",
+          "subject_code": "CS101",
+          "classroom_id": "6"
+        },
+        "Period_6": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "15"
+        },
+        "Period_7": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "1"
+        }
+      },
+      "Saturday": {
+        "Period_3": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Cybersecurity",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC024",
+          "subject_code": "CYBER301",
+          "classroom_id": "15"
+        },
+        "Period_4": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC022",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        },
+        "Period_5": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC019",
+          "subject_code": "CYBER301",
+          "classroom_id": "3"
+        },
+        "Period_6": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Engineering Physics",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC005",
+          "subject_code": "PHY101",
+          "classroom_id": "8"
+        },
+        "Period_8": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "2"
+        }
+      },
+      "Thursday": {
+        "Period_3": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC006",
+          "subject_code": "DL201",
+          "classroom_id": "7"
+        },
+        "Period_4": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC016",
+          "subject_code": "MATH101",
+          "classroom_id": "3"
+        },
+        "Period_5": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Internet of Things",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC010",
+          "subject_code": "IOT301",
+          "classroom_id": "12"
+        },
+        "Period_7": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "8"
+        }
+      },
+      "Friday": {
+        "Period_1": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Engineering Physics",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC021",
+          "subject_code": "PHY101",
+          "classroom_id": "15"
+        },
+        "Period_2": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC011",
+          "subject_code": "CYBER301",
+          "classroom_id": "4"
+        },
+        "Period_3": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Engineering Physics",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC014",
+          "subject_code": "PHY101",
+          "classroom_id": "1"
+        },
+        "Period_5": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Introduction to Computer Science",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC012",
+          "subject_code": "CS101",
+          "classroom_id": "14"
+        },
+        "Period_7": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "13"
+        },
+        "Period_8": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC013",
+          "subject_code": "CYBER301",
+          "classroom_id": "6"
+        }
+      }
+    }
+  },
+  "aiml-3a": {
+    "section_name": "AI&ML 3A",
+    "schedule": {
+      "Tuesday": {
+        "Period_1": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Machine Learning",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC001",
+          "subject_code": "ML101",
+          "classroom_id": "12"
+        },
+        "Period_2": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_4": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC024",
+          "subject_code": "CYBER301",
+          "classroom_id": "4"
+        },
+        "Period_5": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC021",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_6": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        },
+        "Period_7": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC021",
+          "subject_code": "IOT301",
+          "classroom_id": "3"
+        },
+        "Period_8": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "15"
+        }
+      },
+      "Saturday": {
+        "Period_2": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC020",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_3": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Deep Learning",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC001",
+          "subject_code": "DL201",
+          "classroom_id": "14"
+        },
+        "Period_4": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_5": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC023",
+          "subject_code": "CYBER301",
+          "classroom_id": "8"
+        },
+        "Period_6": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC010",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        },
+        "Period_7": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC023",
+          "subject_code": "CYBER301",
+          "classroom_id": "1"
+        },
+        "Period_8": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC021",
+          "subject_code": "IOT301",
+          "classroom_id": "3"
+        }
+      },
+      "Wednesday": {
+        "Period_1": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC002",
+          "subject_code": "CYBER301",
+          "classroom_id": "2"
+        },
+        "Period_3": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "4"
+        },
+        "Period_4": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC010",
+          "subject_code": "IOT301",
+          "classroom_id": "4"
+        },
+        "Period_5": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Data Structures",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC008",
+          "subject_code": "DS201",
+          "classroom_id": "12"
+        },
+        "Period_6": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_7": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_8": {
+          "faculty": "P. Archana",
+          "subject": "Machine Learning",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC009",
+          "subject_code": "ML101",
+          "classroom_id": "13"
+        }
+      },
+      "Friday": {
+        "Period_1": {
+          "faculty": "P. Archana",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC009",
+          "subject_code": "CYBER301",
+          "classroom_id": "6"
+        },
+        "Period_2": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "15"
+        },
+        "Period_5": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_6": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC021",
+          "subject_code": "ML101",
+          "classroom_id": "4"
+        },
+        "Period_7": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC006",
+          "subject_code": "DL201",
+          "classroom_id": "1"
+        },
+        "Period_8": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC008",
+          "subject_code": "DS201",
+          "classroom_id": "5"
+        }
+      },
+      "Monday": {
+        "Period_1": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC015",
+          "subject_code": "DL201",
+          "classroom_id": "6"
+        },
+        "Period_2": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Cybersecurity",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC024",
+          "subject_code": "CYBER301",
+          "classroom_id": "15"
+        },
+        "Period_3": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "15"
+        },
+        "Period_5": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC020",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_6": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "2"
+        }
+      },
+      "Thursday": {
+        "Period_1": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC013",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        },
+        "Period_2": {
+          "faculty": "P. Archana",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC009",
+          "subject_code": "ML101",
+          "classroom_id": "8"
+        },
+        "Period_5": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC013",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_7": {
+          "faculty": "P. Archana",
+          "subject": "Cybersecurity",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC009",
+          "subject_code": "CYBER301",
+          "classroom_id": "15"
+        }
+      }
+    }
+  },
+  "aiml-3b": {
+    "section_name": "AI&ML 3B",
+    "schedule": {
+      "Tuesday": {
+        "Period_1": {
+          "faculty": "P. Archana",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC009",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        },
+        "Period_2": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        },
+        "Period_3": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC020",
+          "subject_code": "CYBER301",
+          "classroom_id": "6"
+        },
+        "Period_4": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC019",
+          "subject_code": "ML101",
+          "classroom_id": "1"
+        },
+        "Period_5": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC023",
+          "subject_code": "CYBER301",
+          "classroom_id": "6"
+        },
+        "Period_8": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC001",
+          "subject_code": "ML101",
+          "classroom_id": "5"
+        }
+      },
+      "Wednesday": {
+        "Period_1": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_3": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Deep Learning",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC006",
+          "subject_code": "DL201",
+          "classroom_id": "12"
+        },
+        "Period_4": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC019",
+          "subject_code": "ML101",
+          "classroom_id": "8"
+        },
+        "Period_5": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Cybersecurity",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC011",
+          "subject_code": "CYBER301",
+          "classroom_id": "15"
+        },
+        "Period_6": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC017",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_7": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC002",
+          "subject_code": "CYBER301",
+          "classroom_id": "1"
+        },
+        "Period_8": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "15"
+        }
+      },
+      "Friday": {
+        "Period_1": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC002",
+          "subject_code": "CYBER301",
+          "classroom_id": "4"
+        },
+        "Period_2": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Deep Learning",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC015",
+          "subject_code": "DL201",
+          "classroom_id": "14"
+        },
+        "Period_3": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC019",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_5": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC007",
+          "subject_code": "IOT301",
+          "classroom_id": "5"
+        },
+        "Period_7": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_8": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC017",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        }
+      },
+      "Saturday": {
+        "Period_3": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_5": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC007",
+          "subject_code": "IOT301",
+          "classroom_id": "1"
+        },
+        "Period_6": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Machine Learning",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC021",
+          "subject_code": "ML101",
+          "classroom_id": "15"
+        },
+        "Period_7": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "13"
+        },
+        "Period_8": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Deep Learning",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC006",
+          "subject_code": "DL201",
+          "classroom_id": "14"
+        }
+      },
+      "Thursday": {
+        "Period_2": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Deep Learning",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC006",
+          "subject_code": "DL201",
+          "classroom_id": "14"
+        },
+        "Period_3": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC023",
+          "subject_code": "CYBER301",
+          "classroom_id": "3"
+        },
+        "Period_4": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC012",
+          "subject_code": "IOT301",
+          "classroom_id": "2"
+        },
+        "Period_5": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "14"
+        },
+        "Period_6": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Data Structures",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC008",
+          "subject_code": "DS201",
+          "classroom_id": "15"
+        },
+        "Period_7": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC012",
+          "subject_code": "IOT301",
+          "classroom_id": "2"
+        }
+      },
+      "Monday": {
+        "Period_3": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "4"
+        },
+        "Period_5": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "6"
+        },
+        "Period_7": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC015",
+          "subject_code": "DL201",
+          "classroom_id": "3"
+        },
+        "Period_8": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC013",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        }
+      }
+    }
+  },
+  "aiml-4b": {
+    "section_name": "AI&ML 4B",
+    "schedule": {
+      "Thursday": {
+        "Period_1": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC021",
+          "subject_code": "DL201",
+          "classroom_id": "6"
+        },
+        "Period_2": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC001",
+          "subject_code": "ML101",
+          "classroom_id": "6"
+        },
+        "Period_3": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Deep Learning",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC020",
+          "subject_code": "DL201",
+          "classroom_id": "14"
+        },
+        "Period_5": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC008",
+          "subject_code": "DS201",
+          "classroom_id": "2"
+        },
+        "Period_6": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC015",
+          "subject_code": "DL201",
+          "classroom_id": "1"
+        },
+        "Period_7": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC015",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_8": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC024",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        }
+      },
+      "Friday": {
+        "Period_1": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Internet of Things",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC012",
+          "subject_code": "IOT301",
+          "classroom_id": "14"
+        },
+        "Period_2": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Artificial Intelligence",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC019",
+          "subject_code": "AI301",
+          "classroom_id": "1"
+        },
+        "Period_3": {
+          "faculty": "P. Archana",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC009",
+          "subject_code": "ML101",
+          "classroom_id": "5"
+        },
+        "Period_5": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "8"
+        },
+        "Period_6": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC002",
+          "subject_code": "DS201",
+          "classroom_id": "6"
+        },
+        "Period_7": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Machine Learning",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC001",
+          "subject_code": "ML101",
+          "classroom_id": "15"
+        },
+        "Period_8": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC020",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        }
+      },
+      "Saturday": {
+        "Period_1": {
+          "faculty": "P. Archana",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC009",
+          "subject_code": "ML101",
+          "classroom_id": "8"
+        },
+        "Period_3": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Machine Learning",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC006",
+          "subject_code": "ML101",
+          "classroom_id": "12"
+        },
+        "Period_4": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC008",
+          "subject_code": "DS201",
+          "classroom_id": "4"
+        },
+        "Period_5": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Data Structures",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC015",
+          "subject_code": "DS201",
+          "classroom_id": "13"
+        },
+        "Period_6": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC002",
+          "subject_code": "DS201",
+          "classroom_id": "7"
+        },
+        "Period_7": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC001",
+          "subject_code": "ML101",
+          "classroom_id": "2"
+        },
+        "Period_8": {
+          "faculty": "P. Archana",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC009",
+          "subject_code": "CYBER301",
+          "classroom_id": "6"
+        }
+      },
+      "Monday": {
+        "Period_1": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "12"
+        },
+        "Period_2": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_4": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Artificial Intelligence",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC019",
+          "subject_code": "AI301",
+          "classroom_id": "7"
+        },
+        "Period_5": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC006",
+          "subject_code": "DL201",
+          "classroom_id": "7"
+        },
+        "Period_6": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Cybersecurity",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC022",
+          "subject_code": "CYBER301",
+          "classroom_id": "13"
+        },
+        "Period_7": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC006",
+          "subject_code": "ML101",
+          "classroom_id": "4"
+        },
+        "Period_8": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "12"
+        }
+      },
+      "Tuesday": {
+        "Period_1": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_3": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC023",
+          "subject_code": "DS201",
+          "classroom_id": "2"
+        },
+        "Period_5": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Data Structures",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC022",
+          "subject_code": "DS201",
+          "classroom_id": "15"
+        },
+        "Period_7": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Internet of Things",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC017",
+          "subject_code": "IOT301",
+          "classroom_id": "15"
+        },
+        "Period_8": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC007",
+          "subject_code": "IOT301",
+          "classroom_id": "4"
+        }
+      },
+      "Wednesday": {
+        "Period_2": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC017",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_5": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        },
+        "Period_8": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Artificial Intelligence",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC013",
+          "subject_code": "AI301",
+          "classroom_id": "5"
+        }
+      }
+    }
+  },
+  "aiml-1a": {
+    "section_name": "AI&ML 1A",
+    "schedule": {
+      "Thursday": {
+        "Period_1": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_2": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC022",
+          "subject_code": "CYBER301",
+          "classroom_id": "1"
+        },
+        "Period_3": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Cybersecurity",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC002",
+          "subject_code": "CYBER301",
+          "classroom_id": "12"
+        },
+        "Period_5": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC023",
+          "subject_code": "MATH101",
+          "classroom_id": "7"
+        },
+        "Period_6": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC021",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_7": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Deep Learning",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC001",
+          "subject_code": "DL201",
+          "classroom_id": "14"
+        },
+        "Period_8": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "8"
+        }
+      },
+      "Monday": {
+        "Period_1": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC012",
+          "subject_code": "MATH101",
+          "classroom_id": "1"
+        },
+        "Period_2": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC002",
+          "subject_code": "CYBER301",
+          "classroom_id": "3"
+        },
+        "Period_3": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC024",
+          "subject_code": "CYBER301",
+          "classroom_id": "1"
+        },
+        "Period_4": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Cybersecurity",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC020",
+          "subject_code": "CYBER301",
+          "classroom_id": "15"
+        },
+        "Period_5": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC007",
+          "subject_code": "MATH101",
+          "classroom_id": "8"
+        },
+        "Period_6": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Introduction to Computer Science",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC021",
+          "subject_code": "CS101",
+          "classroom_id": "6"
+        },
+        "Period_8": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC010",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        }
+      },
+      "Tuesday": {
+        "Period_1": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC012",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_2": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Engineering Physics",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC014",
+          "subject_code": "PHY101",
+          "classroom_id": "3"
+        },
+        "Period_4": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC008",
+          "subject_code": "DS201",
+          "classroom_id": "2"
+        },
+        "Period_5": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC019",
+          "subject_code": "CYBER301",
+          "classroom_id": "7"
+        },
+        "Period_7": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC013",
+          "subject_code": "MATH101",
+          "classroom_id": "4"
+        },
+        "Period_8": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC006",
+          "subject_code": "DL201",
+          "classroom_id": "6"
+        }
+      },
+      "Friday": {
+        "Period_1": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC015",
+          "subject_code": "DL201",
+          "classroom_id": "3"
+        },
+        "Period_2": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC024",
+          "subject_code": "CYBER301",
+          "classroom_id": "5"
+        },
+        "Period_3": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC023",
+          "subject_code": "CYBER301",
+          "classroom_id": "3"
+        },
+        "Period_4": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Engineering Physics",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC007",
+          "subject_code": "PHY101",
+          "classroom_id": "4"
+        },
+        "Period_6": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC013",
+          "subject_code": "CYBER301",
+          "classroom_id": "1"
+        },
+        "Period_7": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC011",
+          "subject_code": "CYBER301",
+          "classroom_id": "4"
+        },
+        "Period_8": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC010",
+          "subject_code": "IOT301",
+          "classroom_id": "4"
+        }
+      },
+      "Saturday": {
+        "Period_1": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC017",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_2": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Engineering Physics",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC007",
+          "subject_code": "PHY101",
+          "classroom_id": "14"
+        },
+        "Period_3": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Engineering Physics",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC012",
+          "subject_code": "PHY101",
+          "classroom_id": "13"
+        },
+        "Period_4": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC013",
+          "subject_code": "CYBER301",
+          "classroom_id": "8"
+        },
+        "Period_5": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC022",
+          "subject_code": "CYBER301",
+          "classroom_id": "2"
+        },
+        "Period_6": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Engineering Physics",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC012",
+          "subject_code": "PHY101",
+          "classroom_id": "1"
+        },
+        "Period_8": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Engineering Mathematics I",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC015",
+          "subject_code": "MATH101",
+          "classroom_id": "1"
+        }
+      },
+      "Wednesday": {
+        "Period_1": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Introduction to Computer Science",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC023",
+          "subject_code": "CS101",
+          "classroom_id": "1"
+        },
+        "Period_2": {
+          "faculty": "P. Archana",
+          "subject": "Cybersecurity",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC009",
+          "subject_code": "CYBER301",
+          "classroom_id": "13"
+        },
+        "Period_3": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Cybersecurity",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC022",
+          "subject_code": "CYBER301",
+          "classroom_id": "15"
+        },
+        "Period_4": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Introduction to Computer Science",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC024",
+          "subject_code": "CS101",
+          "classroom_id": "15"
+        },
+        "Period_5": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Introduction to Computer Science",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC010",
+          "subject_code": "CS101",
+          "classroom_id": "2"
+        },
+        "Period_6": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC022",
+          "subject_code": "CYBER301",
+          "classroom_id": "5"
+        },
+        "Period_8": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC007",
+          "subject_code": "IOT301",
+          "classroom_id": "4"
+        }
+      }
+    }
+  },
+  "aiml-2a": {
+    "section_name": "AI&ML 2A",
+    "schedule": {
+      "Friday": {
+        "Period_2": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "3"
+        },
+        "Period_4": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC020",
+          "subject_code": "CYBER301",
+          "classroom_id": "2"
+        },
+        "Period_5": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC001",
+          "subject_code": "DL201",
+          "classroom_id": "6"
+        },
+        "Period_6": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC022",
+          "subject_code": "CYBER301",
+          "classroom_id": "2"
+        },
+        "Period_7": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC022",
+          "subject_code": "DS201",
+          "classroom_id": "3"
+        },
+        "Period_8": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "2"
+        }
+      },
+      "Tuesday": {
+        "Period_1": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "1"
+        },
+        "Period_2": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC002",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        },
+        "Period_3": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC015",
+          "subject_code": "DL201",
+          "classroom_id": "1"
+        },
+        "Period_4": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC012",
+          "subject_code": "IOT301",
+          "classroom_id": "8"
+        },
+        "Period_6": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Database Management Systems",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC008",
+          "subject_code": "DBMS301",
+          "classroom_id": "9"
+        },
+        "Period_7": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        }
+      },
+      "Thursday": {
+        "Period_1": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "1"
+        },
+        "Period_2": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC017",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        },
+        "Period_3": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC019",
+          "subject_code": "CYBER301",
+          "classroom_id": "8"
+        },
+        "Period_4": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Internet of Things",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC007",
+          "subject_code": "IOT301",
+          "classroom_id": "12"
+        },
+        "Period_5": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC024",
+          "subject_code": "DS201",
+          "classroom_id": "6"
+        },
+        "Period_6": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC017",
+          "subject_code": "IOT301",
+          "classroom_id": "4"
+        },
+        "Period_7": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC002",
+          "subject_code": "CYBER301",
+          "classroom_id": "7"
+        }
+      },
+      "Monday": {
+        "Period_2": {
+          "faculty": "P. Archana",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC009",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        },
+        "Period_4": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC010",
+          "subject_code": "DS201",
+          "classroom_id": "1"
+        },
+        "Period_6": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Database Management Systems",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC008",
+          "subject_code": "DBMS301",
+          "classroom_id": "9"
+        },
+        "Period_7": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC007",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        },
+        "Period_8": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        }
+      },
+      "Saturday": {
+        "Period_5": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Database Management Systems",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC008",
+          "subject_code": "DBMS301",
+          "classroom_id": "9"
+        },
+        "Period_6": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC019",
+          "subject_code": "CYBER301",
+          "classroom_id": "6"
+        },
+        "Period_7": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC011",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        },
+        "Period_8": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Cybersecurity",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC013",
+          "subject_code": "CYBER301",
+          "classroom_id": "12"
+        }
+      },
+      "Wednesday": {
+        "Period_3": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Cybersecurity",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC013",
+          "subject_code": "CYBER301",
+          "classroom_id": "14"
+        },
+        "Period_4": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Data Structures",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC023",
+          "subject_code": "DS201",
+          "classroom_id": "14"
+        },
+        "Period_5": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC021",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_7": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC015",
+          "subject_code": "DL201",
+          "classroom_id": "2"
+        },
+        "Period_8": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC011",
+          "subject_code": "CYBER301",
+          "classroom_id": "6"
+        }
+      }
+    }
+  },
+  "aiml-2b": {
+    "section_name": "AI&ML 2B",
+    "schedule": {
+      "Monday": {
+        "Period_1": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "5"
+        },
+        "Period_2": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Database Management Systems",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC008",
+          "subject_code": "DBMS301",
+          "classroom_id": "9"
+        },
+        "Period_3": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC017",
+          "subject_code": "IOT301",
+          "classroom_id": "8"
+        },
+        "Period_5": {
+          "faculty": "P. Archana",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC009",
+          "subject_code": "CYBER301",
+          "classroom_id": "4"
+        },
+        "Period_6": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Deep Learning",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC001",
+          "subject_code": "DL201",
+          "classroom_id": "12"
+        },
+        "Period_7": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC021",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_8": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC023",
+          "subject_code": "CYBER301",
+          "classroom_id": "2"
+        }
+      },
+      "Wednesday": {
+        "Period_1": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "12"
+        },
+        "Period_2": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "4"
+        },
+        "Period_3": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC007",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        },
+        "Period_4": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Database Management Systems",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC008",
+          "subject_code": "DBMS301",
+          "classroom_id": "9"
+        },
+        "Period_5": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC015",
+          "subject_code": "DS201",
+          "classroom_id": "8"
+        },
+        "Period_8": {
+          "faculty": "Dr. A. Sri Krishna",
+          "subject": "Deep Learning",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC001",
+          "subject_code": "DL201",
+          "classroom_id": "14"
+        }
+      },
+      "Saturday": {
+        "Period_1": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Cybersecurity",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC011",
+          "subject_code": "CYBER301",
+          "classroom_id": "12"
+        },
+        "Period_2": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC024",
+          "subject_code": "CYBER301",
+          "classroom_id": "6"
+        },
+        "Period_4": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC002",
+          "subject_code": "CYBER301",
+          "classroom_id": "2"
+        },
+        "Period_5": {
+          "faculty": "Mr. N. Praveen Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC005",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_6": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "LIB-AIML-101",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "14"
+        },
+        "Period_7": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "3"
+        },
+        "Period_8": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "8"
+        }
+      },
+      "Friday": {
+        "Period_1": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Computer Networks",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC003",
+          "subject_code": "CN401",
+          "classroom_id": "9"
+        },
+        "Period_2": {
+          "faculty": "Mr. D. V. H. Venu Kumar",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC023",
+          "subject_code": "DS201",
+          "classroom_id": "8"
+        },
+        "Period_4": {
+          "faculty": "Ms. Ch. Sravani",
+          "subject": "Database Management Systems",
+          "classroom": "LAB-AIML-101",
+          "faculty_id": "FAC008",
+          "subject_code": "DBMS301",
+          "classroom_id": "9"
+        },
+        "Period_6": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Data Structures",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC024",
+          "subject_code": "DS201",
+          "classroom_id": "13"
+        },
+        "Period_7": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "8"
+        },
+        "Period_8": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        }
+      },
+      "Thursday": {
+        "Period_1": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC020",
+          "subject_code": "CYBER301",
+          "classroom_id": "5"
+        },
+        "Period_2": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "2"
+        },
+        "Period_4": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "4"
+        },
+        "Period_5": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC007",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        },
+        "Period_6": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Cybersecurity",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC011",
+          "subject_code": "CYBER301",
+          "classroom_id": "13"
+        },
+        "Period_7": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC010",
+          "subject_code": "DS201",
+          "classroom_id": "5"
+        },
+        "Period_8": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC019",
+          "subject_code": "CYBER301",
+          "classroom_id": "2"
+        }
+      },
+      "Tuesday": {
+        "Period_1": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Cybersecurity",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC022",
+          "subject_code": "CYBER301",
+          "classroom_id": "13"
+        },
+        "Period_3": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "3"
+        },
+        "Period_4": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Cybersecurity",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC020",
+          "subject_code": "CYBER301",
+          "classroom_id": "13"
+        },
+        "Period_5": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC024",
+          "subject_code": "CYBER301",
+          "classroom_id": "8"
+        },
+        "Period_6": {
+          "faculty": "Ms. R. Sarada",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC015",
+          "subject_code": "DL201",
+          "classroom_id": "3"
+        },
+        "Period_8": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC010",
+          "subject_code": "IOT301",
+          "classroom_id": "3"
+        }
+      }
+    }
+  },
+  "aiml-4a": {
+    "section_name": "AI&ML 4A",
+    "schedule": {
+      "Monday": {
+        "Period_1": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC011",
+          "subject_code": "CYBER301",
+          "classroom_id": "3"
+        },
+        "Period_2": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Cybersecurity",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC017",
+          "subject_code": "CYBER301",
+          "classroom_id": "12"
+        },
+        "Period_3": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC011",
+          "subject_code": "ML101",
+          "classroom_id": "5"
+        },
+        "Period_5": {
+          "faculty": "Dr. P. Sricharani",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC002",
+          "subject_code": "DS201",
+          "classroom_id": "1"
+        },
+        "Period_7": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Deep Learning",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC004",
+          "subject_code": "DL201",
+          "classroom_id": "12"
+        },
+        "Period_8": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Data Structures",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC022",
+          "subject_code": "DS201",
+          "classroom_id": "5"
+        }
+      },
+      "Wednesday": {
+        "Period_1": {
+          "faculty": "Mr. S. Venkata Rao",
+          "subject": "Data Structures",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC024",
+          "subject_code": "DS201",
+          "classroom_id": "15"
+        },
+        "Period_3": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_4": {
+          "faculty": "Mr. P. Vinod Babu",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC012",
+          "subject_code": "IOT301",
+          "classroom_id": "5"
+        },
+        "Period_6": {
+          "faculty": "Mr. K Srikanth",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC021",
+          "subject_code": "IOT301",
+          "classroom_id": "1"
+        },
+        "Period_7": {
+          "faculty": "Mr. V Harinadh",
+          "subject": "Artificial Intelligence",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC019",
+          "subject_code": "AI301",
+          "classroom_id": "5"
+        },
+        "Period_8": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "2"
+        }
+      },
+      "Saturday": {
+        "Period_1": {
+          "faculty": "Ms. K Swetha",
+          "subject": "Software Engineering",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC020",
+          "subject_code": "SE401",
+          "classroom_id": "13"
+        },
+        "Period_3": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC017",
+          "subject_code": "IOT301",
+          "classroom_id": "1"
+        },
+        "Period_4": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC010",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_5": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "7"
+        },
+        "Period_6": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "12"
+        },
+        "Period_8": {
+          "faculty": "Dr. G. Durga Prasad",
+          "subject": "Internet of Things",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC003",
+          "subject_code": "IOT301",
+          "classroom_id": "13"
+        }
+      },
+      "Thursday": {
+        "Period_1": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "3"
+        },
+        "Period_2": {
+          "faculty": "Mrs. T. Madhavi",
+          "subject": "Internet of Things",
+          "classroom": "AUD-AIML-101",
+          "faculty_id": "FAC004",
+          "subject_code": "IOT301",
+          "classroom_id": "15"
+        },
+        "Period_3": {
+          "faculty": "Ms. N. Anusha",
+          "subject": "Mobile Application Development",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC018",
+          "subject_code": "MOBILE401",
+          "classroom_id": "4"
+        },
+        "Period_5": {
+          "faculty": "Mr Veerendra Bethineedi",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-103",
+          "faculty_id": "FAC022",
+          "subject_code": "CYBER301",
+          "classroom_id": "3"
+        },
+        "Period_7": {
+          "faculty": "Dr. H.C.P. Pavan Kumar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC014",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_8": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC011",
+          "subject_code": "ML101",
+          "classroom_id": "4"
+        }
+      },
+      "Tuesday": {
+        "Period_1": {
+          "faculty": "Mr. K. Janaki Siva Rama Raju",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-104",
+          "faculty_id": "FAC007",
+          "subject_code": "IOT301",
+          "classroom_id": "4"
+        },
+        "Period_2": {
+          "faculty": "Dr. U. Sushmitha",
+          "subject": "Cybersecurity",
+          "classroom": "CLS-AIML-101",
+          "faculty_id": "FAC013",
+          "subject_code": "CYBER301",
+          "classroom_id": "1"
+        },
+        "Period_3": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Machine Learning",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC011",
+          "subject_code": "ML101",
+          "classroom_id": "5"
+        },
+        "Period_4": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Deep Learning",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC006",
+          "subject_code": "DL201",
+          "classroom_id": "12"
+        },
+        "Period_6": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-106",
+          "faculty_id": "FAC010",
+          "subject_code": "IOT301",
+          "classroom_id": "6"
+        },
+        "Period_7": {
+          "faculty": "Mr. P. Abhilasha",
+          "subject": "Machine Learning",
+          "classroom": "OFF-AIML-101",
+          "faculty_id": "FAC011",
+          "subject_code": "ML101",
+          "classroom_id": "13"
+        },
+        "Period_8": {
+          "faculty": "P. Archana",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-108",
+          "faculty_id": "FAC009",
+          "subject_code": "DL201",
+          "classroom_id": "8"
+        }
+      },
+      "Friday": {
+        "Period_2": {
+          "faculty": "Ms. G. Kalyani",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-102",
+          "faculty_id": "FAC016",
+          "subject_code": "IOT301",
+          "classroom_id": "2"
+        },
+        "Period_5": {
+          "faculty": "Mr. K. Raja Sekhar",
+          "subject": "Internet of Things",
+          "classroom": "CONF-AIML-201",
+          "faculty_id": "FAC010",
+          "subject_code": "IOT301",
+          "classroom_id": "12"
+        },
+        "Period_6": {
+          "faculty": "Ms. Y Gayathri",
+          "subject": "Internet of Things",
+          "classroom": "CLS-AIML-105",
+          "faculty_id": "FAC017",
+          "subject_code": "IOT301",
+          "classroom_id": "5"
+        },
+        "Period_8": {
+          "faculty": "Mrs. M. L.V.A. Priya",
+          "subject": "Deep Learning",
+          "classroom": "CLS-AIML-107",
+          "faculty_id": "FAC006",
+          "subject_code": "DL201",
+          "classroom_id": "7"
+        }
+      }
+    }
+  }
+}

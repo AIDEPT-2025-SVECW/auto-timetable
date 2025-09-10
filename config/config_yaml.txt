@@ -1,0 +1,100 @@
+# Timetable Generator Configuration
+# This file contains configurable parameters for the timetable generation system
+
+# Time Slot Configuration
+time_slots:
+  periods_per_day: 8
+  start_time: "08:00"
+  period_duration_minutes: 50
+  breaks:
+    - start: "10:30"
+      end: "10:50"
+      name: "Morning Break"
+    - start: "12:30"
+      end: "13:50"
+      name: "Lunch Break"
+  
+  working_days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+# Faculty Constraints
+faculty:
+  max_hours_per_day: 5
+  min_hours_per_day: 2
+  max_holidays_per_month: 2
+  min_labs_per_week: 2
+  max_consecutive_hours: 3
+
+# Section Constraints
+sections:
+  min_lab_sessions_per_week: 3
+  lab_session_duration_hours: 2
+  free_periods_per_day: 1
+  max_hours_per_day: 7
+
+# Subject Configuration
+subjects:
+  default_theory_hours: 3
+  default_lab_hours: 4
+  lab_continuous_hours: true
+  
+  # Subject hour overrides
+  hours_override:
+    "Engineering Mathematics I": 4
+    "Engineering Mathematics II": 4
+    "Engineering Physics": 4
+    "Probability and Statistics": 4
+    "Machine Learning": 5
+    "Deep Learning": 5
+    "Artificial Intelligence": 5
+
+# Classroom Configuration
+classrooms:
+  utilization_target: 0.8  # Target 80% utilization
+  lab_booking_priority: true
+
+# Optimization Parameters
+solver:
+  max_time_seconds: 300  # 5 minutes
+  num_search_workers: 4
+  random_seed: 12345
+  
+  # Objective weights (higher = more important)
+  weights:
+    faculty_workload_balance: 1.0
+    classroom_utilization: 0.8
+    student_satisfaction: 1.2
+    faculty_preference: 0.6
+
+# Output Configuration
+output:
+  formats: ["json", "excel", "html"]
+  include_statistics: true
+  export_individual_schedules: true
+  
+  # File paths
+  timetable_file: "generated_timetable.json"
+  statistics_file: "timetable_statistics.json"
+  faculty_schedule_dir: "faculty_schedules"
+  section_schedule_dir: "section_schedules"
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "timetable_generator.log"
+  max_size_mb: 10
+  backup_count: 3
+
+# Validation Rules
+validation:
+  check_faculty_qualification: true
+  check_classroom_capacity: true
+  check_lab_equipment_requirements: false
+  allow_overloaded_classrooms: false
+  max_classroom_overload_percent: 5
+
+# Emergency/Fallback Configuration
+fallback:
+  allow_faculty_overload: false
+  allow_fewer_free_periods: false
+  reduce_lab_requirements: false
+  extend_working_hours: false

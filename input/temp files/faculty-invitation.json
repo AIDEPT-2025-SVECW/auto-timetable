@@ -1,0 +1,222 @@
+[
+  {
+    "id": "1",
+    "firstName": "Aarav",
+    "lastName": "Sharma",
+    "email": "aarav.sharma@example.in",
+    "phone": "+91 9000000001",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Pending",
+    "invitedDate": "2025-08-01"
+  },
+  {
+    "id": "2",
+    "firstName": "Neha",
+    "lastName": "Patel",
+    "email": "neha.patel@example.in",
+    "phone": "+91 9000000002",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Pending",
+    "invitedDate": "2025-08-05"
+  },
+  {
+    "id": "3",
+    "firstName": "Ravi",
+    "lastName": "Kumar",
+    "email": "ravi.kumar@example.in",
+    "phone": "+91 9000000003",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-07-22"
+  },
+  {
+    "id": "4",
+    "firstName": "Divya",
+    "lastName": "Singh",
+    "email": "divya.singh@example.in",
+    "phone": "+91 9000000004",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-07-25"
+  },
+  {
+    "id": "5",
+    "firstName": "Siddharth",
+    "lastName": "Gupta",
+    "email": "siddharth.gupta@example.in",
+    "phone": "+91 9000000005",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-07-28"
+  },
+  {
+    "id": "6",
+    "firstName": "Megha",
+    "lastName": "Iyer",
+    "email": "megha.iyer@example.in",
+    "phone": "+91 9000000006",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-07-29"
+  },
+  {
+    "id": "7",
+    "firstName": "Pranav",
+    "lastName": "Nair",
+    "email": "pranav.nair@example.in",
+    "phone": "+91 9000000007",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-07-30"
+  },
+  {
+    "id": "8",
+    "firstName": "Anita",
+    "lastName": "Joshi",
+    "email": "anita.joshi@example.in",
+    "phone": "+91 9000000008",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-07-31"
+  },
+  {
+    "id": "9",
+    "firstName": "Karan",
+    "lastName": "Malhotra",
+    "email": "karan.malhotra@example.in",
+    "phone": "+91 9000000009",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-02"
+  },
+  {
+    "id": "10",
+    "firstName": "Sunita",
+    "lastName": "Chowdhury",
+    "email": "sunita.chowdhury@example.in",
+    "phone": "+91 9000000010",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-03"
+  },
+  {
+    "id": "11",
+    "firstName": "Vikram",
+    "lastName": "Reddy",
+    "email": "vikram.reddy@example.in",
+    "phone": "+91 9000000011",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-04"
+  },
+  {
+    "id": "12",
+    "firstName": "Pooja",
+    "lastName": "Saxena",
+    "email": "pooja.saxena@example.in",
+    "phone": "+91 9000000012",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-06"
+  },
+  {
+    "id": "13",
+    "firstName": "Ajay",
+    "lastName": "Khatri",
+    "email": "ajay.khatri@example.in",
+    "phone": "+91 9000000013",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-07"
+  },
+  {
+    "id": "14",
+    "firstName": "Ritika",
+    "lastName": "Kapoor",
+    "email": "ritika.kapoor@example.in",
+    "phone": "+91 9000000014",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-08"
+  },
+  {
+    "id": "15",
+    "firstName": "Manish",
+    "lastName": "Bansal",
+    "email": "manish.bansal@example.in",
+    "phone": "+91 9000000015",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-09"
+  },
+  {
+    "id": "16",
+    "firstName": "Deepa",
+    "lastName": "Trivedi",
+    "email": "deepa.trivedi@example.in",
+    "phone": "+91 9000000016",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-10"
+  },
+  {
+    "id": "17",
+    "firstName": "Raghav",
+    "lastName": "Joshi",
+    "email": "raghav.joshi@example.in",
+    "phone": "+91 9000000017",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-11"
+  },
+  {
+    "id": "18",
+    "firstName": "Sonal",
+    "lastName": "Gupta",
+    "email": "sonal.gupta@example.in",
+    "phone": "+91 9000000018",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-12"
+  },
+  {
+    "id": "19",
+    "firstName": "Tarun",
+    "lastName": "Mehta",
+    "email": "tarun.mehta@example.in",
+    "phone": "+91 9000000019",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-13"
+  },
+  {
+    "id": "20",
+    "firstName": "Shweta",
+    "lastName": "Choudhury",
+    "email": "shweta.choudhury@example.in",
+    "phone": "+91 9000000020",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Registered",
+    "invitedDate": "2025-08-14"
+  },
+  {
+    "id": "21",
+    "firstName": "Naman",
+    "lastName": "Verma",
+    "email": "naman.verma@example.in",
+    "phone": "+91 9000000021",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Require Changes",
+    "invitedDate": "2025-07-20"
+  },
+  {
+    "id": "22",
+    "firstName": "Isha",
+    "lastName": "Nair",
+    "email": "isha.nair@example.in",
+    "phone": "+91 9000000022",
+    "department": "Artificial Intelligence & Machine Learning",
+    "status": "Require Changes",
+    "invitedDate": "2025-07-21"
+  }
+]

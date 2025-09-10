@@ -1,0 +1,1328 @@
+[
+  {
+    "id": "1",
+    "name": "Dr. A. Sri Krishna",
+    "facultyId": "FAC001",
+    "department": "AIML",
+    "qualification": "Ph.D. in Data Science",
+    "contact": "+91 7301007597",
+    "email": "drasrikrishna@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2016-05-20",
+    "experience": 16,
+    "specialization": [
+      "Machine Learning",
+      "Data Science",
+      "AI"
+    ],
+    "subjects": [
+      "Engineering Mathematics I"
+    ],
+    "address": "567 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Research Coordinator",
+      "HOD"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2015,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2008,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "1",
+        "title": "Deep Learning for Healthcare",
+        "type": "Research Paper",
+        "year": 2018,
+        "status": "Published",
+        "journal": "Elsevier Data Science",
+        "coAuthors": [
+          "Dr. Mary Johnson",
+          "Dr. Kavitha Rao"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "2",
+    "name": "Dr. P. Sricharani",
+    "facultyId": "FAC002",
+    "department": "AIML",
+    "qualification": "M.Tech in AI",
+    "contact": "+91 6248722732",
+    "email": "drpsricharani@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2022-03-17",
+    "experience": 9,
+    "specialization": [
+      "Statistics",
+      "Cybersecurity",
+      "Data Science"
+    ],
+    "subjects": [
+      "Engineering Physics"
+    ],
+    "address": "157 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "HOD",
+      "Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2011,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2006,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "2",
+        "title": "Optimization in IoT",
+        "type": "Research Paper",
+        "year": 2022,
+        "status": "Published",
+        "journal": "IEEE Transactions on Computers",
+        "coAuthors": [
+          "Dr. Kavitha Rao",
+          "Dr. Alex Paul"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "3",
+    "name": "Dr. G. Durga Prasad",
+    "facultyId": "FAC003",
+    "department": "AIML",
+    "qualification": "Ph.D. in Data Science",
+    "contact": "+91 8279998045",
+    "email": "drgdurgaprasad@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2013-06-25",
+    "experience": 13,
+    "specialization": [
+      "Software Engineering",
+      "Networks",
+      "Statistics"
+    ],
+    "subjects": [
+      "Introduction to Computer Science"
+    ],
+    "address": "359 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Research Coordinator",
+      "Assistant Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2013,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2011,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "3",
+        "title": "Deep Learning for Healthcare",
+        "type": "Research Paper",
+        "year": 2023,
+        "status": "Published",
+        "journal": "Elsevier Data Science",
+        "coAuthors": [
+          "Dr. Alex Paul",
+          "Dr. Kavitha Rao"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "4",
+    "name": "Mrs. T. Madhavi",
+    "facultyId": "FAC004",
+    "department": "AIML",
+    "qualification": "Ph.D. in Data Science",
+    "contact": "+91 7235374543",
+    "email": "mrstmadhavi@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2010-11-28",
+    "experience": 17,
+    "specialization": [
+      "Machine Learning",
+      "Software Engineering",
+      "Data Science"
+    ],
+    "subjects": [
+      "Engineering Mathematics II"
+    ],
+    "address": "539 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Mentor",
+      "Research Coordinator"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2019,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2005,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "4",
+        "title": "Big Data Analytics for Education",
+        "type": "Research Paper",
+        "year": 2022,
+        "status": "Ongoing",
+        "journal": "Elsevier Data Science",
+        "coAuthors": [
+          "Dr. Mary Johnson",
+          "Dr. Kavitha Rao"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "5",
+    "name": "Mr. N. Praveen Kumar",
+    "facultyId": "FAC005",
+    "department": "AIML",
+    "qualification": "M.Tech in AI",
+    "contact": "+91 8309638424",
+    "email": "mrnpraveenkumar@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2014-01-11",
+    "experience": 19,
+    "specialization": [
+      "Software Engineering",
+      "Data Science",
+      "Statistics"
+    ],
+    "subjects": [
+      "Probability and Statistics"
+    ],
+    "address": "824 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Assistant Professor",
+      "Research Coordinator"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2017,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2010,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "5",
+        "title": "Big Data Analytics for Education",
+        "type": "Research Paper",
+        "year": 2019,
+        "status": "Published",
+        "journal": "IEEE Transactions on Computers",
+        "coAuthors": [
+          "Dr. John Doe",
+          "Dr. Alex Paul"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "6",
+    "name": "Mrs. M. L.V.A. Priya",
+    "facultyId": "FAC006",
+    "department": "AIML",
+    "qualification": "Ph.D. in Data Science",
+    "contact": "+91 7729445685",
+    "email": "mrsmlvapriya@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2017-01-11",
+    "experience": 14,
+    "specialization": [
+      "Machine Learning",
+      "Networks",
+      "Data Science"
+    ],
+    "subjects": [
+      "Object-Oriented Programming"
+    ],
+    "address": "571 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "HOD",
+      "Mentor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2013,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2010,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "6",
+        "title": "Deep Learning for Healthcare",
+        "type": "Research Paper",
+        "year": 2020,
+        "status": "Ongoing",
+        "journal": "IEEE Transactions on Computers",
+        "coAuthors": [
+          "Dr. Alex Paul",
+          "Dr. John Doe"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "7",
+    "name": "Mr. K. Janaki Siva Rama Raju",
+    "facultyId": "FAC007",
+    "department": "AIML",
+    "qualification": "Ph.D. in Computer Science",
+    "contact": "+91 9374191631",
+    "email": "mrkjanakisivaramaraju@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2014-05-25",
+    "experience": 18,
+    "specialization": [
+      "AI",
+      "Software Engineering",
+      "Statistics"
+    ],
+    "subjects": [
+      "Data Structures"
+    ],
+    "address": "727 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Professor",
+      "Assistant Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2017,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2012,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "7",
+        "title": "Big Data Analytics for Education",
+        "type": "Research Paper",
+        "year": 2020,
+        "status": "Ongoing",
+        "journal": "IEEE Transactions on Computers",
+        "coAuthors": [
+          "Dr. Kavitha Rao",
+          "Dr. John Doe"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "8",
+    "name": "Ms. Ch. Sravani",
+    "facultyId": "FAC008",
+    "department": "AIML",
+    "qualification": "Ph.D. in Computer Science",
+    "contact": "+91 8241509967",
+    "email": "mschsravani@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2025-02-16",
+    "experience": 3,
+    "specialization": [
+      "AI",
+      "Statistics",
+      "Data Science"
+    ],
+    "subjects": [
+      "Database Management Systems"
+    ],
+    "address": "124 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Professor",
+      "Research Coordinator"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2016,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2014,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "8",
+        "title": "Deep Learning for Healthcare",
+        "type": "Research Paper",
+        "year": 2021,
+        "status": "Ongoing",
+        "journal": "Springer AI Journal",
+        "coAuthors": [
+          "Dr. Alex Paul",
+          "Dr. Kavitha Rao"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "9",
+    "name": "P. Archana",
+    "facultyId": "FAC009",
+    "department": "AIML",
+    "qualification": "M.Tech in AI",
+    "contact": "+91 7143152274",
+    "email": "parchana@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2013-05-13",
+    "experience": 2,
+    "specialization": [
+      "Cybersecurity",
+      "Networks",
+      "Machine Learning"
+    ],
+    "subjects": [
+      "Algorithms"
+    ],
+    "address": "792 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Mentor",
+      "Assistant Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2019,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2014,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "9",
+        "title": "Deep Learning for Healthcare",
+        "type": "Research Paper",
+        "year": 2024,
+        "status": "Ongoing",
+        "journal": "IEEE Transactions on Computers",
+        "coAuthors": [
+          "Dr. Mary Johnson",
+          "Dr. Kavitha Rao"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "10",
+    "name": "Mr. K. Raja Sekhar",
+    "facultyId": "FAC010",
+    "department": "AIML",
+    "qualification": "M.Tech in AI",
+    "contact": "+91 7763615775",
+    "email": "mrkrajasekhar@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2016-09-10",
+    "experience": 17,
+    "specialization": [
+      "Data Science",
+      "Software Engineering",
+      "Statistics"
+    ],
+    "subjects": [
+      "Operating Systems"
+    ],
+    "address": "468 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "HOD",
+      "Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2016,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2007,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "10",
+        "title": "Optimization in IoT",
+        "type": "Research Paper",
+        "year": 2021,
+        "status": "Ongoing",
+        "journal": "IEEE Transactions on Computers",
+        "coAuthors": [
+          "Dr. Alex Paul",
+          "Dr. Kavitha Rao"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "11",
+    "name": "Mr. P. Abhilasha",
+    "facultyId": "FAC011",
+    "department": "AIML",
+    "qualification": "M.Tech in AI",
+    "contact": "+91 8455841859",
+    "email": "mrpabhilasha@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2022-04-02",
+    "experience": 10,
+    "specialization": [
+      "Cybersecurity",
+      "Machine Learning",
+      "Data Science"
+    ],
+    "subjects": [
+      "Machine Learning"
+    ],
+    "address": "254 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Research Coordinator",
+      "Mentor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2019,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2015,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "11",
+        "title": "AI in Cybersecurity",
+        "type": "Research Paper",
+        "year": 2018,
+        "status": "Ongoing",
+        "journal": "Elsevier Data Science",
+        "coAuthors": [
+          "Dr. Alex Paul",
+          "Dr. John Doe"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "12",
+    "name": "Mr. P. Vinod Babu",
+    "facultyId": "FAC012",
+    "department": "AIML",
+    "qualification": "Ph.D. in Computer Science",
+    "contact": "+91 9084151921",
+    "email": "mrpvinodbabu@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2018-05-15",
+    "experience": 7,
+    "specialization": [
+      "Software Engineering",
+      "Data Science",
+      "AI"
+    ],
+    "subjects": [
+      "Computer Networks"
+    ],
+    "address": "858 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "HOD",
+      "Mentor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2019,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2012,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "12",
+        "title": "Big Data Analytics for Education",
+        "type": "Research Paper",
+        "year": 2018,
+        "status": "Ongoing",
+        "journal": "Elsevier Data Science",
+        "coAuthors": [
+          "Dr. Kavitha Rao",
+          "Dr. John Doe"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "13",
+    "name": "Dr. U. Sushmitha",
+    "facultyId": "FAC013",
+    "department": "AIML",
+    "qualification": "Ph.D. in Data Science",
+    "contact": "+91 9627403889",
+    "email": "drusushmitha@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2019-09-07",
+    "experience": 18,
+    "specialization": [
+      "Machine Learning",
+      "Cybersecurity",
+      "Networks"
+    ],
+    "subjects": [
+      "Artificial Intelligence"
+    ],
+    "address": "940 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Mentor",
+      "Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2011,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2009,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "13",
+        "title": "AI in Cybersecurity",
+        "type": "Research Paper",
+        "year": 2018,
+        "status": "Ongoing",
+        "journal": "IEEE Transactions on Computers",
+        "coAuthors": [
+          "Dr. Mary Johnson",
+          "Dr. Kavitha Rao"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "14",
+    "name": "Dr. H.C.P. Pavan Kumar",
+    "facultyId": "FAC014",
+    "department": "AIML",
+    "qualification": "M.Tech in AI",
+    "contact": "+91 9423889867",
+    "email": "drhcppavankumar@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2017-02-09",
+    "experience": 7,
+    "specialization": [
+      "Software Engineering",
+      "Machine Learning",
+      "Cybersecurity"
+    ],
+    "subjects": [
+      "Software Engineering"
+    ],
+    "address": "272 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Mentor",
+      "Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2010,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2007,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "14",
+        "title": "Big Data Analytics for Education",
+        "type": "Research Paper",
+        "year": 2024,
+        "status": "Ongoing",
+        "journal": "Springer AI Journal",
+        "coAuthors": [
+          "Dr. John Doe",
+          "Dr. Mary Johnson"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "15",
+    "name": "Ms. R. Sarada",
+    "facultyId": "FAC015",
+    "department": "AIML",
+    "qualification": "Ph.D. in Computer Science",
+    "contact": "+91 9057277914",
+    "email": "msrsarada@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2017-06-21",
+    "experience": 9,
+    "specialization": [
+      "Data Science",
+      "Networks",
+      "AI"
+    ],
+    "subjects": [
+      "Deep Learning"
+    ],
+    "address": "747 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Research Coordinator",
+      "Assistant Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2017,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2006,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "15",
+        "title": "Big Data Analytics for Education",
+        "type": "Research Paper",
+        "year": 2021,
+        "status": "Ongoing",
+        "journal": "ACM Computing Surveys",
+        "coAuthors": [
+          "Dr. Mary Johnson",
+          "Dr. John Doe"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "16",
+    "name": "Ms. G. Kalyani",
+    "facultyId": "FAC016",
+    "department": "AIML",
+    "qualification": "Ph.D. in Computer Science",
+    "contact": "+91 7408098831",
+    "email": "msgkalyani@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2022-05-17",
+    "experience": 20,
+    "specialization": [
+      "Statistics",
+      "Software Engineering",
+      "AI"
+    ],
+    "subjects": [
+      "Cybersecurity"
+    ],
+    "address": "213 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Research Coordinator",
+      "Mentor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2020,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2011,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "16",
+        "title": "AI in Cybersecurity",
+        "type": "Research Paper",
+        "year": 2021,
+        "status": "Published",
+        "journal": "Springer AI Journal",
+        "coAuthors": [
+          "Dr. Mary Johnson",
+          "Dr. John Doe"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "17",
+    "name": "Ms. Y Gayathri",
+    "facultyId": "FAC017",
+    "department": "AIML",
+    "qualification": "Ph.D. in Data Science",
+    "contact": "+91 9071367307",
+    "email": "msygayathri@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2022-06-15",
+    "experience": 19,
+    "specialization": [
+      "Networks",
+      "Statistics",
+      "Cybersecurity"
+    ],
+    "subjects": [
+      "Internet of Things"
+    ],
+    "address": "299 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Assistant Professor",
+      "Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2013,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2015,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "17",
+        "title": "Deep Learning for Healthcare",
+        "type": "Research Paper",
+        "year": 2020,
+        "status": "Ongoing",
+        "journal": "Elsevier Data Science",
+        "coAuthors": [
+          "Dr. Mary Johnson",
+          "Dr. Alex Paul"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "18",
+    "name": "Ms. N. Anusha",
+    "facultyId": "FAC018",
+    "department": "AIML",
+    "qualification": "Ph.D. in Data Science",
+    "contact": "+91 9281215663",
+    "email": "msnanusha@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2022-12-14",
+    "experience": 6,
+    "specialization": [
+      "Statistics",
+      "Cybersecurity",
+      "AI"
+    ],
+    "subjects": [
+      "Mobile Application Development"
+    ],
+    "address": "581 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Research Coordinator",
+      "Assistant Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2012,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2012,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "18",
+        "title": "Optimization in IoT",
+        "type": "Research Paper",
+        "year": 2024,
+        "status": "Published",
+        "journal": "Springer AI Journal",
+        "coAuthors": [
+          "Dr. Mary Johnson",
+          "Dr. Alex Paul"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "19",
+    "name": "Mr. V Harinadh",
+    "facultyId": "FAC019",
+    "department": "AIML",
+    "qualification": "M.Tech in AI",
+    "contact": "+91 9806739803",
+    "email": "mrvharinadh@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2025-12-16",
+    "experience": 13,
+    "specialization": [
+      "Cybersecurity",
+      "Networks",
+      "Machine Learning"
+    ],
+    "subjects": [
+      "Artificial Intelligence",
+      "Computer Networks"
+    ],
+    "address": "482 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Mentor",
+      "Assistant Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2012,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2012,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "19",
+        "title": "AI in Cybersecurity",
+        "type": "Research Paper",
+        "year": 2018,
+        "status": "Ongoing",
+        "journal": "Springer AI Journal",
+        "coAuthors": [
+          "Dr. Kavitha Rao",
+          "Dr. John Doe"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "20",
+    "name": "Ms. K Swetha",
+    "facultyId": "FAC020",
+    "department": "AIML",
+    "qualification": "Ph.D. in Computer Science",
+    "contact": "+91 6535317980",
+    "email": "mskswetha@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2019-05-23",
+    "experience": 7,
+    "specialization": [
+      "Networks",
+      "Machine Learning",
+      "Cybersecurity"
+    ],
+    "subjects": [
+      "Software Engineering",
+      "Cybersecurity"
+    ],
+    "address": "566 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Mentor",
+      "Research Coordinator"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2019,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2014,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "20",
+        "title": "AI in Cybersecurity",
+        "type": "Research Paper",
+        "year": 2024,
+        "status": "Published",
+        "journal": "ACM Computing Surveys",
+        "coAuthors": [
+          "Dr. Alex Paul",
+          "Dr. Kavitha Rao"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "21",
+    "name": "Mr. K Srikanth",
+    "facultyId": "FAC021",
+    "department": "AIML",
+    "qualification": "Ph.D. in Computer Science",
+    "contact": "+91 8645663111",
+    "email": "mrksrikanth@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2014-06-09",
+    "experience": 10,
+    "specialization": [
+      "Software Engineering",
+      "Machine Learning",
+      "Networks"
+    ],
+    "subjects": [
+      "Introduction to Computer Science",
+      "Probability and Statistics"
+    ],
+    "address": "508 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Assistant Professor",
+      "Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2020,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2010,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "21",
+        "title": "Big Data Analytics for Education",
+        "type": "Research Paper",
+        "year": 2022,
+        "status": "Published",
+        "journal": "IEEE Transactions on Computers",
+        "coAuthors": [
+          "Dr. Alex Paul",
+          "Dr. John Doe"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "22",
+    "name": "Mr Veerendra Bethineedi",
+    "facultyId": "FAC022",
+    "department": "AIML",
+    "qualification": "Ph.D. in Data Science",
+    "contact": "+91 9167241162",
+    "email": "mrveerendrabethineedi@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2022-09-09",
+    "experience": 8,
+    "specialization": [
+      "Statistics",
+      "AI",
+      "Data Science"
+    ],
+    "subjects": [
+      "Cybersecurity",
+      "Probability and Statistics"
+    ],
+    "address": "390 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "HOD",
+      "Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2010,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2012,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "22",
+        "title": "Optimization in IoT",
+        "type": "Research Paper",
+        "year": 2022,
+        "status": "Ongoing",
+        "journal": "ACM Computing Surveys",
+        "coAuthors": [
+          "Dr. Kavitha Rao",
+          "Dr. Mary Johnson"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "23",
+    "name": "Mr. D. V. H. Venu Kumar",
+    "facultyId": "FAC023",
+    "department": "AIML",
+    "qualification": "Ph.D. in Computer Science",
+    "contact": "+91 7933806848",
+    "email": "mrdvhvenukumar@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2019-09-08",
+    "experience": 14,
+    "specialization": [
+      "Cybersecurity",
+      "Statistics",
+      "Data Science"
+    ],
+    "subjects": [
+      "Engineering Mathematics II",
+      "Engineering Mathematics I"
+    ],
+    "address": "677 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Research Coordinator",
+      "Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2011,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2015,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "23",
+        "title": "Big Data Analytics for Education",
+        "type": "Research Paper",
+        "year": 2021,
+        "status": "Published",
+        "journal": "IEEE Transactions on Computers",
+        "coAuthors": [
+          "Dr. Kavitha Rao",
+          "Dr. Alex Paul"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  },
+  {
+    "id": "24",
+    "name": "Mr. S. Venkata Rao",
+    "facultyId": "FAC024",
+    "department": "AIML",
+    "qualification": "Ph.D. in Data Science",
+    "contact": "+91 9961512740",
+    "email": "mrsvenkatarao@svecw.edu.in",
+    "status": "Active",
+    "joiningDate": "2019-03-10",
+    "experience": 20,
+    "specialization": [
+      "Cybersecurity",
+      "Statistics",
+      "Data Science"
+    ],
+    "subjects": [
+      "Introduction to Computer Science",
+      "Data Structures"
+    ],
+    "address": "288 Faculty St, Campus, Andhra Pradesh",
+    "designations": [
+      "Research Coordinator",
+      "Professor"
+    ],
+    "degrees": [
+      {
+        "title": "Ph.D. in Computer Science",
+        "institution": "IIT Hyderabad",
+        "year": 2020,
+        "grade": "Excellent"
+      },
+      {
+        "title": "M.Tech in AI",
+        "institution": "NIT Warangal",
+        "year": 2005,
+        "grade": "First Class"
+      }
+    ],
+    "research": [
+      {
+        "id": "24",
+        "title": "AI in Cybersecurity",
+        "type": "Research Paper",
+        "year": 2019,
+        "status": "Published",
+        "journal": "Elsevier Data Science",
+        "coAuthors": [
+          "Dr. Alex Paul",
+          "Dr. John Doe"
+        ]
+      }
+    ],
+    "patents": [],
+    "profilePicture": null
+  }
+]
