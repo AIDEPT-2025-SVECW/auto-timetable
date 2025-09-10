@@ -23,6 +23,8 @@ from pathlib import Path
 from collections import defaultdict
 from math import ceil
 from ortools.sat.python import cp_model
+from datetime import datetime, timedelta
+
 
 # -----------------------
 # Config
@@ -34,7 +36,10 @@ DAYS_PER_WEEK = 6
 TIME_LIMIT_SECONDS = 60  # per solve attempt (elastic mode uses short attempts)
 NUM_WORKERS = 4
 PERIOD_MINUTES = 50
-COVERAGE_TOLERANCE = (0.9, 1.1)  # 90% - 110% tolerance
+COVERAGE_TOLERANCE = (0.8, 1.2)  # 90% - 110% tolerance
+# time config for per-period start time calculation
+PERIOD_START_TIME = "08:50"   # first period start (HH:MM)
+
 
 # -----------------------
 # Logging
@@ -246,7 +251,7 @@ class TimetableFull:
         all_subj_ints = set(self.i_to_subj.keys())
 
         lab_rooms = [i for i, r in self.i_to_room.items() if self.classrooms[r].get('type', '').lower() == 'lab']
-        theory_rooms = [i for i, r in self.i_to_room.items() if self.classrooms[r].get('type', '').lower() != 'lab']
+        theory_rooms = [i for i, r in self.i_to_room.items() if self.classrooms[r].get('type', '').lower() == 'classroom']
 
         allowed_pairs = set()
         allowed_pairs.add((0, 0))
@@ -452,14 +457,74 @@ class TimetableFull:
                     subj_val = int(self.solver.Value(s_var))
                     fac_val = int(self.solver.Value(f_var))
                     room_val = int(self.solver.Value(r_var))
+                    # --- begin replacement block ---
+                    # raw ids
+                    subj_val = int(self.solver.Value(s_var))
+                    fac_val = int(self.solver.Value(f_var))
+                    room_val = int(self.solver.Value(r_var))
+
+                    # subject and faculty ids (string IDs used elsewhere)
+                    subject_id = self.i_to_subj.get(subj_val) if subj_val != 0 else None
+                    faculty_id = self.i_to_fac.get(fac_val) if fac_val != 0 else None
+                    room_id = self.i_to_room.get(room_val) if room_val != 0 else None
+
+                    # subject metadata
+                    subject_name = None
+                    is_elective = False
+                    is_lab = False
+                    if subject_id:
+                        subj_obj = self.subjects.get(subject_id, {})
+                        subject_name = subj_obj.get("subjectName") or subj_obj.get("name") or None
+                        is_elective = bool(subj_obj.get("isElective", False))
+                        # detect lab either via practicalHours or 'lab' in name
+                        is_lab = (subj_obj.get("practicalHours", 0) > 0) or ("lab" in (subject_name or "").lower())
+
+                    # faculty metadata (try common name keys safely)
+                    faculty_name = None
+                    if faculty_id:
+                        fac_obj = self.faculty.get(faculty_id, {})
+                        faculty_name = fac_obj.get("name") or fac_obj.get("fullName") or fac_obj.get("facultyName") or fac_obj.get("displayName")
+
+                    # date calculation:
+                    date_str = None
+                    if self.working_dates:
+                        # Prefer parsing first working date and adding day offset (robust if working_dates contains ISO dates)
+                        try:
+                            base = datetime.fromisoformat(self.working_dates[0])
+                            date_dt = base + timedelta(days=d)
+                            date_str = date_dt.date().isoformat()
+                        except Exception:
+                            # fallback: if working_dates has at least DAYS_PER_WEEK entries, use index by day
+                            if len(self.working_dates) > d:
+                                date_str = self.working_dates[d]
+                            else:
+                                date_str = None
+
+                    # time calculation for the period (HH:MM)
+                    time_str = None
+                    try:
+                        start_dt = datetime.strptime(PERIOD_START_TIME, "%H:%M")
+                        slot_dt = start_dt + timedelta(minutes=PERIOD_MINUTES * p)
+                        time_str = slot_dt.strftime("%H:%M")
+                    except Exception:
+                        time_str = None
+
                     entry = {
                         "day": d,
+                        "date": date_str,
+                        "time": time_str,
                         "period": p,
-                        "subject": self.i_to_subj.get(subj_val, None) if subj_val != 0 else None,
-                        "faculty": self.i_to_fac.get(fac_val, None) if fac_val != 0 else None,
-                        "room": self.i_to_room.get(room_val, None) if room_val != 0 else None,
+                        "subject": subject_id,
+                        "subjectName": subject_name,
+                        "isElective": is_elective,
+                        "isLab": is_lab,
+                        "faculty": faculty_id,
+                        "facultyName": faculty_name,
+                        "room": room_id,
                         "is_free": bool(self.solver.Value(is_free))
                     }
+                    # --- end replacement block ---
+
                     section_timetable[section_id].append(entry)
 
         # faculty allocations: list assignments (section,subject->faculty)
