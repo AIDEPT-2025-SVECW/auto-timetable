@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
 """
-Full Timetable Generator (CP-SAT) — Implements user's constraints with 90-110% tolerance.
+Timetable Generator (CP-SAT) with Elastic Debug Mode.
 
-Save as: timetable_generator_full.py
-Inputs (place in input/):
- - aiml-faculty-detailed.json
- - semester-subjects.json
- - department-sections.json
- - classrooms.json
- - all_semesters_net_dates.json
-
-Outputs:
- - output/section_timetable.json
- - output/faculty_allocations.json
-
-Notes:
- - Period length assumed 50 minutes (for totalHours -> period count conversion).
- - May need to raise TIME_LIMIT_SECONDS for larger instances.
+- Modular constraint families so we can skip one family at a time to
+  identify the infeasible constraint.
+- Input files (in "input" directory):
+    - aiml-faculty-detailed.json
+    - semester-subjects.json
+    - department-sections.json
+    - classrooms.json
+    - all_semesters_net_dates.json
+- Outputs (in "output" directory):
+    - section_timetable.json
+    - faculty_allocations.json
+    - timetable_model.proto (if infeasible/debug)
+    - solver_stats.txt
 """
 import json
 import logging
@@ -26,17 +24,23 @@ from collections import defaultdict
 from math import ceil
 from ortools.sat.python import cp_model
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-logger = logging.getLogger("TimetableFull")
+# -----------------------
+# Config
+# -----------------------
+INPUT_DIR = Path("input")
+OUTPUT_DIR = Path("output")
+PERIODS_PER_DAY = 8
+DAYS_PER_WEEK = 6
+TIME_LIMIT_SECONDS = 60  # per solve attempt (elastic mode uses short attempts)
+NUM_WORKERS = 4
+PERIOD_MINUTES = 50
+COVERAGE_TOLERANCE = (0.9, 1.1)  # 90% - 110% tolerance
 
 # -----------------------
-# Configuration
+# Logging
 # -----------------------
-PERIODS_PER_DAY = 8
-DAYS_PER_WEEK = 6  # Monday-Saturday
-TIME_LIMIT_SECONDS = 1800  # increase if solver struggles
-NUM_WORKERS = 4
-PERIOD_MINUTES = 50  # used to convert subject hours -> periods
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger("TimetableElastic")
 
 # -----------------------
 # Helpers
@@ -53,20 +57,25 @@ def to_int_map(items, id_field):
     return m, rm
 
 def hours_to_periods(hours):
-    # convert hours -> number of 50-minute periods, round up
     if hours is None:
         return 0
     minutes = hours * 60
     return int(ceil(minutes / PERIOD_MINUTES))
 
+def ensure_dirs():
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    INPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 # -----------------------
-# Main class
+# Timetable class
 # -----------------------
 class TimetableFull:
-    def __init__(self, input_dir="input"):
+    def __init__(self, input_dir=INPUT_DIR):
+        ensure_dirs()
         self.input_dir = Path(input_dir)
-        self.model = cp_model.CpModel()
-        self.solver = cp_model.CpSolver()
+        self.model = None
+        self.solver = None
+        self.reset_model()
 
         # raw data
         self.faculty = {}
@@ -75,7 +84,7 @@ class TimetableFull:
         self.classrooms = {}
         self.working_dates = []
 
-        # id maps for compact integer domains
+        # maps
         self.subj_to_i = {}
         self.i_to_subj = {}
         self.fac_to_i = {}
@@ -83,73 +92,105 @@ class TimetableFull:
         self.room_to_i = {}
         self.i_to_room = {}
 
-        # Variables
-        # faculty_assignment[(section_id, subj_int)] = intvar (faculty int)
-        self.faculty_assignment = {}
+        # variables & caches
+        self.faculty_assignment = {}  # (section, subj_int) -> IntVar
+        self.slot_vars = defaultdict(lambda: defaultdict(dict))  # section -> d -> p -> (s_var,f_var,r_var,is_free,is_lab)
+        self.slot_is_sub = {}  # (section,d,p,subj_int) -> BoolVar
+        self.elective_groups = defaultdict(list)
+        self.elective_active = {}  # (semester,group,d,p) -> BoolVar
 
-        # slot_vars[section_id][day][period] = (sub_var, fac_var, room_var, is_free_bool, is_lab_bool)
-        self.slot_vars = defaultdict(lambda: defaultdict(dict))
+    def reset_model(self):
+        self.model = cp_model.CpModel()
+        self.solver = cp_model.CpSolver()
+        self.solver.parameters.max_time_in_seconds = TIME_LIMIT_SECONDS
+        self.solver.parameters.num_search_workers = NUM_WORKERS
 
     def load_inputs(self):
-        logger.info("Loading input JSONs from %s", self.input_dir)
+        logger.info("Loading inputs from %s", self.input_dir)
         if not self.input_dir.exists():
-            logger.error("Input directory not found")
+            logger.error("Input directory not found: %s", self.input_dir)
             return False
         try:
-            self.faculty = {f['facultyId']: f for f in json.load(open(self.input_dir / "aiml-faculty-detailed.json"))}
-            self.subjects = {s['subjectId']: s for s in json.load(open(self.input_dir / "semester-subjects.json"))}
-            self.sections = {sec['id']: sec for sec in json.load(open(self.input_dir / "department-sections.json"))}
-            self.classrooms = {r['id']: r for r in json.load(open(self.input_dir / "classrooms.json"))}
-            dates_data = json.load(open(self.input_dir / "all_semesters_net_dates.json"))
-            if dates_data:
-                # use first semester entry's netDates
-                self.working_dates = dates_data[0].get('netDates', [])
+            with open(self.input_dir / "aiml-faculty-detailed.json") as f:
+                self.faculty = {fobj['facultyId']: fobj for fobj in json.load(f)}
+            with open(self.input_dir / "semester-subjects.json") as f:
+                self.subjects = {s['subjectId']: s for s in json.load(f)}
+            with open(self.input_dir / "department-sections.json") as f:
+                self.sections = {sec['id']: sec for sec in json.load(f)}
+            with open(self.input_dir / "classrooms.json") as f:
+                self.classrooms = {r['id']: r for r in json.load(f)}
+            with open(self.input_dir / "all_semesters_net_dates.json") as f:
+                dates_data = json.load(f)
+                if dates_data:
+                    # choose first semester net dates by default (same as original script)
+                    self.working_dates = dates_data[0].get('netDates', [])
         except Exception as e:
-            logger.exception("Failed loading inputs: %s", e)
+            logger.exception("Failed to load inputs: %s", e)
             return False
 
-        # build maps
+        # maps for ints
         self.subj_to_i, self.i_to_subj = to_int_map(self.subjects.values(), 'subjectId')
         self.fac_to_i, self.i_to_fac = to_int_map(self.faculty.values(), 'facultyId')
         self.room_to_i, self.i_to_room = to_int_map(self.classrooms.values(), 'id')
 
-        logger.info("Loaded counts — subjects: %d, faculty: %d, sections: %d, rooms: %d, working_dates: %d",
+        logger.info("Loaded: subjects=%d faculty=%d sections=%d rooms=%d working_dates=%d",
                     len(self.subj_to_i), len(self.fac_to_i), len(self.sections), len(self.room_to_i), len(self.working_dates))
         return True
 
-    def create_faculty_assignment_vars(self):
+    # -----------------------
+    # Constraint family builders
+    # Each builder accepts a flag `enabled` (True/False).
+    # -----------------------
+    def build_elective_groups(self, enabled=True):
+        if not enabled:
+            logger.info("[SKIP] build_elective_groups")
+            return
+        logger.info("Building elective groups...")
+        self.elective_groups.clear()
+        for subj_orig, subj in self.subjects.items():
+            if subj.get('isElective') and subj.get('elective_group_name'):
+                sem = subj.get('semester')
+                group = subj.get('elective_group_name')
+                subj_int = self.subj_to_i[subj_orig]
+                self.elective_groups[(sem, group)].append(subj_int)
+        logger.info("Found %d elective groups", len(self.elective_groups))
+
+    def create_faculty_assignment_vars(self, enabled=True):
+        if not enabled:
+            logger.info("[SKIP] create_faculty_assignment_vars")
+            return
         logger.info("Creating faculty assignment variables per (section,subject)")
-        # For each (section,subject) that belongs to semester-subject list, create an assignment var
-        # Determine eligible faculties per subject via fuzzy match on faculty['subjects'] entries
-        # Build allowed faculty ints for each subject
         subject_eligible_fac = {}
+        # fuzzy mapping of faculty subjects -> subjectName
         for subj_orig, subj in self.subjects.items():
             subj_name = subj.get('subjectName', '').lower()
             elig = []
             for fac_orig, fac in self.faculty.items():
                 fac_int = self.fac_to_i[fac_orig]
-                fac_subjects = [s.lower() for s in fac.get('subjects', [])]
-                # qualification check: any substring match or explicit subjectId mention
+                fac_subjects = [s.lower() for s in fac.get('subjects', []) if isinstance(s, str)]
                 can = any(ss in subj_name or subj_name in ss for ss in fac_subjects) or (subj_orig in fac.get('subjects', []))
                 if can:
                     elig.append(fac_int)
-            # if no eligible faculty found, keep all faculties as fallback (to avoid infeasible immediate)
             if not elig:
+                # fallback to all faculty (keeps model feasible but reveals bad mapping)
+                logger.warning("No direct faculty matched for subj %s (%s). Allowing all faculty as fallback.", subj_orig, subj.get('subjectName'))
                 elig = list(self.i_to_fac.keys())
             subject_eligible_fac[self.subj_to_i[subj_orig]] = elig
 
-        # create var per (section, subj_int)
         for section_id in self.sections:
             for subj_orig in self.subjects:
                 subj_int = self.subj_to_i[subj_orig]
                 domain = subject_eligible_fac.get(subj_int, list(self.i_to_fac.keys()))
-                var = self.model.NewIntVarFromDomain(cp_model.Domain.FromValues(domain), f"assign_fac_sec{section_id}_sub{subj_int}")
+                var = self.model.NewIntVarFromDomain(cp_model.Domain.FromValues(domain),
+                                                     f"assign_fac_sec{section_id}_sub{subj_int}")
                 self.faculty_assignment[(section_id, subj_int)] = var
-
         logger.info("Created %d faculty assignment variables", len(self.faculty_assignment))
 
-    def create_slot_vars(self):
-        logger.info("Creating slot variables per section/day/period and helper booleans")
+    def create_slot_vars(self, enabled=True):
+        if not enabled:
+            logger.info("[SKIP] create_slot_vars")
+            return
+        logger.info("Creating slot variables (subject/fac/room) and free flags")
         subj_domain = [0] + list(self.i_to_subj.keys())  # 0 = FREE
         fac_domain = [0] + list(self.i_to_fac.keys())
         room_domain = [0] + list(self.i_to_room.keys())
@@ -172,35 +213,38 @@ class TimetableFull:
 
                     self.slot_vars[section_id][d][p] = (s_var, f_var, r_var, is_free, is_lab)
 
-        logger.info("Created slot variables for approximately %d slots", len(self.sections) * DAYS_PER_WEEK * PERIODS_PER_DAY)
+        logger.info("Created slot variables for approx %d slots", len(self.sections) * DAYS_PER_WEEK * PERIODS_PER_DAY)
 
-    def link_subject_to_assigned_faculty(self):
-        logger.info("Link slot faculty to per-(section,subject) assignment")
-        # For each slot: if slot subject == subj_int then slot faculty must equal faculty_assignment[(section,subj_int)]
+    def link_subject_to_assigned_faculty(self, enabled=True):
+        if not enabled:
+            logger.info("[SKIP] link_subject_to_assigned_faculty")
+            return
+        logger.info("Linking slot faculty to per-(section,subject) assignment and building slot_is_sub booleans")
         for section_id in self.sections:
             for d in range(DAYS_PER_WEEK):
                 for p in range(PERIODS_PER_DAY):
                     s_var, f_var, _, is_free, is_lab = self.slot_vars[section_id][d][p]
-                    # for every subject value (non-zero), create reified bool and link faculty
                     for subj_int in self.i_to_subj.keys():
+                        key = (section_id, d, p, subj_int)
                         b = self.model.NewBoolVar(f"slot_is_sec{section_id}_d{d}_p{p}_sub{subj_int}")
                         self.model.Add(s_var == subj_int).OnlyEnforceIf(b)
                         self.model.Add(s_var != subj_int).OnlyEnforceIf(b.Not())
-                        # slot faculty == assigned faculty for this section-subject if b true
+                        self.slot_is_sub[key] = b
+                        # link faculty: if this slot has subj_int then slot f_var == faculty_assignment[(section,subj_int)]
                         assign_var = self.faculty_assignment[(section_id, subj_int)]
                         self.model.Add(f_var == assign_var).OnlyEnforceIf(b)
-                        # also set is_lab reification later; for now we'll connect s_var -> is_lab via subject set in room constraints
 
-    def add_subject_room_allowed(self):
+    def add_subject_room_allowed(self, enabled=True):
+        if not enabled:
+            logger.info("[SKIP] add_subject_room_allowed")
+            return
         logger.info("Adding allowed (subject,room) combos and linking is_lab booleans")
-        # determine lab subjects
         lab_subj_ints = set()
         for subj_orig, subj in self.subjects.items():
             if subj.get('practicalHours', 0) > 0 or 'lab' in subj.get('subjectName', '').lower():
                 lab_subj_ints.add(self.subj_to_i[subj_orig])
         all_subj_ints = set(self.i_to_subj.keys())
 
-        # room lists
         lab_rooms = [i for i, r in self.i_to_room.items() if self.classrooms[r].get('type', '').lower() == 'lab']
         theory_rooms = [i for i, r in self.i_to_room.items() if self.classrooms[r].get('type', '').lower() != 'lab']
 
@@ -215,14 +259,13 @@ class TimetableFull:
                 allowed_pairs.add((s, rr))
         allowed_list = list(allowed_pairs)
 
-        # apply to slots; also set is_lab reification
         for section_id in self.sections:
             for d in range(DAYS_PER_WEEK):
                 for p in range(PERIODS_PER_DAY):
                     s_var, _, r_var, is_free, is_lab = self.slot_vars[section_id][d][p]
-                    # free -> room 0
                     self.model.Add(r_var == 0).OnlyEnforceIf(is_free)
-                    # reify is_lab: if s_var in lab_subj_ints then is_lab true; else false
+
+                    # is_lab detection (OR of lab subject booleans)
                     if lab_subj_ints:
                         lab_reifs = []
                         for s_int in lab_subj_ints:
@@ -230,280 +273,325 @@ class TimetableFull:
                             self.model.Add(s_var == s_int).OnlyEnforceIf(br)
                             self.model.Add(s_var != s_int).OnlyEnforceIf(br.Not())
                             lab_reifs.append(br)
-                        # is_lab -> OR(lab_reifs); not is_lab -> all lab_reifs false
                         self.model.AddBoolOr(lab_reifs).OnlyEnforceIf(is_lab)
                         for br in lab_reifs:
                             self.model.Add(br == 0).OnlyEnforceIf(is_lab.Not())
                     else:
                         self.model.Add(is_lab == 0)
-                    # Allowed assignments for (subject, room)
+
+                    # allowed assignments (subject, room)
                     self.model.AddAllowedAssignments([s_var, r_var], allowed_list)
 
-    def prevent_double_booking(self):
-        logger.info("Preventing faculty double-booking across sections at same day/period")
+    def build_elective_active_vars(self, enabled=True):
+        if not enabled:
+            logger.info("[SKIP] build_elective_active_vars")
+            return
+        logger.info("Building elective active vars for elective groups (if any)")
+        self.elective_active.clear()
+        for (sem, group), subj_list in self.elective_groups.items():
+            for d in range(DAYS_PER_WEEK):
+                for p in range(PERIODS_PER_DAY):
+                    var = self.model.NewBoolVar(f"elective_active_sem{sem}_grp{group}_d{d}_p{p}")
+                    self.elective_active[(sem, group, d, p)] = var
+
+        # Enforce: if elective_active True then every section of that semester must have some subject from that group
+        for (sem, group), subj_list in self.elective_groups.items():
+            # Build subject bools per slot for sections belonging to this semester
+            for d in range(DAYS_PER_WEEK):
+                for p in range(PERIODS_PER_DAY):
+                    active_var = self.elective_active[(sem, group, d, p)]
+                    # For each section in this semester:
+                    for section_id, sec in self.sections.items():
+                        if sec.get('year') != sem:  # note: assumes semester stored in 'year' - adapt if needed
+                            continue
+                        # create bool: section_has_group_sub = OR(slot_is_sub for subj in subj_list)
+                        group_reifs = []
+                        for subj_int in subj_list:
+                            b = self.slot_is_sub[(section_id, d, p, subj_int)]
+                            group_reifs.append(b)
+                        # section_has_group_sub = model.NewBoolVar...
+                        if group_reifs:
+                            self.model.AddBoolOr(group_reifs).OnlyEnforceIf(active_var)
+                            # If elective active, no other non-group subject should be scheduled. (Enforce later via constraints)
+        # NOTE: We keep elective semantics light here; main goal is to allow toggle for debugging.
+
+    def add_no_double_booking(self, enabled=True):
+        if not enabled:
+            logger.info("[SKIP] add_no_double_booking")
+            return
+        logger.info("Adding no-double-booking constraints: faculty/room/section")
+        # For each timeslot, a faculty can't be in two places & room can't host two sections
         for d in range(DAYS_PER_WEEK):
             for p in range(PERIODS_PER_DAY):
-                for fac_int in self.i_to_fac.keys():
-                    bools = []
-                    for section_id in self.sections:
-                        _, f_var, _, _, _ = self.slot_vars[section_id][d][p]
-                        b = self.model.NewBoolVar(f"fac{fac_int}_sec{section_id}_d{d}_p{p}")
-                        self.model.Add(f_var == fac_int).OnlyEnforceIf(b)
-                        self.model.Add(f_var != fac_int).OnlyEnforceIf(b.Not())
-                        bools.append(b)
-                    self.model.Add(sum(bools) <= 1)
+                # Faculty: collect slot f_vars across sections; for each faculty id, at most one section can have that faculty at (d,p)
+                # We achieve "all different" via pairwise inequality reified style
+                fac_at_slot = {}
+                room_at_slot = {}
+                for section_id in self.sections:
+                    _, f_var, r_var, is_free, is_lab = self.slot_vars[section_id][d][p]
+                    # For each faculty integer, create bool equals (expensive). Instead use pairwise constraints:
+                    for other_section in self.sections:
+                        if other_section <= section_id:
+                            continue
+                        _, f_var2, r_var2, _, _ = self.slot_vars[other_section][d][p]
+                        # if both non-free and faculties equal -> forbidden
+                        b_both_nonfree = self.model.NewBoolVar(f"both_nonfree_{section_id}_{other_section}_{d}_{p}")
+                        s1 = self.slot_vars[section_id][d][p][0]
+                        s2 = self.slot_vars[other_section][d][p][0]
+                        self.model.Add(s1 != 0).OnlyEnforceIf(b_both_nonfree)
+                        self.model.Add(s2 != 0).OnlyEnforceIf(b_both_nonfree)
+                        # if both_nonfree then f_var != f_var2
+                        self.model.Add(f_var != f_var2).OnlyEnforceIf(b_both_nonfree)
 
-    def enforce_one_free_per_day(self):
-        logger.info("Enforce each section has at least 1 free period per day")
-        for section_id in self.sections:
-            for d in range(DAYS_PER_WEEK):
-                free_bools = []
-                for p in range(PERIODS_PER_DAY):
-                    _, _, _, is_free, _ = self.slot_vars[section_id][d][p]
-                    free_bools.append(is_free)
-                self.model.Add(sum(free_bools) >= 1)
+                        # room conflicts: if both non-free then room_var != room_var2
+                        self.model.Add(r_var != r_var2).OnlyEnforceIf(b_both_nonfree)
 
-    def enforce_lab_session_counts(self):
-        logger.info("Enforce section and faculty lab session minima (lab session = 2 contiguous periods)")
-        # First, per section: at least 3 lab sessions per week (each session is 2 continuous periods)
-        for section_id in self.sections:
-            lab_session_bools = []
-            for d in range(DAYS_PER_WEEK):
-                for p in range(PERIODS_PER_DAY - 1):
-                    s1, f1, r1, is_free1, is_lab1 = self.slot_vars[section_id][d][p]
-                    s2, f2, r2, is_free2, is_lab2 = self.slot_vars[section_id][d][p+1]
-                    # define a bool 'lab_session' true iff both is_lab1 and is_lab2 AND same subject AND same faculty AND same room
-                    lab_session = self.model.NewBoolVar(f"lab_sess_sec{section_id}_d{d}_p{p}")
-                    # constraints that imply lab_session -> conditions
-                    # if lab_session true -> is_lab1 & is_lab2
-                    self.model.Add(is_lab1 == 1).OnlyEnforceIf(lab_session)
-                    self.model.Add(is_lab2 == 1).OnlyEnforceIf(lab_session)
-                    # same subject and same faculty and same room
-                    self.model.Add(s2 == s1).OnlyEnforceIf(lab_session)
-                    self.model.Add(f2 == f1).OnlyEnforceIf(lab_session)
-                    self.model.Add(r1 != 0).OnlyEnforceIf(lab_session)
-                    self.model.Add(r2 != 0).OnlyEnforceIf(lab_session)
-                    # converses: if both is_lab and equal subject and equal faculty and r1/r2 nonzero -> lab_session true
-                    # To avoid too many extra constraints, we won't enforce the full equivalence (keeps model lighter).
-                    lab_session_bools.append(lab_session)
-            # require at least 3 lab sessions per week
-            self.model.Add(sum(lab_session_bools) >= 3)
+    def add_coverage_constraints(self, enabled=True):
+        if not enabled:
+            logger.info("[SKIP] add_coverage_constraints")
+            return
+        logger.info("Adding coverage constraints (ensure subject hours mapped to slots approx within tolerance)")
+        # Estimate total available periods for subject per semester: sections * days*periods * weeks approximated by working_dates
+        total_working_days = len(self.working_dates) if self.working_dates else (DAYS_PER_WEEK * 16)  # fallback
+        total_periods_available = total_working_days * PERIODS_PER_DAY
 
-        # For each faculty: at least 2 lab sessions per week
-        for fac_int in self.i_to_fac.keys():
-            fac_lab_bools = []
+        # We'll enforce per-subject total assigned slots across all sections to be within tolerance of required periods
+        # Compute required periods per subject: totalHours -> periods
+        subj_required_periods = {}
+        for subj_orig, subj in self.subjects.items():
+            periods = hours_to_periods(subj.get('totalHours', 0))
+            subj_required_periods[self.subj_to_i[subj_orig]] = periods
+
+        # For each subject, count total slots assigned across all sections (weeks are not explicitly modeled; we map per-day/week pattern)
+        # Because model is per-week pattern (DAYS_PER_WEEK * PERIODS_PER_DAY), we scale requirement to per-week by dividing by number of weeks.
+        # For simplicity: require each subject to appear between tol_min and tol_max times per WEEK pattern where:
+        # weeks_estimate = max(1, total_working_days // DAYS_PER_WEEK)
+        weeks_estimate = max(1, total_working_days // DAYS_PER_WEEK)
+        logger.info("Total working days=%d weeks_estimate=%d", total_working_days, weeks_estimate)
+
+        for subj_int, periods in subj_required_periods.items():
+            min_slots = int(ceil((periods * COVERAGE_TOLERANCE[0]) / weeks_estimate))
+            max_slots = int(ceil((periods * COVERAGE_TOLERANCE[1]) / weeks_estimate))
+            # count occurrences over (section,d,p)
+            occurrence_bools = []
             for section_id in self.sections:
                 for d in range(DAYS_PER_WEEK):
-                    for p in range(PERIODS_PER_DAY - 1):
-                        s1, f1, r1, is_free1, is_lab1 = self.slot_vars[section_id][d][p]
-                        s2, f2, r2, is_free2, is_lab2 = self.slot_vars[section_id][d][p+1]
-                        lab_b = self.model.NewBoolVar(f"fac{fac_int}_lab_sec{section_id}_d{d}_p{p}")
-                        # if this faculty is assigned at both contiguous periods and is_lab true for first
-                        self.model.Add(f1 == fac_int).OnlyEnforceIf(lab_b)
-                        self.model.Add(f2 == fac_int).OnlyEnforceIf(lab_b)
-                        self.model.Add(is_lab1 == 1).OnlyEnforceIf(lab_b)
-                        # converses not added to keep model lighter
-                        fac_lab_bools.append(lab_b)
-            self.model.Add(sum(fac_lab_bools) >= 2)
+                    for p in range(PERIODS_PER_DAY):
+                        b = self.slot_is_sub[(section_id, d, p, subj_int)]
+                        occurrence_bools.append(b)
+            if occurrence_bools:
+                # Create int var = sum of bools
+                occ_sum = sum(occurrence_bools)  # OR-Tools accepts sum of BoolVar
+                # Enforce bounds (as linear constraints)
+                self.model.Add(sum(occurrence_bools) >= min_slots)
+                self.model.Add(sum(occurrence_bools) <= max_slots)
+                logger.debug("Subject %s requires per-week slots in [%d, %d]", self.i_to_subj[subj_int], min_slots, max_slots)
 
-    def enforce_faculty_daily_minmax(self):
-        logger.info("Enforce faculty min and max classes per day (min 2 if working, max 5 always)")
-        for fac_int in self.i_to_fac.keys():
+    def add_faculty_load_constraints(self, enabled=True):
+        if not enabled:
+            logger.info("[SKIP] add_faculty_load_constraints")
+            return
+        logger.info("Adding faculty load constraints (no more than X slots/day and at least Y slots/day if needed)")
+        # Example: a faculty can teach at most 4 slots/day, min 0. These are tunable; for debug we keep it moderate.
+        MAX_SLOTS_PER_FACULTY_PER_DAY = 4
+        for fac_int in self.i_to_fac:
             for d in range(DAYS_PER_WEEK):
-                period_bools = []
+                # collect bools across sections whether fac_int is assigned at (d)
+                fac_presence = []
+                for section_id in self.sections:
+                    _, f_var, _, is_free, _ = self.slot_vars[section_id][d][0]  # we'll iterate p below; create per (section,p)
+                # Build sum for all sections and periods
+                presence_bools = []
                 for section_id in self.sections:
                     for p in range(PERIODS_PER_DAY):
-                        _, f_var, _, _, _ = self.slot_vars[section_id][d][p]
-                        b = self.model.NewBoolVar(f"fac{fac_int}_sec{section_id}_d{d}_p{p}_works")
+                        _, f_var, _, is_free, _ = self.slot_vars[section_id][d][p]
+                        b = self.model.NewBoolVar(f"fac{fac_int}_sec{section_id}_d{d}_p{p}_is")
                         self.model.Add(f_var == fac_int).OnlyEnforceIf(b)
                         self.model.Add(f_var != fac_int).OnlyEnforceIf(b.Not())
-                        period_bools.append(b)
-                # If faculty has any class that day -> must have at least 2
-                has_any = self.model.NewBoolVar(f"fac{fac_int}_has_any_d{d}")
-                self.model.Add(sum(period_bools) >= 1).OnlyEnforceIf(has_any)
-                self.model.Add(sum(period_bools) == 0).OnlyEnforceIf(has_any.Not())
-                self.model.Add(sum(period_bools) >= 2).OnlyEnforceIf(has_any)
-                # Always cap at 5 per day
-                self.model.Add(sum(period_bools) <= 5)
+                        presence_bools.append(b)
+                if presence_bools:
+                    self.model.Add(sum(presence_bools) <= MAX_SLOTS_PER_FACULTY_PER_DAY)
 
-    def enforce_faculty_monthly_holidays(self):
-        logger.info("Enforce max 2 holiday days per month per faculty (implemented as min required workdays)")
-        total_working_days = len(self.working_dates)
-        months = max(1, total_working_days // 30)
-        min_workdays_required = max(0, total_working_days - 2 * months)
-        # For each faculty, count distinct days where they have >=1 slot across sections
-        for fac_int in self.i_to_fac.keys():
-            day_bools = []
-            for d in range(DAYS_PER_WEEK):
-                # create bool that indicates faculty works on this day (across ANY section)
-                work_day_bool = self.model.NewBoolVar(f"fac{fac_int}_works_day{d}")
-                # build list of per-section period-bools for that day
-                any_periods = []
-                for section_id in self.sections:
-                    for p in range(PERIODS_PER_DAY):
-                        _, f_var, _, _, _ = self.slot_vars[section_id][d][p]
-                        b = self.model.NewBoolVar(f"fac{fac_int}_sec{section_id}_d{d}_p{p}_present")
-                        self.model.Add(f_var == fac_int).OnlyEnforceIf(b)
-                        self.model.Add(f_var != fac_int).OnlyEnforceIf(b.Not())
-                        any_periods.append(b)
-                # work_day_bool iff any_periods sum >=1
-                self.model.Add(sum(any_periods) >= 1).OnlyEnforceIf(work_day_bool)
-                self.model.Add(sum(any_periods) == 0).OnlyEnforceIf(work_day_bool.Not())
-                day_bools.append(work_day_bool)
-            # Enforce min required working days across the semester (approximation using DAYS_PER_WEEK)
-            # Scale min_workdays_required to days-per-week proportion: compute weekly_workdays_required
-            # Use a conservative lower bound: require faculty to work at least (min_workdays_required // (max(1, total_working_days // DAYS_PER_WEEK)))
-            weekly_required = max(0, (min_workdays_required * DAYS_PER_WEEK) // max(1, total_working_days))
-            # Sum of day_bools across a week should be >= weekly_required
-            self.model.Add(sum(day_bools) >= weekly_required)
-
-    def enforce_subject_coverage(self):
-        logger.info("Enforce subject coverage per section within 90-110% tolerance")
-        # compute total weeks approx
-        total_working_days = len(self.working_dates)
-        total_weeks = max(1, total_working_days // 7)
-        # For each section and subject: required periods = ceil(totalHours / period_minutes)
-        for section_id in self.sections:
-            for subj_orig, subj in self.subjects.items():
-                subj_int = self.subj_to_i[subj_orig]
-                total_hours = subj.get('totalHours', 0) or 0
-                required_periods_total = hours_to_periods(total_hours)
-                # apply tolerance 90%..110%
-                low = int(max(0, int(ceil(required_periods_total * 0.7))))
-                high = int(max(0, int(ceil(required_periods_total * 1.5))))
-                # collect all slot bools where this section has subj_int
-                slot_bools = []
-                for d in range(DAYS_PER_WEEK):
-                    for p in range(PERIODS_PER_DAY):
-                        s_var, _, _, _, _ = self.slot_vars[section_id][d][p]
-                        b = self.model.NewBoolVar(f"sec{section_id}_sub{subj_int}_d{d}_p{p}_is")
-                        self.model.Add(s_var == subj_int).OnlyEnforceIf(b)
-                        self.model.Add(s_var != subj_int).OnlyEnforceIf(b.Not())
-                        slot_bools.append(b)
-                # enforce between low and high across the whole semester (approximated to a week by scaling)
-                # We treat these counts as weekly counts; scale required_periods_total by weeks to weeks? To be simple: require weekly count >= low_weekly etc.
-                # Here we'll treat required_periods_total as total per semester; divide by total_weeks to get per-week requirement (rounded)
-                per_week_low = max(0, low // max(1, total_weeks))
-                per_week_high = max(0, max(1, high // max(1, total_weeks)))
-                # enforce weekly bounds
-                self.model.Add(sum(slot_bools) >= per_week_low)
-                self.model.Add(sum(slot_bools) <= per_week_high)
-
-                # Link: ensure faculty assignment variable exists and used as the only faculty for this subject in that section:
-                assign_var = self.faculty_assignment[(section_id, subj_int)]
-                # For every slot bool where subj is scheduled, ensure corresponding slot f_var == assign_var (we added earlier in link_subject_to_assigned_faculty).
-                # Already linked in link_subject_to_assigned_faculty through per-subject reified equality.
-
-    def prefer_single_room_per_continuous_block(self):
-        logger.info("Prefer but do not strictly enforce single classroom per section continuous period (heuristic)")
-        # Soft / heuristic: try to reduce room changes by adding simple linking:
-        # If a subject occupies consecutive periods for same section and day, prefer same room by adding implication:
-        for section_id in self.sections:
-            for d in range(DAYS_PER_WEEK):
-                for p in range(PERIODS_PER_DAY - 1):
-                    s1, f1, r1, is_free1, is_lab1 = self.slot_vars[section_id][d][p]
-                    s2, f2, r2, is_free2, is_lab2 = self.slot_vars[section_id][d][p+1]
-                    # If both periods are non-free and same subject -> encourage r1 == r2 by hard constraint (makes solver keep same room)
-                    same_subj = self.model.NewBoolVar(f"sec{section_id}_d{d}_p{p}_same_subj")
-                    self.model.Add(s1 == s2).OnlyEnforceIf(same_subj)
-                    self.model.Add(s1 != s2).OnlyEnforceIf(same_subj.Not())
-                    # If same_subj then enforce r1 == r2 (hard preference)
-                    self.model.Add(r1 == r2).OnlyEnforceIf(same_subj)
-
-    def solve_and_extract(self):
-        logger.info("Solving (time_limit=%ds workers=%d)", TIME_LIMIT_SECONDS, NUM_WORKERS)
+    # -----------------------
+    # Solve & reporting
+    # -----------------------
+    def solve_and_report(self):
+        logger.info("Solving model...")
+        self.solver = cp_model.CpSolver()
         self.solver.parameters.max_time_in_seconds = TIME_LIMIT_SECONDS
         self.solver.parameters.num_search_workers = NUM_WORKERS
-        self.solver.parameters.log_search_progress = True
-
         status = self.solver.Solve(self.model)
-        logger.info("Solver status: %s", self.solver.StatusName(status))
-        if status not in (cp_model.OPTIMAL, cp_model.FEASIBLE):
-            logger.error("No feasible solution found")
+
+        status_name = {cp_model.OPTIMAL: "OPTIMAL", cp_model.FEASIBLE: "FEASIBLE",
+                       cp_model.INFEASIBLE: "INFEASIBLE", cp_model.UNKNOWN: "UNKNOWN"}.get(status, str(status))
+        logger.info("Solver status: %s", status_name)
+        # dump stats
+        stats = self.solver.ResponseStats()
+        with open(OUTPUT_DIR / "solver_stats.txt", "w") as sf:
+            sf.write(f"Status: {status_name}\n")
+            sf.write(stats + "\n")
+
+        if status == cp_model.INFEASIBLE:
+            # export model proto for external debugging
+            try:
+                proto = self.model.SerializeToString()
+                with open(OUTPUT_DIR / "timetable_model.proto", "wb") as pf:
+                    pf.write(proto)
+                logger.error("Model infeasible. Serialized CP model to %s", OUTPUT_DIR / "timetable_model.proto")
+            except Exception as e:
+                logger.exception("Failed to write model proto: %s", e)
             return False
 
-        # Extract timetable
+        # build outputs
         section_timetable = {}
-        faculty_allocations = defaultdict(lambda: defaultdict(list))
-
         for section_id in self.sections:
-            section_timetable[section_id] = {}
+            section_timetable[section_id] = []
             for d in range(DAYS_PER_WEEK):
-                day_name = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d]
-                section_timetable[section_id][day_name] = {}
                 for p in range(PERIODS_PER_DAY):
                     s_var, f_var, r_var, is_free, is_lab = self.slot_vars[section_id][d][p]
-                    s_val = self.solver.Value(s_var)
-                    if s_val == 0:
-                        section_timetable[section_id][day_name][f"Period_{p+1}"] = "FREE"
-                        continue
-                    subj_orig = self.i_to_subj[s_val]
-                    fac_val = self.solver.Value(f_var)
-                    room_val = self.solver.Value(r_var)
-                    fac_orig = self.i_to_fac.get(fac_val, "")
-                    room_orig = self.i_to_room.get(room_val, "")
-
+                    subj_val = int(self.solver.Value(s_var))
+                    fac_val = int(self.solver.Value(f_var))
+                    room_val = int(self.solver.Value(r_var))
                     entry = {
-                        "subject": self.subjects[subj_orig].get('subjectName'),
-                        "subjectId": subj_orig,
-                        "faculty": self.faculty.get(fac_orig, {}).get('name'),
-                        "facultyId": fac_orig,
-                        "classroom": self.classrooms.get(room_orig, {}).get('name'),
-                        "classroomId": room_orig
+                        "day": d,
+                        "period": p,
+                        "subject": self.i_to_subj.get(subj_val, None) if subj_val != 0 else None,
+                        "faculty": self.i_to_fac.get(fac_val, None) if fac_val != 0 else None,
+                        "room": self.i_to_room.get(room_val, None) if room_val != 0 else None,
+                        "is_free": bool(self.solver.Value(is_free))
                     }
-                    section_timetable[section_id][day_name][f"Period_{p+1}"] = entry
-                    faculty_allocations[fac_orig][subj_orig].append({
-                        "section": section_id, "day": day_name, "period": p+1, "room": room_orig
-                    })
+                    section_timetable[section_id].append(entry)
 
-        # Save outputs
-        outdir = Path("output")
-        outdir.mkdir(exist_ok=True)
-        with open(outdir / "section_timetable.json", "w") as f:
+        # faculty allocations: list assignments (section,subject->faculty)
+        faculty_allocations = []
+        for (section_id, subj_int), var in self.faculty_assignment.items():
+            try:
+                fac_val = int(self.solver.Value(var))
+            except Exception:
+                fac_val = None
+            faculty_allocations.append({
+                "section": section_id,
+                "subject": self.i_to_subj.get(subj_int),
+                "faculty": self.i_to_fac.get(fac_val) if fac_val else None
+            })
+
+        with open(OUTPUT_DIR / "section_timetable.json", "w") as f:
             json.dump(section_timetable, f, indent=2)
-        processed = {}
-        for fac_orig, subjmap in faculty_allocations.items():
-            processed[fac_orig] = {
-                "name": self.faculty.get(fac_orig, {}).get('name'),
-                "subjects": {}
-            }
-            for subj_orig, periods in subjmap.items():
-                processed[fac_orig]['subjects'][subj_orig] = {
-                    "subjectName": self.subjects[subj_orig].get('subjectName'),
-                    "totalPeriods": len(periods),
-                    "periods": periods
-                }
-        with open(outdir / "faculty_allocations.json", "w") as f:
-            json.dump(processed, f, indent=2)
-        logger.info("Results saved to output/ (section_timetable.json, faculty_allocations.json)")
+        with open(OUTPUT_DIR / "faculty_allocations.json", "w") as f:
+            json.dump(faculty_allocations, f, indent=2)
+
+        logger.info("Wrote outputs to %s", OUTPUT_DIR)
         return True
 
-    def run(self):
-        if not self.load_inputs():
-            return False
-        self.create_faculty_assignment_vars()
-        self.create_slot_vars()
-        self.link_subject_to_assigned_faculty()
-        self.add_subject_room_allowed()
-        self.prevent_double_booking()
-        self.enforce_one_free_per_day()
-        self.enforce_lab_session_counts()
-        self.enforce_faculty_daily_minmax()
-        self.enforce_faculty_monthly_holidays()
-        self.enforce_subject_coverage()
-        self.prefer_single_room_per_continuous_block()
-        return self.solve_and_extract()
+    # -----------------------
+    # Elastic debug runner
+    # -----------------------
+    def run_elastic_debug(self):
+        """
+        Attempt solving with all constraints and then re-run skipping one family at a time.
+        Returns dict: family -> (status_name, made_feasible_bool)
+        """
+        logger.info("=== Running Elastic Debug ===")
+        family_builders = {
+            "election_groups": lambda enabled: self.build_elective_groups(enabled=enabled),
+            "faculty_assignment": lambda enabled: self.create_faculty_assignment_vars(enabled=enabled),
+            "slot_vars": lambda enabled: self.create_slot_vars(enabled=enabled),
+            "link_faculty": lambda enabled: self.link_subject_to_assigned_faculty(enabled=enabled),
+            "room_lab": lambda enabled: self.add_subject_room_allowed(enabled=enabled),
+            "elective_active": lambda enabled: self.build_elective_active_vars(enabled=enabled),
+            "no_double_booking": lambda enabled: self.add_no_double_booking(enabled=enabled),
+            "coverage": lambda enabled: self.add_coverage_constraints(enabled=enabled),
+            "faculty_load": lambda enabled: self.add_faculty_load_constraints(enabled=enabled),
+        }
+
+        results = {}
+
+        # baseline run (all enabled)
+        logger.info("--- Baseline run (all constraints enabled) ---")
+        self.reset_model()
+        # re-create containers
+        self.faculty_assignment.clear()
+        self.slot_vars.clear()
+        self.slot_is_sub.clear()
+        self.elective_active.clear()
+        # call all builders with enabled=True
+        for name, builder in family_builders.items():
+            try:
+                builder(True)
+            except Exception as e:
+                logger.exception("Error running builder %s: %s", name, e)
+        baseline_ok = self.solve_and_report()
+        results["baseline"] = {"feasible": baseline_ok}
+        if baseline_ok:
+            logger.info("Baseline is feasible. No need for debug skipping.")
+            return results
+
+        # Now try skipping each family in turn
+        for skip_name in family_builders.keys():
+            logger.info("=== Debug attempt: SKIP %s ===", skip_name)
+            self.reset_model()
+            # clear vars caches
+            self.faculty_assignment.clear()
+            self.slot_vars.clear()
+            self.slot_is_sub.clear()
+            self.elective_active.clear()
+
+            # Important: ensure that basic structures exist: faculty_assignment & slot_vars are needed for others
+            # We'll call faculty_assignment and slot_vars builders as normal unless they are the ones being skipped.
+            for name, builder in family_builders.items():
+                enabled = (name != skip_name)
+                try:
+                    builder(enabled)
+                except Exception as e:
+                    logger.exception("Error building %s (enabled=%s): %s", name, enabled, e)
+
+            ok = self.solve_and_report()
+            results[skip_name] = {"feasible": ok}
+            if ok:
+                logger.warning("✅ Skipping '%s' made model feasible.", skip_name)
+            else:
+                logger.info("❌ Skipping '%s' did not fix infeasibility.", skip_name)
+
+        logger.info("Elastic debug complete. Results: %s", results)
+        return results
 
 # -----------------------
 # Main
 # -----------------------
 def main():
-    gen = TimetableFull()
-    ok = gen.run()
-    if not ok:
-        logger.error("Timetable generation failed or infeasible. Try increasing TIME_LIMIT_SECONDS or relaxing constraints.")
+    timetable = TimetableFull(INPUT_DIR)
+    if not timetable.load_inputs():
+        logger.error("Failed to load inputs; exiting.")
         sys.exit(1)
-    print("Timetable generation completed — check output/ directory.")
+
+    # Mode selection
+    DEBUG_ELASTIC = True  # set True to run elastic debug (skips one family at a time)
+    if DEBUG_ELASTIC:
+        results = timetable.run_elastic_debug()
+        # write results summary
+        with open(OUTPUT_DIR / "elastic_debug_summary.json", "w") as f:
+            json.dump(results, f, indent=2)
+        logger.info("Elastic debug summary written to %s", OUTPUT_DIR / "elastic_debug_summary.json")
+        return
+
+    # Normal run (all constraints)
+    timetable.reset_model()
+    # create constraints
+    timetable.build_elective_groups(enabled=True)
+    timetable.create_faculty_assignment_vars(enabled=True)
+    timetable.create_slot_vars(enabled=True)
+    timetable.link_subject_to_assigned_faculty(enabled=True)
+    timetable.add_subject_room_allowed(enabled=True)
+    timetable.build_elective_active_vars(enabled=True)
+    timetable.add_no_double_booking(enabled=True)
+    timetable.add_coverage_constraints(enabled=True)
+    timetable.add_faculty_load_constraints(enabled=True)
+
+    ok = timetable.solve_and_report()
+    if not ok:
+        logger.error("Final run infeasible. Inspect %s/timetable_model.proto and solver_stats.txt", OUTPUT_DIR)
+        sys.exit(2)
+    logger.info("Timetable generated successfully.")
 
 if __name__ == "__main__":
     main()
