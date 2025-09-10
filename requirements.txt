@@ -1,5 +1,5 @@
 # Core optimization library
-ortools>=9.7.2996
+ortools>=9.10.4067
 
 # Data processing and utilities
 pandas>=2.0.0

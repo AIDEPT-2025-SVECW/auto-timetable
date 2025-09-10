@@ -1,0 +1,3313 @@
+[
+  {
+    "id": "SUBJ001",
+    "code": "SUBJ001",
+    "name": "Communicative English",
+    "description": "Course on Communicative English.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ001-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Communicative English.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Communicative English"
+        ]
+      },
+      {
+        "id": "SUBJ001-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Communicative English.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Communicative English"
+        ]
+      },
+      {
+        "id": "SUBJ001-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Communicative English.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Communicative English"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ002",
+    "code": "SUBJ002",
+    "name": "Engineering Physics",
+    "description": "Course on Engineering Physics.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ002-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Engineering Physics.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Engineering Physics"
+        ]
+      },
+      {
+        "id": "SUBJ002-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Engineering Physics.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Engineering Physics"
+        ]
+      },
+      {
+        "id": "SUBJ002-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Engineering Physics.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Engineering Physics"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ003",
+    "code": "SUBJ003",
+    "name": "Linear Algebra & Calculus",
+    "description": "Course on Linear Algebra & Calculus.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ003-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Linear Algebra & Calculus.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Linear Algebra & Calculus"
+        ]
+      },
+      {
+        "id": "SUBJ003-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Linear Algebra & Calculus.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Linear Algebra & Calculus"
+        ]
+      },
+      {
+        "id": "SUBJ003-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Linear Algebra & Calculus.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Linear Algebra & Calculus"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ004",
+    "code": "SUBJ004",
+    "name": "Basic Civil and Mechanical Engineering",
+    "description": "Course on Basic Civil and Mechanical Engineering.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ004-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Basic Civil and Mechanical Engineering.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Basic Civil and Mechanical Engineering"
+        ]
+      },
+      {
+        "id": "SUBJ004-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Basic Civil and Mechanical Engineering.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Basic Civil and Mechanical Engineering"
+        ]
+      },
+      {
+        "id": "SUBJ004-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Basic Civil and Mechanical Engineering.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Basic Civil and Mechanical Engineering"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ005",
+    "code": "SUBJ005",
+    "name": "Introduction to Programming",
+    "description": "Course on Introduction to Programming.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ005-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Introduction to Programming.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Introduction to Programming"
+        ]
+      },
+      {
+        "id": "SUBJ005-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Introduction to Programming.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Introduction to Programming"
+        ]
+      },
+      {
+        "id": "SUBJ005-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Introduction to Programming.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Introduction to Programming"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ006",
+    "code": "SUBJ006",
+    "name": "Health, and Wellness, Yoga and Sports",
+    "description": "Course on Health, and Wellness, Yoga and Sports.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ006-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Health, and Wellness, Yoga and Sports.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Health, and Wellness, Yoga and Sports"
+        ]
+      },
+      {
+        "id": "SUBJ006-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Health, and Wellness, Yoga and Sports.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Health, and Wellness, Yoga and Sports"
+        ]
+      },
+      {
+        "id": "SUBJ006-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Health, and Wellness, Yoga and Sports.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Health, and Wellness, Yoga and Sports"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ007",
+    "code": "SUBJ007",
+    "name": "Chemistry",
+    "description": "Course on Chemistry.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ007-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Chemistry.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Chemistry"
+        ]
+      },
+      {
+        "id": "SUBJ007-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Chemistry.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Chemistry"
+        ]
+      },
+      {
+        "id": "SUBJ007-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Chemistry.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Chemistry"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ008",
+    "code": "SUBJ008",
+    "name": "Differential Equations and Vector Calculus",
+    "description": "Course on Differential Equations and Vector Calculus.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ008-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Differential Equations and Vector Calculus.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Differential Equations and Vector Calculus"
+        ]
+      },
+      {
+        "id": "SUBJ008-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Differential Equations and Vector Calculus.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Differential Equations and Vector Calculus"
+        ]
+      },
+      {
+        "id": "SUBJ008-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Differential Equations and Vector Calculus.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Differential Equations and Vector Calculus"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ009",
+    "code": "SUBJ009",
+    "name": "Basic Electrical and Electronics Engineering",
+    "description": "Course on Basic Electrical and Electronics Engineering.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ009-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Basic Electrical and Electronics Engineering.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Basic Electrical and Electronics Engineering"
+        ]
+      },
+      {
+        "id": "SUBJ009-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Basic Electrical and Electronics Engineering.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Basic Electrical and Electronics Engineering"
+        ]
+      },
+      {
+        "id": "SUBJ009-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Basic Electrical and Electronics Engineering.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Basic Electrical and Electronics Engineering"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ010",
+    "code": "SUBJ010",
+    "name": "Engineering Graphics",
+    "description": "Course on Engineering Graphics.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ010-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Engineering Graphics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Engineering Graphics"
+        ]
+      },
+      {
+        "id": "SUBJ010-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Engineering Graphics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Engineering Graphics"
+        ]
+      },
+      {
+        "id": "SUBJ010-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Engineering Graphics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Engineering Graphics"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ011",
+    "code": "SUBJ011",
+    "name": "Data Structures",
+    "description": "Course on Data Structures.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ011-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Data Structures.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Data Structures"
+        ]
+      },
+      {
+        "id": "SUBJ011-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Data Structures.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Data Structures"
+        ]
+      },
+      {
+        "id": "SUBJ011-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Data Structures.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Data Structures"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ012",
+    "code": "SUBJ012",
+    "name": "IT Workshop",
+    "description": "Course on IT Workshop.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ012-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to IT Workshop.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for IT Workshop"
+        ]
+      },
+      {
+        "id": "SUBJ012-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in IT Workshop.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in IT Workshop"
+        ]
+      },
+      {
+        "id": "SUBJ012-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in IT Workshop.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of IT Workshop"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ013",
+    "code": "SUBJ013",
+    "name": "NSS / Community Service",
+    "description": "Course on NSS / Community Service.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ013-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to NSS / Community Service.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for NSS / Community Service"
+        ]
+      },
+      {
+        "id": "SUBJ013-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in NSS / Community Service.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in NSS / Community Service"
+        ]
+      },
+      {
+        "id": "SUBJ013-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in NSS / Community Service.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of NSS / Community Service"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ014",
+    "code": "SUBJ014",
+    "name": "Discrete Mathematics & Graph Theory",
+    "description": "Course on Discrete Mathematics & Graph Theory.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ014-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Discrete Mathematics & Graph Theory.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Discrete Mathematics & Graph Theory"
+        ]
+      },
+      {
+        "id": "SUBJ014-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Discrete Mathematics & Graph Theory.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Discrete Mathematics & Graph Theory"
+        ]
+      },
+      {
+        "id": "SUBJ014-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Discrete Mathematics & Graph Theory.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Discrete Mathematics & Graph Theory"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ015",
+    "code": "SUBJ015",
+    "name": "Understanding Human Values \u2013 Understanding Harmony",
+    "description": "Course on Understanding Human Values \u2013 Understanding Harmony.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ015-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Understanding Human Values \u2013 Understanding Harmony.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Understanding Human Values \u2013 Understanding Harmony"
+        ]
+      },
+      {
+        "id": "SUBJ015-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Understanding Human Values \u2013 Understanding Harmony.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Understanding Human Values \u2013 Understanding Harmony"
+        ]
+      },
+      {
+        "id": "SUBJ015-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Understanding Human Values \u2013 Understanding Harmony.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Understanding Human Values \u2013 Understanding Harmony"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ016",
+    "code": "SUBJ016",
+    "name": "Artificial Intelligence",
+    "description": "Course on Artificial Intelligence.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ016-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Artificial Intelligence.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Artificial Intelligence"
+        ]
+      },
+      {
+        "id": "SUBJ016-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Artificial Intelligence.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Artificial Intelligence"
+        ]
+      },
+      {
+        "id": "SUBJ016-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Artificial Intelligence.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Artificial Intelligence"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ017",
+    "code": "SUBJ017",
+    "name": "Advanced Data Structures & Algorithms Analysis",
+    "description": "Course on Advanced Data Structures & Algorithms Analysis.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ017-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Advanced Data Structures & Algorithms Analysis.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Advanced Data Structures & Algorithms Analysis"
+        ]
+      },
+      {
+        "id": "SUBJ017-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Advanced Data Structures & Algorithms Analysis.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Advanced Data Structures & Algorithms Analysis"
+        ]
+      },
+      {
+        "id": "SUBJ017-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Advanced Data Structures & Algorithms Analysis.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Advanced Data Structures & Algorithms Analysis"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ018",
+    "code": "SUBJ018",
+    "name": "Object Oriented Programming through JAVA",
+    "description": "Course on Object Oriented Programming through JAVA.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ018-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Object Oriented Programming through JAVA.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Object Oriented Programming through JAVA"
+        ]
+      },
+      {
+        "id": "SUBJ018-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Object Oriented Programming through JAVA.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Object Oriented Programming through JAVA"
+        ]
+      },
+      {
+        "id": "SUBJ018-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Object Oriented Programming through JAVA.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Object Oriented Programming through JAVA"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ019",
+    "code": "SUBJ019",
+    "name": "Python Programming",
+    "description": "Course on Python Programming.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ019-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Python Programming.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Python Programming"
+        ]
+      },
+      {
+        "id": "SUBJ019-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Python Programming.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Python Programming"
+        ]
+      },
+      {
+        "id": "SUBJ019-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Python Programming.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Python Programming"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ020",
+    "code": "SUBJ020",
+    "name": "Environmental Science",
+    "description": "Course on Environmental Science.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ020-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Environmental Science.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Environmental Science"
+        ]
+      },
+      {
+        "id": "SUBJ020-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Environmental Science.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Environmental Science"
+        ]
+      },
+      {
+        "id": "SUBJ020-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Environmental Science.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Environmental Science"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ021",
+    "code": "SUBJ021",
+    "name": "Optimization Techniques",
+    "description": "Course on Optimization Techniques.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ021-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Optimization Techniques.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Optimization Techniques"
+        ]
+      },
+      {
+        "id": "SUBJ021-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Optimization Techniques.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Optimization Techniques"
+        ]
+      },
+      {
+        "id": "SUBJ021-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Optimization Techniques.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Optimization Techniques"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ022",
+    "code": "SUBJ022",
+    "name": "Probability & Statistics",
+    "description": "Course on Probability & Statistics.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ022-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Probability & Statistics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Probability & Statistics"
+        ]
+      },
+      {
+        "id": "SUBJ022-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Probability & Statistics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Probability & Statistics"
+        ]
+      },
+      {
+        "id": "SUBJ022-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Probability & Statistics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Probability & Statistics"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ023",
+    "code": "SUBJ023",
+    "name": "Machine Learning",
+    "description": "Course on Machine Learning.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ023-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Machine Learning.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Machine Learning"
+        ]
+      },
+      {
+        "id": "SUBJ023-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Machine Learning.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Machine Learning"
+        ]
+      },
+      {
+        "id": "SUBJ023-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Machine Learning.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Machine Learning"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ024",
+    "code": "SUBJ024",
+    "name": "Data Base Management Systems",
+    "description": "Course on Data Base Management Systems.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ024-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Data Base Management Systems.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Data Base Management Systems"
+        ]
+      },
+      {
+        "id": "SUBJ024-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Data Base Management Systems.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Data Base Management Systems"
+        ]
+      },
+      {
+        "id": "SUBJ024-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Data Base Management Systems.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Data Base Management Systems"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ025",
+    "code": "SUBJ025",
+    "name": "Digital Logic & Computer Organization",
+    "description": "Course on Digital Logic & Computer Organization.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ025-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Digital Logic & Computer Organization.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Digital Logic & Computer Organization"
+        ]
+      },
+      {
+        "id": "SUBJ025-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Digital Logic & Computer Organization.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Digital Logic & Computer Organization"
+        ]
+      },
+      {
+        "id": "SUBJ025-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Digital Logic & Computer Organization.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Digital Logic & Computer Organization"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ026",
+    "code": "SUBJ026",
+    "name": "Flutter",
+    "description": "Course on Flutter.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ026-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Flutter.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Flutter"
+        ]
+      },
+      {
+        "id": "SUBJ026-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Flutter.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Flutter"
+        ]
+      },
+      {
+        "id": "SUBJ026-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Flutter.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Flutter"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ027",
+    "code": "SUBJ027",
+    "name": "Design Thinking & Innovation",
+    "description": "Course on Design Thinking & Innovation.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ027-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Design Thinking & Innovation.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Design Thinking & Innovation"
+        ]
+      },
+      {
+        "id": "SUBJ027-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Design Thinking & Innovation.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Design Thinking & Innovation"
+        ]
+      },
+      {
+        "id": "SUBJ027-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Design Thinking & Innovation.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Design Thinking & Innovation"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ028",
+    "code": "SUBJ028",
+    "name": "Information Retrieval Systems",
+    "description": "Course on Information Retrieval Systems.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ028-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Information Retrieval Systems.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Information Retrieval Systems"
+        ]
+      },
+      {
+        "id": "SUBJ028-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Information Retrieval Systems.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Information Retrieval Systems"
+        ]
+      },
+      {
+        "id": "SUBJ028-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Information Retrieval Systems.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Information Retrieval Systems"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ029",
+    "code": "SUBJ029",
+    "name": "Computer Networks",
+    "description": "Course on Computer Networks.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ029-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Computer Networks.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Computer Networks"
+        ]
+      },
+      {
+        "id": "SUBJ029-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Computer Networks.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Computer Networks"
+        ]
+      },
+      {
+        "id": "SUBJ029-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Computer Networks.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Computer Networks"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ030",
+    "code": "SUBJ030",
+    "name": "Operating Systems",
+    "description": "Course on Operating Systems.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ030-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Operating Systems.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Operating Systems"
+        ]
+      },
+      {
+        "id": "SUBJ030-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Operating Systems.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Operating Systems"
+        ]
+      },
+      {
+        "id": "SUBJ030-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Operating Systems.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Operating Systems"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ031",
+    "code": "SUBJ031",
+    "name": "Software Engineering",
+    "description": "Course on Software Engineering.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ031-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Software Engineering.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Software Engineering"
+        ]
+      },
+      {
+        "id": "SUBJ031-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Software Engineering.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Software Engineering"
+        ]
+      },
+      {
+        "id": "SUBJ031-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Software Engineering.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Software Engineering"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ032",
+    "code": "SUBJ032",
+    "name": "Cloud Computing",
+    "description": "Course on Cloud Computing.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ032-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Cloud Computing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Cloud Computing"
+        ]
+      },
+      {
+        "id": "SUBJ032-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Cloud Computing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Cloud Computing"
+        ]
+      },
+      {
+        "id": "SUBJ032-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Cloud Computing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Cloud Computing"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ033",
+    "code": "SUBJ033",
+    "name": "Internet of Things",
+    "description": "Course on Internet of Things.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ033-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Internet of Things.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Internet of Things"
+        ]
+      },
+      {
+        "id": "SUBJ033-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Internet of Things.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Internet of Things"
+        ]
+      },
+      {
+        "id": "SUBJ033-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Internet of Things.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Internet of Things"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ034",
+    "code": "SUBJ034",
+    "name": "Exploratory Data Analysis with Python",
+    "description": "Course on Exploratory Data Analysis with Python.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ034-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Exploratory Data Analysis with Python.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Exploratory Data Analysis with Python"
+        ]
+      },
+      {
+        "id": "SUBJ034-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Exploratory Data Analysis with Python.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Exploratory Data Analysis with Python"
+        ]
+      },
+      {
+        "id": "SUBJ034-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Exploratory Data Analysis with Python.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Exploratory Data Analysis with Python"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ035",
+    "code": "SUBJ035",
+    "name": "Automata Theory & Compiler Design",
+    "description": "Course on Automata Theory & Compiler Design.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ035-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Automata Theory & Compiler Design.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Automata Theory & Compiler Design"
+        ]
+      },
+      {
+        "id": "SUBJ035-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Automata Theory & Compiler Design.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Automata Theory & Compiler Design"
+        ]
+      },
+      {
+        "id": "SUBJ035-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Automata Theory & Compiler Design.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Automata Theory & Compiler Design"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ036",
+    "code": "SUBJ036",
+    "name": "Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS",
+    "description": "Course on Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ036-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS"
+        ]
+      },
+      {
+        "id": "SUBJ036-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS"
+        ]
+      },
+      {
+        "id": "SUBJ036-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ037",
+    "code": "SUBJ037",
+    "name": "Free Subject",
+    "description": "Course on Free Subject.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ037-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Free Subject.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Free Subject"
+        ]
+      },
+      {
+        "id": "SUBJ037-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Free Subject.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Free Subject"
+        ]
+      },
+      {
+        "id": "SUBJ037-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Free Subject.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Free Subject"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ038",
+    "code": "SUBJ038",
+    "name": "Entrepreneurship Development & Venture Creation",
+    "description": "Course on Entrepreneurship Development & Venture Creation.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ038-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Entrepreneurship Development & Venture Creation.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Entrepreneurship Development & Venture Creation"
+        ]
+      },
+      {
+        "id": "SUBJ038-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Entrepreneurship Development & Venture Creation.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Entrepreneurship Development & Venture Creation"
+        ]
+      },
+      {
+        "id": "SUBJ038-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Entrepreneurship Development & Venture Creation.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Entrepreneurship Development & Venture Creation"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ039",
+    "code": "SUBJ039",
+    "name": "Full Stack development -2 /SWAYAM Plus-Data Engineer/AI Engineer",
+    "description": "Course on Full Stack development -2 /SWAYAM Plus-Data Engineer/AI Engineer.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ039-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Full Stack development -2 /SWAYAM Plus-Data Engineer/AI Engineer.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Full Stack development -2 /SWAYAM Plus-Data Engineer/AI Engineer"
+        ]
+      },
+      {
+        "id": "SUBJ039-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Full Stack development -2 /SWAYAM Plus-Data Engineer/AI Engineer.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Full Stack development -2 /SWAYAM Plus-Data Engineer/AI Engineer"
+        ]
+      },
+      {
+        "id": "SUBJ039-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Full Stack development -2 /SWAYAM Plus-Data Engineer/AI Engineer.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Full Stack development -2 /SWAYAM Plus-Data Engineer/AI Engineer"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ040",
+    "code": "SUBJ040",
+    "name": "Tinkering Lab(User Interface Design using Flutter)",
+    "description": "Course on Tinkering Lab(User Interface Design using Flutter).",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ040-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Tinkering Lab(User Interface Design using Flutter).",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Tinkering Lab(User Interface Design using Flutter)"
+        ]
+      },
+      {
+        "id": "SUBJ040-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Tinkering Lab(User Interface Design using Flutter).",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Tinkering Lab(User Interface Design using Flutter)"
+        ]
+      },
+      {
+        "id": "SUBJ040-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Tinkering Lab(User Interface Design using Flutter).",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Tinkering Lab(User Interface Design using Flutter)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ041",
+    "code": "SUBJ041",
+    "name": "Natural Language Processing",
+    "description": "Course on Natural Language Processing.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ041-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Natural Language Processing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Natural Language Processing"
+        ]
+      },
+      {
+        "id": "SUBJ041-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Natural Language Processing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Natural Language Processing"
+        ]
+      },
+      {
+        "id": "SUBJ041-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Natural Language Processing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Natural Language Processing"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ042",
+    "code": "SUBJ042",
+    "name": "Deep Learning",
+    "description": "Course on Deep Learning.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ042-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Deep Learning.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Deep Learning"
+        ]
+      },
+      {
+        "id": "SUBJ042-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Deep Learning.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Deep Learning"
+        ]
+      },
+      {
+        "id": "SUBJ042-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Deep Learning.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Deep Learning"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ043",
+    "code": "SUBJ043",
+    "name": "Data Visualization",
+    "description": "Course on Data Visualization.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ043-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Data Visualization.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Data Visualization"
+        ]
+      },
+      {
+        "id": "SUBJ043-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Data Visualization.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Data Visualization"
+        ]
+      },
+      {
+        "id": "SUBJ043-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Data Visualization.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Data Visualization"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ044",
+    "code": "SUBJ044",
+    "name": "Software Testing Methodology",
+    "description": "Course on Software Testing Methodology.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ044-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Software Testing Methodology.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Software Testing Methodology"
+        ]
+      },
+      {
+        "id": "SUBJ044-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Software Testing Methodology.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Software Testing Methodology"
+        ]
+      },
+      {
+        "id": "SUBJ044-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Software Testing Methodology.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Software Testing Methodology"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ045",
+    "code": "SUBJ045",
+    "name": "Cryptography &amp; Network Security",
+    "description": "Course on Cryptography &amp; Network Security.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ045-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Cryptography &amp; Network Security.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Cryptography &amp; Network Security"
+        ]
+      },
+      {
+        "id": "SUBJ045-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Cryptography &amp; Network Security.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Cryptography &amp; Network Security"
+        ]
+      },
+      {
+        "id": "SUBJ045-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Cryptography &amp; Network Security.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Cryptography &amp; Network Security"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ046",
+    "code": "SUBJ046",
+    "name": "DevOps",
+    "description": "Course on DevOps.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ046-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to DevOps.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for DevOps"
+        ]
+      },
+      {
+        "id": "SUBJ046-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in DevOps.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in DevOps"
+        ]
+      },
+      {
+        "id": "SUBJ046-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in DevOps.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of DevOps"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ047",
+    "code": "SUBJ047",
+    "name": "Recommender Systems",
+    "description": "Course on Recommender Systems.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ047-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Recommender Systems.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Recommender Systems"
+        ]
+      },
+      {
+        "id": "SUBJ047-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Recommender Systems.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Recommender Systems"
+        ]
+      },
+      {
+        "id": "SUBJ047-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Recommender Systems.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Recommender Systems"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ048",
+    "code": "SUBJ048",
+    "name": "Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS",
+    "description": "Course on Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ048-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS"
+        ]
+      },
+      {
+        "id": "SUBJ048-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS"
+        ]
+      },
+      {
+        "id": "SUBJ048-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ049",
+    "code": "SUBJ049",
+    "name": "Software Project Management",
+    "description": "Course on Software Project Management.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ049-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Software Project Management.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Software Project Management"
+        ]
+      },
+      {
+        "id": "SUBJ049-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Software Project Management.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Software Project Management"
+        ]
+      },
+      {
+        "id": "SUBJ049-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Software Project Management.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Software Project Management"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ050",
+    "code": "SUBJ050",
+    "name": "Mobile Adhoc Networks",
+    "description": "Course on Mobile Adhoc Networks.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ050-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Mobile Adhoc Networks.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Mobile Adhoc Networks"
+        ]
+      },
+      {
+        "id": "SUBJ050-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Mobile Adhoc Networks.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Mobile Adhoc Networks"
+        ]
+      },
+      {
+        "id": "SUBJ050-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Mobile Adhoc Networks.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Mobile Adhoc Networks"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ051",
+    "code": "SUBJ051",
+    "name": "Computer Vision",
+    "description": "Course on Computer Vision.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ051-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Computer Vision.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Computer Vision"
+        ]
+      },
+      {
+        "id": "SUBJ051-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Computer Vision.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Computer Vision"
+        ]
+      },
+      {
+        "id": "SUBJ051-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Computer Vision.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Computer Vision"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ052",
+    "code": "SUBJ052",
+    "name": "NoSQL Databases",
+    "description": "Course on NoSQL Databases.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ052-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to NoSQL Databases.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for NoSQL Databases"
+        ]
+      },
+      {
+        "id": "SUBJ052-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in NoSQL Databases.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in NoSQL Databases"
+        ]
+      },
+      {
+        "id": "SUBJ052-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in NoSQL Databases.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of NoSQL Databases"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ053",
+    "code": "SUBJ053",
+    "name": "Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS",
+    "description": "Course on Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ053-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS"
+        ]
+      },
+      {
+        "id": "SUBJ053-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS"
+        ]
+      },
+      {
+        "id": "SUBJ053-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Any of the 12-Week SWAYAM /NPTEL Course suggested by the BoS"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ054",
+    "code": "SUBJ054",
+    "name": "Free Subject",
+    "description": "Course on Free Subject.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ054-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Free Subject.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Free Subject"
+        ]
+      },
+      {
+        "id": "SUBJ054-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Free Subject.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Free Subject"
+        ]
+      },
+      {
+        "id": "SUBJ054-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Free Subject.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Free Subject"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ055",
+    "code": "SUBJ055",
+    "name": "Soft skills",
+    "description": "Course on Soft skills.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ055-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Soft skills.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Soft skills"
+        ]
+      },
+      {
+        "id": "SUBJ055-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Soft skills.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Soft skills"
+        ]
+      },
+      {
+        "id": "SUBJ055-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Soft skills.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Soft skills"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ056",
+    "code": "SUBJ056",
+    "name": "Technical Paper Writing & IPR",
+    "description": "Course on Technical Paper Writing & IPR.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ056-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Technical Paper Writing & IPR.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Technical Paper Writing & IPR"
+        ]
+      },
+      {
+        "id": "SUBJ056-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Technical Paper Writing & IPR.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Technical Paper Writing & IPR"
+        ]
+      },
+      {
+        "id": "SUBJ056-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Technical Paper Writing & IPR.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Technical Paper Writing & IPR"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ057",
+    "code": "SUBJ057",
+    "name": "Adhoc & Sensor Networks",
+    "description": "Course on Adhoc & Sensor Networks.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ057-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Adhoc & Sensor Networks.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Adhoc & Sensor Networks"
+        ]
+      },
+      {
+        "id": "SUBJ057-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Adhoc & Sensor Networks.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Adhoc & Sensor Networks"
+        ]
+      },
+      {
+        "id": "SUBJ057-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Adhoc & Sensor Networks.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Adhoc & Sensor Networks"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ058",
+    "code": "SUBJ058",
+    "name": "Reinforcement Learning",
+    "description": "Course on Reinforcement Learning.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ058-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Reinforcement Learning.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Reinforcement Learning"
+        ]
+      },
+      {
+        "id": "SUBJ058-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Reinforcement Learning.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Reinforcement Learning"
+        ]
+      },
+      {
+        "id": "SUBJ058-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Reinforcement Learning.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Reinforcement Learning"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ059",
+    "code": "SUBJ059",
+    "name": "Social Media Analytics",
+    "description": "Course on Social Media Analytics.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ059-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Social Media Analytics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Social Media Analytics"
+        ]
+      },
+      {
+        "id": "SUBJ059-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Social Media Analytics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Social Media Analytics"
+        ]
+      },
+      {
+        "id": "SUBJ059-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Social Media Analytics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Social Media Analytics"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ060",
+    "code": "SUBJ060",
+    "name": "Software Testing Methodologies",
+    "description": "Course on Software Testing Methodologies.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ060-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Software Testing Methodologies.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Software Testing Methodologies"
+        ]
+      },
+      {
+        "id": "SUBJ060-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Software Testing Methodologies.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Software Testing Methodologies"
+        ]
+      },
+      {
+        "id": "SUBJ060-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Software Testing Methodologies.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Software Testing Methodologies"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ061",
+    "code": "SUBJ061",
+    "name": "Human Computer Interaction",
+    "description": "Course on Human Computer Interaction.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ061-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Human Computer Interaction.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Human Computer Interaction"
+        ]
+      },
+      {
+        "id": "SUBJ061-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Human Computer Interaction.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Human Computer Interaction"
+        ]
+      },
+      {
+        "id": "SUBJ061-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Human Computer Interaction.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Human Computer Interaction"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ062",
+    "code": "SUBJ062",
+    "name": "Cyber Security & Cyber Laws",
+    "description": "Course on Cyber Security & Cyber Laws.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ062-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Cyber Security & Cyber Laws.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Cyber Security & Cyber Laws"
+        ]
+      },
+      {
+        "id": "SUBJ062-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Cyber Security & Cyber Laws.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Cyber Security & Cyber Laws"
+        ]
+      },
+      {
+        "id": "SUBJ062-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Cyber Security & Cyber Laws.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Cyber Security & Cyber Laws"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ063",
+    "code": "SUBJ063",
+    "name": "Web Intelligence",
+    "description": "Course on Web Intelligence.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ063-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Web Intelligence.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Web Intelligence"
+        ]
+      },
+      {
+        "id": "SUBJ063-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Web Intelligence.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Web Intelligence"
+        ]
+      },
+      {
+        "id": "SUBJ063-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Web Intelligence.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Web Intelligence"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ064",
+    "code": "SUBJ064",
+    "name": "Parallel Computing",
+    "description": "Course on Parallel Computing.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ064-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Parallel Computing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Parallel Computing"
+        ]
+      },
+      {
+        "id": "SUBJ064-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Parallel Computing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Parallel Computing"
+        ]
+      },
+      {
+        "id": "SUBJ064-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Parallel Computing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Parallel Computing"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ065",
+    "code": "SUBJ065",
+    "name": "Robotic Process Automation",
+    "description": "Course on Robotic Process Automation.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ065-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Robotic Process Automation.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Robotic Process Automation"
+        ]
+      },
+      {
+        "id": "SUBJ065-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Robotic Process Automation.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Robotic Process Automation"
+        ]
+      },
+      {
+        "id": "SUBJ065-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Robotic Process Automation.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Robotic Process Automation"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ066",
+    "code": "SUBJ066",
+    "name": "E-commerce & Digital Marketing",
+    "description": "Course on E-commerce & Digital Marketing.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ066-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to E-commerce & Digital Marketing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for E-commerce & Digital Marketing"
+        ]
+      },
+      {
+        "id": "SUBJ066-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in E-commerce & Digital Marketing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in E-commerce & Digital Marketing"
+        ]
+      },
+      {
+        "id": "SUBJ066-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in E-commerce & Digital Marketing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of E-commerce & Digital Marketing"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ067",
+    "code": "SUBJ067",
+    "name": "Bioinformatics",
+    "description": "Course on Bioinformatics.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ067-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Bioinformatics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Bioinformatics"
+        ]
+      },
+      {
+        "id": "SUBJ067-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Bioinformatics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Bioinformatics"
+        ]
+      },
+      {
+        "id": "SUBJ067-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Bioinformatics.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Bioinformatics"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ068",
+    "code": "SUBJ068",
+    "name": "Block Chain Technologies",
+    "description": "Course on Block Chain Technologies.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ068-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Block Chain Technologies.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Block Chain Technologies"
+        ]
+      },
+      {
+        "id": "SUBJ068-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Block Chain Technologies.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Block Chain Technologies"
+        ]
+      },
+      {
+        "id": "SUBJ068-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Block Chain Technologies.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Block Chain Technologies"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ069",
+    "code": "SUBJ069",
+    "name": "Soft Computing",
+    "description": "Course on Soft Computing.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ069-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Soft Computing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Soft Computing"
+        ]
+      },
+      {
+        "id": "SUBJ069-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Soft Computing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Soft Computing"
+        ]
+      },
+      {
+        "id": "SUBJ069-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Soft Computing.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Soft Computing"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ070",
+    "code": "SUBJ070",
+    "name": "Network and Graph Analysis",
+    "description": "Course on Network and Graph Analysis.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ070-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Network and Graph Analysis.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Network and Graph Analysis"
+        ]
+      },
+      {
+        "id": "SUBJ070-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Network and Graph Analysis.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Network and Graph Analysis"
+        ]
+      },
+      {
+        "id": "SUBJ070-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Network and Graph Analysis.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Network and Graph Analysis"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ071",
+    "code": "SUBJ071",
+    "name": "Spring Boot",
+    "description": "Course on Spring Boot.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ071-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Spring Boot.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Spring Boot"
+        ]
+      },
+      {
+        "id": "SUBJ071-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Spring Boot.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Spring Boot"
+        ]
+      },
+      {
+        "id": "SUBJ071-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Spring Boot.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Spring Boot"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ072",
+    "code": "SUBJ072",
+    "name": "Autonomous Systems",
+    "description": "Course on Autonomous Systems.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ072-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Autonomous Systems.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Autonomous Systems"
+        ]
+      },
+      {
+        "id": "SUBJ072-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Autonomous Systems.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Autonomous Systems"
+        ]
+      },
+      {
+        "id": "SUBJ072-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Autonomous Systems.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Autonomous Systems"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ073",
+    "code": "SUBJ073",
+    "name": "Cloud Computing & IoT",
+    "description": "Course on Cloud Computing & IoT.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ073-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Cloud Computing & IoT.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Cloud Computing & IoT"
+        ]
+      },
+      {
+        "id": "SUBJ073-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Cloud Computing & IoT.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Cloud Computing & IoT"
+        ]
+      },
+      {
+        "id": "SUBJ073-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Cloud Computing & IoT.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Cloud Computing & IoT"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ074",
+    "code": "SUBJ074",
+    "name": "Secure Coding Techniques",
+    "description": "Course on Secure Coding Techniques.",
+    "totalHours": 75,
+    "theoryHours": 45,
+    "practicalHours": 30,
+    "credits": 5,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ074-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Secure Coding Techniques.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Standard Textbook for Secure Coding Techniques"
+        ]
+      },
+      {
+        "id": "SUBJ074-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Secure Coding Techniques.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Advanced Topics in Secure Coding Techniques"
+        ]
+      },
+      {
+        "id": "SUBJ074-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Secure Coding Techniques.",
+        "theoryHours": 15,
+        "practicalHours": 10,
+        "referenceMaterials": [
+          "Research and Applications of Secure Coding Techniques"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ075",
+    "code": "SUBJ075",
+    "name": "Management Science",
+    "description": "Course on Management Science.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ075-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Management Science.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Management Science"
+        ]
+      },
+      {
+        "id": "SUBJ075-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Management Science.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Management Science"
+        ]
+      },
+      {
+        "id": "SUBJ075-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Management Science.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Management Science"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ076",
+    "code": "SUBJ076",
+    "name": "Big Data: Apache Spark",
+    "description": "Course on Big Data: Apache Spark.",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ076-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Big Data: Apache Spark.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Big Data: Apache Spark"
+        ]
+      },
+      {
+        "id": "SUBJ076-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Big Data: Apache Spark.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Big Data: Apache Spark"
+        ]
+      },
+      {
+        "id": "SUBJ076-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Big Data: Apache Spark.",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Big Data: Apache Spark"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SUBJ077",
+    "code": "SUBJ077",
+    "name": "Industrial / Research Internship ( After third year)",
+    "description": "Course on Industrial / Research Internship ( After third year).",
+    "totalHours": 60,
+    "theoryHours": 60,
+    "practicalHours": 0,
+    "credits": 4,
+    "prerequisites": [],
+    "topics": [
+      {
+        "id": "SUBJ077-T1",
+        "name": "Introduction",
+        "description": "Basic introduction to Industrial / Research Internship ( After third year).",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Standard Textbook for Industrial / Research Internship ( After third year)"
+        ]
+      },
+      {
+        "id": "SUBJ077-T2",
+        "name": "Intermediate Concepts",
+        "description": "Intermediate level topics in Industrial / Research Internship ( After third year).",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Advanced Topics in Industrial / Research Internship ( After third year)"
+        ]
+      },
+      {
+        "id": "SUBJ077-T3",
+        "name": "Advanced Topics",
+        "description": "Advanced concepts and applications in Industrial / Research Internship ( After third year).",
+        "theoryHours": 20,
+        "practicalHours": 0,
+        "referenceMaterials": [
+          "Research and Applications of Industrial / Research Internship ( After third year)"
+        ]
+      }
+    ]
+  }
+]

@@ -9,10 +9,8 @@
     "semester": 1,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "2",
@@ -24,10 +22,8 @@
     "semester": 1,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "3",
@@ -39,10 +35,8 @@
     "semester": 1,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "4",
@@ -54,10 +48,8 @@
     "semester": 1,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "5",
@@ -69,10 +61,8 @@
     "semester": 1,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "6",
@@ -84,10 +74,8 @@
     "semester": 1,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "7",
@@ -99,10 +87,8 @@
     "semester": 2,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "8",
@@ -114,10 +100,8 @@
     "semester": 2,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "9",
@@ -129,10 +113,8 @@
     "semester": 2,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "10",
@@ -144,10 +126,8 @@
     "semester": 2,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "11",
@@ -159,10 +139,8 @@
     "semester": 2,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "12",
@@ -174,10 +152,8 @@
     "semester": 2,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "13",
@@ -189,10 +165,8 @@
     "semester": 2,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "14",
@@ -204,10 +178,8 @@
     "semester": 3,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "15",
@@ -219,10 +191,8 @@
     "semester": 3,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "16",
@@ -234,10 +204,8 @@
     "semester": 3,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "17",
@@ -249,10 +217,8 @@
     "semester": 3,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "18",
@@ -264,10 +230,8 @@
     "semester": 3,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "19",
@@ -279,10 +243,8 @@
     "semester": 3,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "20",
@@ -294,10 +256,8 @@
     "semester": 3,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "21",
@@ -309,10 +269,8 @@
     "semester": 4,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "22",
@@ -324,10 +282,8 @@
     "semester": 4,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "23",
@@ -339,10 +295,8 @@
     "semester": 4,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "24",
@@ -354,10 +308,8 @@
     "semester": 4,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "25",
@@ -369,10 +321,8 @@
     "semester": 4,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "26",
@@ -384,10 +334,8 @@
     "semester": 4,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "27",
@@ -399,10 +347,8 @@
     "semester": 4,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "28",
@@ -414,10 +360,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "29",
@@ -429,10 +373,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "30",
@@ -444,10 +386,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "31",
@@ -459,10 +399,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "32",
@@ -474,10 +412,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "33",
@@ -489,10 +425,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "34",
@@ -504,10 +438,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "35",
@@ -519,10 +451,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "36",
@@ -534,10 +464,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "37",
@@ -549,10 +477,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "38",
@@ -564,10 +490,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "39",
@@ -579,10 +503,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "40",
@@ -594,10 +516,8 @@
     "semester": 5,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "41",
@@ -609,10 +529,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "42",
@@ -624,10 +542,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "43",
@@ -639,10 +555,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "44",
@@ -654,10 +568,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "45",
@@ -669,10 +581,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "46",
@@ -684,10 +594,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "47",
@@ -699,10 +607,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "48",
@@ -714,10 +620,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "49",
@@ -729,10 +633,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "50",
@@ -744,10 +646,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "51",
@@ -759,10 +659,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "52",
@@ -774,10 +672,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "53",
@@ -789,10 +685,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "54",
@@ -804,10 +698,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "55",
@@ -819,10 +711,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "56",
@@ -834,10 +724,8 @@
     "semester": 6,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "57",
@@ -849,10 +737,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "58",
@@ -864,10 +750,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "59",
@@ -879,10 +763,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "60",
@@ -894,10 +776,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "61",
@@ -909,10 +789,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "62",
@@ -924,10 +802,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "63",
@@ -939,10 +815,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "64",
@@ -954,10 +828,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "65",
@@ -969,10 +841,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "66",
@@ -984,10 +854,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "67",
@@ -999,10 +867,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "68",
@@ -1014,10 +880,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "69",
@@ -1029,10 +893,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "70",
@@ -1044,10 +906,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "71",
@@ -1059,10 +919,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "72",
@@ -1074,10 +932,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "73",
@@ -1089,10 +945,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "74",
@@ -1104,10 +958,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": true,
-    "isActive": true,
-    "totalHours": 75,
-    "theoryHours": 45,
-    "practicalHours": 30
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "75",
@@ -1119,10 +971,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "76",
@@ -1134,10 +984,8 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   },
   {
     "id": "77",
@@ -1149,9 +997,7 @@
     "semester": 7,
     "academicYear": "2024-25",
     "isElective": false,
-    "isActive": true,
-    "totalHours": 60,
-    "theoryHours": 60,
-    "practicalHours": 0
+    "maxStudents": 60,
+    "isActive": true
   }
 ]
