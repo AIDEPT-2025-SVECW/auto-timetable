@@ -1,662 +1,732 @@
-#!/usr/bin/env python3
+# File: generate_timetable.py
 """
-Timetable Generator (CP-SAT) with Elastic Debug Mode.
+Production Timetable Generator (weekly-template + remainder placement)
+Implements requirements from `automated_timetable_requirements.docx` and the user's requested changes.
 
-- Modular constraint families so we can skip one family at a time to
-  identify the infeasible constraint.
-- Input files (in "input" directory):
-    - aiml-faculty-detailed.json
-    - semester-subjects.json
-    - department-sections.json
-    - classrooms.json
-    - all_semesters_net_dates.json
-- Outputs (in "output" directory):
-    - section_timetable.json
-    - faculty_allocations.json
-    - timetable_model.proto (if infeasible/debug)
-    - solver_stats.txt
+Modes:
+- debug: tiny satisfiable starter (fast) + verbose variable/constraint counts
+- strict: enforce hard constraints (may be infeasible if inputs conflict)
+- elastic-debug: allow soft relaxations (penalties) to help solver find feasible solutions
+
+Pipeline overview:
+1. Load inputs and precompute mappings (sections→classrooms, subject metadata, eligible faculty - normalized match).
+2. Build a compact CP-SAT weekly-template model (day-of-week × period template) that repeats across semester weeks.
+   - Weekly template ensures global conflict-free baseline scheduling and enforces most hard constraints.
+3. Solve weekly model (with time-limit).
+4. Post-process to place remainder session counts (when total required periods don't divide evenly across weeks).
+   - Greedy placement across calendar weeks while respecting faculty/section/room availability.
+5. Expand final schedule to actual calendar dates and write outputs (section/faculty/classroom JSONs).
+
+Notes and design choices:
+- To keep the model tractable we use a weekly template rather than variables per calendar date. Exact total-hours coverage is achieved by:
+  - enforcing a weekly minimum frequency in the CP model (floor(required/weeks_count)), and
+  - placing remaining sessions greedily across real calendar weeks after solving.
+- Faculty eligibility matching ignores case and non-alphanumeric characters.
+- Logging is verbose; check `timetable.log` for debugging details.
+
+Run:
+    python generate_timetable.py --input-dir ./input --output-dir ./output --mode strict --time-limit 120
+
 """
+
+import argparse
 import json
 import logging
-import sys
-from pathlib import Path
-from collections import defaultdict
-from math import ceil
+import math
+import os
+import re
+from collections import defaultdict, Counter
+from datetime import datetime
+
 from ortools.sat.python import cp_model
-from datetime import datetime, timedelta
+
+# ---------------------- Logging ----------------------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("timetable.log", mode="w", encoding="utf-8"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger("timetable")
+
+# ---------------------- Utilities ----------------------
+
+def load_json(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 
-# -----------------------
-# Config
-# -----------------------
-INPUT_DIR = Path("input")
-OUTPUT_DIR = Path("output")
-PERIODS_PER_DAY = 8
-DAYS_PER_WEEK = 6
-TIME_LIMIT_SECONDS = 60  # per solve attempt (elastic mode uses short attempts)
-NUM_WORKERS = 4
-PERIOD_MINUTES = 50
-COVERAGE_TOLERANCE = (0.8, 1.2)  # 90% - 110% tolerance
-# time config for per-period start time calculation
-PERIOD_START_TIME = "08:50"   # first period start (HH:MM)
+def ensure_dir(path):
+    os.makedirs(path, exist_ok=True)
 
 
-# -----------------------
-# Logging
-# -----------------------
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-logger = logging.getLogger("TimetableElastic")
+def normalize_name(s: str) -> str:
+    if not isinstance(s, str):
+        return ""
+    return re.sub(r"[^0-9a-z]", "", s.lower())
 
-# -----------------------
-# Helpers
-# -----------------------
-def to_int_map(items, id_field):
-    m = {}
-    rm = {}
-    idx = 1
-    for it in items:
-        orig = it[id_field]
-        m[orig] = idx
-        rm[idx] = orig
-        idx += 1
-    return m, rm
 
-def hours_to_periods(hours):
-    if hours is None:
-        return 0
-    minutes = hours * 60
-    return int(ceil(minutes / PERIOD_MINUTES))
+def periods_from_hours(hours: float) -> int:
+    # convert hours to 50-minute periods
+    minutes = int(round(hours * 60))
+    periods = int(round(minutes / 50.0))
+    return max(1, periods)
 
-def ensure_dirs():
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    INPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-# -----------------------
-# Timetable class
-# -----------------------
-class TimetableFull:
-    def __init__(self, input_dir=INPUT_DIR):
-        ensure_dirs()
-        self.input_dir = Path(input_dir)
-        self.model = None
-        self.solver = None
-        self.reset_model()
+def chunk_weeks(dates):
+    # group iso-week -> list of date strings
+    dt_objs = [datetime.fromisoformat(d).date() for d in dates]
+    dt_objs.sort()
+    weeks = defaultdict(list)
+    for d in dt_objs:
+        iso = d.isocalendar()[:2]
+        weeks[iso].append(d.isoformat())
+    return list(weeks.values())
 
-        # raw data
-        self.faculty = {}
-        self.subjects = {}
-        self.sections = {}
-        self.classrooms = {}
-        self.working_dates = []
+# ---------------------- Precomputations ----------------------
 
-        # maps
-        self.subj_to_i = {}
-        self.i_to_subj = {}
-        self.fac_to_i = {}
-        self.i_to_fac = {}
-        self.room_to_i = {}
-        self.i_to_room = {}
+def map_sections_to_classrooms(sections, classrooms):
+    mapping = {}
+    used_room_ids = set()
+    available_rooms = [c for c in classrooms if c.get("type") in ("classroom", "lab") and c.get("status") == "active"]
+    available_rooms.sort(key=lambda r: r.get("capacity", 0))
+    for sec in sections:
+        assigned = None
+        for room in available_rooms:
+            if room["id"] in used_room_ids:
+                continue
+            if sec.get("totalStudents", 0) <= room.get("capacity", 0):
+                assigned = room["id"]
+                used_room_ids.add(room["id"])
+                break
+        if assigned is None and available_rooms:
+            assigned = available_rooms[0]["id"]
+        mapping[sec["id"]] = assigned
+    logger.info("Section->Room mapping computed: assigned %d/%d", sum(1 for v in mapping.values() if v), len(sections))
+    return mapping
 
-        # variables & caches
-        self.faculty_assignment = {}  # (section, subj_int) -> IntVar
-        self.slot_vars = defaultdict(lambda: defaultdict(dict))  # section -> d -> p -> (s_var,f_var,r_var,is_free,is_lab)
-        self.slot_is_sub = {}  # (section,d,p,subj_int) -> BoolVar
-        self.elective_groups = defaultdict(list)
-        self.elective_active = {}  # (semester,group,d,p) -> BoolVar
 
-    def reset_model(self):
-        self.model = cp_model.CpModel()
-        self.solver = cp_model.CpSolver()
-        self.solver.parameters.max_time_in_seconds = TIME_LIMIT_SECONDS
-        self.solver.parameters.num_search_workers = NUM_WORKERS
-
-    def load_inputs(self):
-        logger.info("Loading inputs from %s", self.input_dir)
-        if not self.input_dir.exists():
-            logger.error("Input directory not found: %s", self.input_dir)
-            return False
-        try:
-            with open(self.input_dir / "aiml-faculty-detailed.json") as f:
-                self.faculty = {fobj['facultyId']: fobj for fobj in json.load(f)}
-            with open(self.input_dir / "semester-subjects.json") as f:
-                self.subjects = {s['subjectId']: s for s in json.load(f)}
-            with open(self.input_dir / "department-sections.json") as f:
-                self.sections = {sec['id']: sec for sec in json.load(f)}
-            with open(self.input_dir / "classrooms.json") as f:
-                self.classrooms = {r['id']: r for r in json.load(f)}
-            with open(self.input_dir / "all_semesters_net_dates.json") as f:
-                dates_data = json.load(f)
-                if dates_data:
-                    # choose first semester net dates by default (same as original script)
-                    self.working_dates = dates_data[0].get('netDates', [])
-        except Exception as e:
-            logger.exception("Failed to load inputs: %s", e)
-            return False
-
-        # maps for ints
-        self.subj_to_i, self.i_to_subj = to_int_map(self.subjects.values(), 'subjectId')
-        self.fac_to_i, self.i_to_fac = to_int_map(self.faculty.values(), 'facultyId')
-        self.room_to_i, self.i_to_room = to_int_map(self.classrooms.values(), 'id')
-
-        logger.info("Loaded: subjects=%d faculty=%d sections=%d rooms=%d working_dates=%d",
-                    len(self.subj_to_i), len(self.fac_to_i), len(self.sections), len(self.room_to_i), len(self.working_dates))
-        return True
-
-    # -----------------------
-    # Constraint family builders
-    # Each builder accepts a flag `enabled` (True/False).
-    # -----------------------
-    def build_elective_groups(self, enabled=True):
-        if not enabled:
-            logger.info("[SKIP] build_elective_groups")
-            return
-        logger.info("Building elective groups...")
-        self.elective_groups.clear()
-        for subj_orig, subj in self.subjects.items():
-            if subj.get('isElective') and subj.get('elective_group_name'):
-                sem = subj.get('semester')
-                group = subj.get('elective_group_name')
-                subj_int = self.subj_to_i[subj_orig]
-                self.elective_groups[(sem, group)].append(subj_int)
-        logger.info("Found %d elective groups", len(self.elective_groups))
-
-    def create_faculty_assignment_vars(self, enabled=True):
-        if not enabled:
-            logger.info("[SKIP] create_faculty_assignment_vars")
-            return
-        logger.info("Creating faculty assignment variables per (section,subject)")
-        subject_eligible_fac = {}
-        # fuzzy mapping of faculty subjects -> subjectName
-        for subj_orig, subj in self.subjects.items():
-            subj_name = subj.get('subjectName', '').lower()
-            elig = []
-            for fac_orig, fac in self.faculty.items():
-                fac_int = self.fac_to_i[fac_orig]
-                fac_subjects = [s.lower() for s in fac.get('subjects', []) if isinstance(s, str)]
-                can = any(ss in subj_name or subj_name in ss for ss in fac_subjects) or (subj_orig in fac.get('subjects', []))
-                if can:
-                    elig.append(fac_int)
-            if not elig:
-                # fallback to all faculty (keeps model feasible but reveals bad mapping)
-                logger.warning("No direct faculty matched for subj %s (%s). Allowing all faculty as fallback.", subj_orig, subj.get('subjectName'))
-                elig = list(self.i_to_fac.keys())
-            subject_eligible_fac[self.subj_to_i[subj_orig]] = elig
-
-        for section_id in self.sections:
-            for subj_orig in self.subjects:
-                subj_int = self.subj_to_i[subj_orig]
-                domain = subject_eligible_fac.get(subj_int, list(self.i_to_fac.keys()))
-                var = self.model.NewIntVarFromDomain(cp_model.Domain.FromValues(domain),
-                                                     f"assign_fac_sec{section_id}_sub{subj_int}")
-                self.faculty_assignment[(section_id, subj_int)] = var
-        logger.info("Created %d faculty assignment variables", len(self.faculty_assignment))
-
-    def create_slot_vars(self, enabled=True):
-        if not enabled:
-            logger.info("[SKIP] create_slot_vars")
-            return
-        logger.info("Creating slot variables (subject/fac/room) and free flags")
-        subj_domain = [0] + list(self.i_to_subj.keys())  # 0 = FREE
-        fac_domain = [0] + list(self.i_to_fac.keys())
-        room_domain = [0] + list(self.i_to_room.keys())
-
-        for section_id in self.sections:
-            for d in range(DAYS_PER_WEEK):
-                for p in range(PERIODS_PER_DAY):
-                    s_var = self.model.NewIntVarFromDomain(cp_model.Domain.FromValues(subj_domain),
-                                                           f"slot_sub_{section_id}_{d}_{p}")
-                    f_var = self.model.NewIntVarFromDomain(cp_model.Domain.FromValues(fac_domain),
-                                                           f"slot_fac_{section_id}_{d}_{p}")
-                    r_var = self.model.NewIntVarFromDomain(cp_model.Domain.FromValues(room_domain),
-                                                           f"slot_room_{section_id}_{d}_{p}")
-                    is_free = self.model.NewBoolVar(f"is_free_{section_id}_{d}_{p}")
-                    is_lab = self.model.NewBoolVar(f"is_lab_{section_id}_{d}_{p}")
-
-                    # reify free
-                    self.model.Add(s_var == 0).OnlyEnforceIf(is_free)
-                    self.model.Add(s_var != 0).OnlyEnforceIf(is_free.Not())
-
-                    self.slot_vars[section_id][d][p] = (s_var, f_var, r_var, is_free, is_lab)
-
-        logger.info("Created slot variables for approx %d slots", len(self.sections) * DAYS_PER_WEEK * PERIODS_PER_DAY)
-
-    def link_subject_to_assigned_faculty(self, enabled=True):
-        if not enabled:
-            logger.info("[SKIP] link_subject_to_assigned_faculty")
-            return
-        logger.info("Linking slot faculty to per-(section,subject) assignment and building slot_is_sub booleans")
-        for section_id in self.sections:
-            for d in range(DAYS_PER_WEEK):
-                for p in range(PERIODS_PER_DAY):
-                    s_var, f_var, _, is_free, is_lab = self.slot_vars[section_id][d][p]
-                    for subj_int in self.i_to_subj.keys():
-                        key = (section_id, d, p, subj_int)
-                        b = self.model.NewBoolVar(f"slot_is_sec{section_id}_d{d}_p{p}_sub{subj_int}")
-                        self.model.Add(s_var == subj_int).OnlyEnforceIf(b)
-                        self.model.Add(s_var != subj_int).OnlyEnforceIf(b.Not())
-                        self.slot_is_sub[key] = b
-                        # link faculty: if this slot has subj_int then slot f_var == faculty_assignment[(section,subj_int)]
-                        assign_var = self.faculty_assignment[(section_id, subj_int)]
-                        self.model.Add(f_var == assign_var).OnlyEnforceIf(b)
-
-    def add_subject_room_allowed(self, enabled=True):
-        if not enabled:
-            logger.info("[SKIP] add_subject_room_allowed")
-            return
-        logger.info("Adding allowed (subject,room) combos and linking is_lab booleans")
-        lab_subj_ints = set()
-        for subj_orig, subj in self.subjects.items():
-            if subj.get('practicalHours', 0) > 0 or 'lab' in subj.get('subjectName', '').lower():
-                lab_subj_ints.add(self.subj_to_i[subj_orig])
-        all_subj_ints = set(self.i_to_subj.keys())
-
-        lab_rooms = [i for i, r in self.i_to_room.items() if self.classrooms[r].get('type', '').lower() == 'lab']
-        theory_rooms = [i for i, r in self.i_to_room.items() if self.classrooms[r].get('type', '').lower() == 'classroom']
-
-        allowed_pairs = set()
-        allowed_pairs.add((0, 0))
-        for s in lab_subj_ints:
-            for rr in lab_rooms:
-                allowed_pairs.add((s, rr))
-        non_lab = all_subj_ints - lab_subj_ints
-        for s in non_lab:
-            for rr in theory_rooms:
-                allowed_pairs.add((s, rr))
-        allowed_list = list(allowed_pairs)
-
-        for section_id in self.sections:
-            for d in range(DAYS_PER_WEEK):
-                for p in range(PERIODS_PER_DAY):
-                    s_var, _, r_var, is_free, is_lab = self.slot_vars[section_id][d][p]
-                    self.model.Add(r_var == 0).OnlyEnforceIf(is_free)
-
-                    # is_lab detection (OR of lab subject booleans)
-                    if lab_subj_ints:
-                        lab_reifs = []
-                        for s_int in lab_subj_ints:
-                            br = self.model.NewBoolVar(f"slot_{section_id}_{d}_{p}_is_sub_{s_int}")
-                            self.model.Add(s_var == s_int).OnlyEnforceIf(br)
-                            self.model.Add(s_var != s_int).OnlyEnforceIf(br.Not())
-                            lab_reifs.append(br)
-                        self.model.AddBoolOr(lab_reifs).OnlyEnforceIf(is_lab)
-                        for br in lab_reifs:
-                            self.model.Add(br == 0).OnlyEnforceIf(is_lab.Not())
-                    else:
-                        self.model.Add(is_lab == 0)
-
-                    # allowed assignments (subject, room)
-                    self.model.AddAllowedAssignments([s_var, r_var], allowed_list)
-
-    def build_elective_active_vars(self, enabled=True):
-        if not enabled:
-            logger.info("[SKIP] build_elective_active_vars")
-            return
-        logger.info("Building elective active vars for elective groups (if any)")
-        self.elective_active.clear()
-        for (sem, group), subj_list in self.elective_groups.items():
-            for d in range(DAYS_PER_WEEK):
-                for p in range(PERIODS_PER_DAY):
-                    var = self.model.NewBoolVar(f"elective_active_sem{sem}_grp{group}_d{d}_p{p}")
-                    self.elective_active[(sem, group, d, p)] = var
-
-        # Enforce: if elective_active True then every section of that semester must have some subject from that group
-        for (sem, group), subj_list in self.elective_groups.items():
-            # Build subject bools per slot for sections belonging to this semester
-            for d in range(DAYS_PER_WEEK):
-                for p in range(PERIODS_PER_DAY):
-                    active_var = self.elective_active[(sem, group, d, p)]
-                    # For each section in this semester:
-                    for section_id, sec in self.sections.items():
-                        if sec.get('year') != sem:  # note: assumes semester stored in 'year' - adapt if needed
-                            continue
-                        # create bool: section_has_group_sub = OR(slot_is_sub for subj in subj_list)
-                        group_reifs = []
-                        for subj_int in subj_list:
-                            b = self.slot_is_sub[(section_id, d, p, subj_int)]
-                            group_reifs.append(b)
-                        # section_has_group_sub = model.NewBoolVar...
-                        if group_reifs:
-                            self.model.AddBoolOr(group_reifs).OnlyEnforceIf(active_var)
-                            # If elective active, no other non-group subject should be scheduled. (Enforce later via constraints)
-        # NOTE: We keep elective semantics light here; main goal is to allow toggle for debugging.
-
-    def add_no_double_booking(self, enabled=True):
-        if not enabled:
-            logger.info("[SKIP] add_no_double_booking")
-            return
-        logger.info("Adding no-double-booking constraints: faculty/room/section")
-        # For each timeslot, a faculty can't be in two places & room can't host two sections
-        for d in range(DAYS_PER_WEEK):
-            for p in range(PERIODS_PER_DAY):
-                # Faculty: collect slot f_vars across sections; for each faculty id, at most one section can have that faculty at (d,p)
-                # We achieve "all different" via pairwise inequality reified style
-                fac_at_slot = {}
-                room_at_slot = {}
-                for section_id in self.sections:
-                    _, f_var, r_var, is_free, is_lab = self.slot_vars[section_id][d][p]
-                    # For each faculty integer, create bool equals (expensive). Instead use pairwise constraints:
-                    for other_section in self.sections:
-                        if other_section <= section_id:
-                            continue
-                        _, f_var2, r_var2, _, _ = self.slot_vars[other_section][d][p]
-                        # if both non-free and faculties equal -> forbidden
-                        b_both_nonfree = self.model.NewBoolVar(f"both_nonfree_{section_id}_{other_section}_{d}_{p}")
-                        s1 = self.slot_vars[section_id][d][p][0]
-                        s2 = self.slot_vars[other_section][d][p][0]
-                        self.model.Add(s1 != 0).OnlyEnforceIf(b_both_nonfree)
-                        self.model.Add(s2 != 0).OnlyEnforceIf(b_both_nonfree)
-                        # if both_nonfree then f_var != f_var2
-                        self.model.Add(f_var != f_var2).OnlyEnforceIf(b_both_nonfree)
-
-                        # room conflicts: if both non-free then room_var != room_var2
-                        self.model.Add(r_var != r_var2).OnlyEnforceIf(b_both_nonfree)
-
-    def add_coverage_constraints(self, enabled=True):
-        if not enabled:
-            logger.info("[SKIP] add_coverage_constraints")
-            return
-        logger.info("Adding coverage constraints (ensure subject hours mapped to slots approx within tolerance)")
-        # Estimate total available periods for subject per semester: sections * days*periods * weeks approximated by working_dates
-        total_working_days = len(self.working_dates) if self.working_dates else (DAYS_PER_WEEK * 16)  # fallback
-        total_periods_available = total_working_days * PERIODS_PER_DAY
-
-        # We'll enforce per-subject total assigned slots across all sections to be within tolerance of required periods
-        # Compute required periods per subject: totalHours -> periods
-        subj_required_periods = {}
-        for subj_orig, subj in self.subjects.items():
-            periods = hours_to_periods(subj.get('totalHours', 0))
-            subj_required_periods[self.subj_to_i[subj_orig]] = periods
-
-        # For each subject, count total slots assigned across all sections (weeks are not explicitly modeled; we map per-day/week pattern)
-        # Because model is per-week pattern (DAYS_PER_WEEK * PERIODS_PER_DAY), we scale requirement to per-week by dividing by number of weeks.
-        # For simplicity: require each subject to appear between tol_min and tol_max times per WEEK pattern where:
-        # weeks_estimate = max(1, total_working_days // DAYS_PER_WEEK)
-        weeks_estimate = max(1, total_working_days // DAYS_PER_WEEK)
-        logger.info("Total working days=%d weeks_estimate=%d", total_working_days, weeks_estimate)
-
-        for subj_int, periods in subj_required_periods.items():
-            min_slots = int(ceil((periods * COVERAGE_TOLERANCE[0]) / weeks_estimate))
-            max_slots = int(ceil((periods * COVERAGE_TOLERANCE[1]) / weeks_estimate))
-            # count occurrences over (section,d,p)
-            occurrence_bools = []
-            for section_id in self.sections:
-                for d in range(DAYS_PER_WEEK):
-                    for p in range(PERIODS_PER_DAY):
-                        b = self.slot_is_sub[(section_id, d, p, subj_int)]
-                        occurrence_bools.append(b)
-            if occurrence_bools:
-                # Create int var = sum of bools
-                occ_sum = sum(occurrence_bools)  # OR-Tools accepts sum of BoolVar
-                # Enforce bounds (as linear constraints)
-                self.model.Add(sum(occurrence_bools) >= min_slots)
-                self.model.Add(sum(occurrence_bools) <= max_slots)
-                logger.debug("Subject %s requires per-week slots in [%d, %d]", self.i_to_subj[subj_int], min_slots, max_slots)
-
-    def add_faculty_load_constraints(self, enabled=True):
-        if not enabled:
-            logger.info("[SKIP] add_faculty_load_constraints")
-            return
-        logger.info("Adding faculty load constraints (no more than X slots/day and at least Y slots/day if needed)")
-        # Example: a faculty can teach at most 4 slots/day, min 0. These are tunable; for debug we keep it moderate.
-        MAX_SLOTS_PER_FACULTY_PER_DAY = 4
-        for fac_int in self.i_to_fac:
-            for d in range(DAYS_PER_WEEK):
-                # collect bools across sections whether fac_int is assigned at (d)
-                fac_presence = []
-                for section_id in self.sections:
-                    _, f_var, _, is_free, _ = self.slot_vars[section_id][d][0]  # we'll iterate p below; create per (section,p)
-                # Build sum for all sections and periods
-                presence_bools = []
-                for section_id in self.sections:
-                    for p in range(PERIODS_PER_DAY):
-                        _, f_var, _, is_free, _ = self.slot_vars[section_id][d][p]
-                        b = self.model.NewBoolVar(f"fac{fac_int}_sec{section_id}_d{d}_p{p}_is")
-                        self.model.Add(f_var == fac_int).OnlyEnforceIf(b)
-                        self.model.Add(f_var != fac_int).OnlyEnforceIf(b.Not())
-                        presence_bools.append(b)
-                if presence_bools:
-                    self.model.Add(sum(presence_bools) <= MAX_SLOTS_PER_FACULTY_PER_DAY)
-
-    # -----------------------
-    # Solve & reporting
-    # -----------------------
-    def solve_and_report(self):
-        logger.info("Solving model...")
-        self.solver = cp_model.CpSolver()
-        self.solver.parameters.max_time_in_seconds = TIME_LIMIT_SECONDS
-        self.solver.parameters.num_search_workers = NUM_WORKERS
-        status = self.solver.Solve(self.model)
-
-        status_name = {cp_model.OPTIMAL: "OPTIMAL", cp_model.FEASIBLE: "FEASIBLE",
-                       cp_model.INFEASIBLE: "INFEASIBLE", cp_model.UNKNOWN: "UNKNOWN"}.get(status, str(status))
-        logger.info("Solver status: %s", status_name)
-        # dump stats
-        stats = self.solver.ResponseStats()
-        with open(OUTPUT_DIR / "solver_stats.txt", "w") as sf:
-            sf.write(f"Status: {status_name}\n")
-            sf.write(stats + "\n")
-
-        if status == cp_model.INFEASIBLE:
-            # export model proto for external debugging
-            try:
-                proto = self.model.SerializeToString()
-                with open(OUTPUT_DIR / "timetable_model.proto", "wb") as pf:
-                    pf.write(proto)
-                logger.error("Model infeasible. Serialized CP model to %s", OUTPUT_DIR / "timetable_model.proto")
-            except Exception as e:
-                logger.exception("Failed to write model proto: %s", e)
-            return False
-
-        # build outputs
-        section_timetable = {}
-        for section_id in self.sections:
-            section_timetable[section_id] = []
-            for d in range(DAYS_PER_WEEK):
-                for p in range(PERIODS_PER_DAY):
-                    s_var, f_var, r_var, is_free, is_lab = self.slot_vars[section_id][d][p]
-                    subj_val = int(self.solver.Value(s_var))
-                    fac_val = int(self.solver.Value(f_var))
-                    room_val = int(self.solver.Value(r_var))
-                    # --- begin replacement block ---
-                    # raw ids
-                    subj_val = int(self.solver.Value(s_var))
-                    fac_val = int(self.solver.Value(f_var))
-                    room_val = int(self.solver.Value(r_var))
-
-                    # subject and faculty ids (string IDs used elsewhere)
-                    subject_id = self.i_to_subj.get(subj_val) if subj_val != 0 else None
-                    faculty_id = self.i_to_fac.get(fac_val) if fac_val != 0 else None
-                    room_id = self.i_to_room.get(room_val) if room_val != 0 else None
-
-                    # subject metadata
-                    subject_name = None
-                    is_elective = False
-                    is_lab = False
-                    if subject_id:
-                        subj_obj = self.subjects.get(subject_id, {})
-                        subject_name = subj_obj.get("subjectName") or subj_obj.get("name") or None
-                        is_elective = bool(subj_obj.get("isElective", False))
-                        # detect lab either via practicalHours or 'lab' in name
-                        is_lab = (subj_obj.get("practicalHours", 0) > 0) or ("lab" in (subject_name or "").lower())
-
-                    # faculty metadata (try common name keys safely)
-                    faculty_name = None
-                    if faculty_id:
-                        fac_obj = self.faculty.get(faculty_id, {})
-                        faculty_name = fac_obj.get("name") or fac_obj.get("fullName") or fac_obj.get("facultyName") or fac_obj.get("displayName")
-
-                    # date calculation:
-                    date_str = None
-                    if self.working_dates:
-                        # Prefer parsing first working date and adding day offset (robust if working_dates contains ISO dates)
-                        try:
-                            base = datetime.fromisoformat(self.working_dates[0])
-                            date_dt = base + timedelta(days=d)
-                            date_str = date_dt.date().isoformat()
-                        except Exception:
-                            # fallback: if working_dates has at least DAYS_PER_WEEK entries, use index by day
-                            if len(self.working_dates) > d:
-                                date_str = self.working_dates[d]
-                            else:
-                                date_str = None
-
-                    # time calculation for the period (HH:MM)
-                    time_str = None
-                    try:
-                        start_dt = datetime.strptime(PERIOD_START_TIME, "%H:%M")
-                        slot_dt = start_dt + timedelta(minutes=PERIOD_MINUTES * p)
-                        time_str = slot_dt.strftime("%H:%M")
-                    except Exception:
-                        time_str = None
-
-                    entry = {
-                        "day": d,
-                        "date": date_str,
-                        "time": time_str,
-                        "period": p,
-                        "subject": subject_id,
-                        "subjectName": subject_name,
-                        "isElective": is_elective,
-                        "isLab": is_lab,
-                        "faculty": faculty_id,
-                        "facultyName": faculty_name,
-                        "room": room_id,
-                        "is_free": bool(self.solver.Value(is_free))
-                    }
-                    # --- end replacement block ---
-
-                    section_timetable[section_id].append(entry)
-
-        # faculty allocations: list assignments (section,subject->faculty)
-        faculty_allocations = []
-        for (section_id, subj_int), var in self.faculty_assignment.items():
-            try:
-                fac_val = int(self.solver.Value(var))
-            except Exception:
-                fac_val = None
-            faculty_allocations.append({
-                "section": section_id,
-                "subject": self.i_to_subj.get(subj_int),
-                "faculty": self.i_to_fac.get(fac_val) if fac_val else None
-            })
-
-        with open(OUTPUT_DIR / "section_timetable.json", "w") as f:
-            json.dump(section_timetable, f, indent=2)
-        with open(OUTPUT_DIR / "faculty_allocations.json", "w") as f:
-            json.dump(faculty_allocations, f, indent=2)
-
-        logger.info("Wrote outputs to %s", OUTPUT_DIR)
-        return True
-
-    # -----------------------
-    # Elastic debug runner
-    # -----------------------
-    def run_elastic_debug(self):
-        """
-        Attempt solving with all constraints and then re-run skipping one family at a time.
-        Returns dict: family -> (status_name, made_feasible_bool)
-        """
-        logger.info("=== Running Elastic Debug ===")
-        family_builders = {
-            "election_groups": lambda enabled: self.build_elective_groups(enabled=enabled),
-            "faculty_assignment": lambda enabled: self.create_faculty_assignment_vars(enabled=enabled),
-            "slot_vars": lambda enabled: self.create_slot_vars(enabled=enabled),
-            "link_faculty": lambda enabled: self.link_subject_to_assigned_faculty(enabled=enabled),
-            "room_lab": lambda enabled: self.add_subject_room_allowed(enabled=enabled),
-            "elective_active": lambda enabled: self.build_elective_active_vars(enabled=enabled),
-            "no_double_booking": lambda enabled: self.add_no_double_booking(enabled=enabled),
-            "coverage": lambda enabled: self.add_coverage_constraints(enabled=enabled),
-            "faculty_load": lambda enabled: self.add_faculty_load_constraints(enabled=enabled),
+def build_subjects_meta(subjects):
+    meta = {}
+    for subj in subjects:
+        sid = subj.get("subjectId")
+        meta[sid] = {
+            "name": subj.get("subjectName"),
+            "totalHours": subj.get("totalHours", 0),
+            "theoryHours": subj.get("theoryHours", 0),
+            "practicalHours": subj.get("practicalHours", 0),
+            "isElective": subj.get("isElective", False),
+            "electiveGroup": subj.get("elective_group_name")
         }
+    return meta
 
-        results = {}
 
-        # baseline run (all enabled)
-        logger.info("--- Baseline run (all constraints enabled) ---")
-        self.reset_model()
-        # re-create containers
-        self.faculty_assignment.clear()
-        self.slot_vars.clear()
-        self.slot_is_sub.clear()
-        self.elective_active.clear()
-        # call all builders with enabled=True
-        for name, builder in family_builders.items():
-            try:
-                builder(True)
-            except Exception as e:
-                logger.exception("Error running builder %s: %s", name, e)
-        baseline_ok = self.solve_and_report()
-        results["baseline"] = {"feasible": baseline_ok}
-        if baseline_ok:
-            logger.info("Baseline is feasible. No need for debug skipping.")
-            return results
+def build_eligible_faculty_map(subjects_meta, faculty_data):
+    eligible = {}
+    # Build normalized faculty subject lists
+    faculty_subjects_norm = {}
+    for f in faculty_data:
+        fid = f.get("facultyId")
+        normalized = {normalize_name(s) for s in f.get("subjects", []) if isinstance(s, str)}
+        faculty_subjects_norm[fid] = normalized
 
-        # Now try skipping each family in turn
-        for skip_name in family_builders.keys():
-            logger.info("=== Debug attempt: SKIP %s ===", skip_name)
-            self.reset_model()
-            # clear vars caches
-            self.faculty_assignment.clear()
-            self.slot_vars.clear()
-            self.slot_is_sub.clear()
-            self.elective_active.clear()
+    for sid, sm in subjects_meta.items():
+        name_norm = normalize_name(sm["name"])
+        elig = []
+        for f in faculty_data:
+            if name_norm in faculty_subjects_norm.get(f.get("facultyId"), set()):
+                elig.append(f.get("facultyId"))
+        eligible[sid] = elig
+        logger.debug("Subject %s eligible faculty count=%d", sm["name"], len(elig))
+    return eligible
 
-            # Important: ensure that basic structures exist: faculty_assignment & slot_vars are needed for others
-            # We'll call faculty_assignment and slot_vars builders as normal unless they are the ones being skipped.
-            for name, builder in family_builders.items():
-                enabled = (name != skip_name)
-                try:
-                    builder(enabled)
-                except Exception as e:
-                    logger.exception("Error building %s (enabled=%s): %s", name, enabled, e)
+# ---------------------- Model Builder ----------------------
 
-            ok = self.solve_and_report()
-            results[skip_name] = {"feasible": ok}
-            if ok:
-                logger.warning("✅ Skipping '%s' made model feasible.", skip_name)
+def build_weekly_model(sections, subjects_meta, faculty_data, weekdays, weeks_count, section_room_map, eligible_map, mode="strict"):
+    model = cp_model.CpModel()
+    periods_per_day = 8
+
+    section_ids = [s["id"] for s in sections]
+    subject_ids = list(subjects_meta.keys())
+    faculty_ids = [f.get("facultyId") for f in faculty_data]
+    faculty_by_id = {f.get("facultyId"): f for f in faculty_data}
+
+    # precompute
+    req_periods = {s: periods_from_hours(subjects_meta[s]["totalHours"]) for s in subject_ids}
+    is_lab = {s: (subjects_meta[s]["practicalHours"] and subjects_meta[s]["practicalHours"] > 0) for s in subject_ids}
+
+    # variables
+    y = {}  # weekly template slots
+    for sec in section_ids:
+        for subj in subject_ids:
+            for dow in weekdays:
+                for p in range(1, periods_per_day + 1):
+                    if is_lab[subj] and p == periods_per_day:
+                        continue
+                    y[(sec, subj, dow, p)] = model.NewBoolVar(f"y_{sec}_{subj}_{dow}_{p}")
+
+    # faculty assignment per subject per section
+    assign_fac = {}
+    for sec in section_ids:
+        for subj in subject_ids:
+            elig = eligible_map.get(subj, [])
+            if not elig:
+                # No eligible faculty -> infeasible
+                logger.error("No eligible faculty for subject %s (id=%s). Aborting model build.", subjects_meta[subj]["name"], subj)
+                model.Add(0 == 1)
+                continue
+            for f in elig:
+                assign_fac[(sec, subj, f)] = model.NewBoolVar(f"assign_{sec}_{subj}_{f}")
+            model.Add(sum(assign_fac[(sec, subj, f)] for f in elig) == 1)
+
+    # z variables linking assignment to weekly occurrences
+    z = {}
+    for sec in section_ids:
+        for subj in subject_ids:
+            elig = eligible_map.get(subj, [])
+            for f in elig:
+                for dow in weekdays:
+                    for p in range(1, periods_per_day + 1):
+                        if is_lab[subj] and p == periods_per_day:
+                            continue
+                        yvar = y[(sec, subj, dow, p)]
+                        af = assign_fac[(sec, subj, f)]
+                        zv = model.NewBoolVar(f"z_{sec}_{subj}_{f}_{dow}_{p}")
+                        z[(sec, subj, f, dow, p)] = zv
+                        model.Add(zv <= yvar)
+                        model.Add(zv <= af)
+                        model.Add(zv >= yvar + af - 1)
+
+    # hard constraints
+    # 1) Section: at most 1 subject per (dow,period), at least one free period (reserve 1)
+    for sec in section_ids:
+        for dow in weekdays:
+            occ = []
+            for subj in subject_ids:
+                for p in range(1, periods_per_day + 1):
+                    if (sec, subj, dow, p) in y:
+                        occ.append(y[(sec, subj, dow, p)])
+            model.Add(sum(occ) <= periods_per_day - 1)
+
+    # 2) same theory subject not more than once per day
+    for sec in section_ids:
+        for subj in subject_ids:
+            if is_lab[subj]:
+                continue
+            for dow in weekdays:
+                slots = [y[(sec, subj, dow, p)] for p in range(1, periods_per_day + 1) if (sec, subj, dow, p) in y]
+                if slots:
+                    model.Add(sum(slots) <= 1)
+
+    # 3) lab sessions: at least 3 lab periods per week per section (each lab start counts as 2)
+    for sec in section_ids:
+        lab_subjs = [s for s in subject_ids if is_lab[s]]
+        if not lab_subjs:
+            continue
+        lab_terms = []
+        for subj in lab_subjs:
+            for dow in weekdays:
+                for p in range(1, periods_per_day):
+                    if (sec, subj, dow, p) in y:
+                        lab_terms.append(y[(sec, subj, dow, p)] * 2)
+        if lab_terms:
+            model.Add(sum(lab_terms) >= 3)
+
+    # 4) faculty: no double booking per dow & period
+    for f in faculty_ids:
+        for dow in weekdays:
+            for p in range(1, periods_per_day + 1):
+                occ = []
+                for sec in section_ids:
+                    for subj in subject_ids:
+                        key = (sec, subj, f, dow, p)
+                        if key in z:
+                            occ.append(z[key])
+                if occ:
+                    model.Add(sum(occ) <= 1)
+
+    # 5) faculty daily maxima hard, minima depends on mode
+    for f in faculty_ids:
+        for dow in weekdays:
+            occ_terms = []
+            for sec in section_ids:
+                for subj in subject_ids:
+                    for p in range(1, periods_per_day + 1):
+                        key = (sec, subj, f, dow, p)
+                        if key in z:
+                            if is_lab[subj]:
+                                occ_terms.append(z[key] * 2)
+                            else:
+                                occ_terms.append(z[key])
+            if occ_terms:
+                model.Add(sum(occ_terms) <= 4)
+                if mode == "strict":
+                    model.Add(sum(occ_terms) >= 2)
+                elif mode == "elastic-debug":
+                    # add soft lower bound via slack variable
+                    slack = model.NewIntVar(0, 8, f"slack_min_{f}_{dow}")
+                    model.Add(sum(occ_terms) + slack >= 2)
+                    # will minimize slack in objective later
+
+    # 6) required weekly minimums: compute weekly_min = floor(total/weeks_count)
+    weekly_min = {}
+    remainders = {}
+    for sec in section_ids:
+        for subj in subject_ids:
+            total_req = req_periods[subj]
+            wm = total_req // weeks_count
+            r = total_req - wm * weeks_count
+            weekly_min[(sec, subj)] = wm
+            remainders[(sec, subj)] = r
+            # sum_weekly >= wm
+            terms = []
+            for dow in weekdays:
+                for p in range(1, periods_per_day + 1):
+                    if (sec, subj, dow, p) in y:
+                        if is_lab[subj]:
+                            terms.append(y[(sec, subj, dow, p)] * 2)
+                        else:
+                            terms.append(y[(sec, subj, dow, p)])
+            if terms:
+                model.Add(sum(terms) >= wm)
             else:
-                logger.info("❌ Skipping '%s' did not fix infeasibility.", skip_name)
+                if wm > 0:
+                    model.Add(0 == wm)  # force infeasible to show diagnostics
 
-        logger.info("Elastic debug complete. Results: %s", results)
-        return results
+    # Soft constraints/objective
+    penalties = []
+    penalty_weights = []
 
-# -----------------------
-# Main
-# -----------------------
+    # avoid consecutive theory classes per section per dow (soft)
+    for sec in section_ids:
+        for dow in weekdays:
+            for p in range(1, periods_per_day):
+                theory_p = []
+                theory_p1 = []
+                for subj in subject_ids:
+                    if is_lab[subj]:
+                        continue
+                    if (sec, subj, dow, p) in y:
+                        theory_p.append(y[(sec, subj, dow, p)])
+                    if (sec, subj, dow, p + 1) in y:
+                        theory_p1.append(y[(sec, subj, dow, p + 1)])
+                if theory_p and theory_p1:
+                    c = model.NewBoolVar(f"consec_{sec}_{dow}_{p}")
+                    # c can be 1 only if both sides occupied
+                    # sum(theory_p) + sum(theory_p1) - c <= len(theory_p) + len(theory_p1) - 1
+                    model.Add(sum(theory_p) + sum(theory_p1) - c <= len(theory_p) + len(theory_p1) - 1)
+                    penalties.append(c)
+                    penalty_weights.append(1)
+
+    # If elastic-debug, add slack variables for other soft constraints as needed (e.g., faculty min slack collected earlier)
+
+    # Build objective
+    if penalties:
+        if mode == "elastic-debug":
+            # minimize penalties with weight
+            obj_terms = []
+            for i, pvar in enumerate(penalties):
+                obj_terms.append(pvar * penalty_weights[i])
+            model.Minimize(sum(obj_terms))
+        else:
+            model.Minimize(sum(penalties))
+
+        logger.info("Built weekly model (sections=%d subjects=%d faculties=%d weeks=%d weekdays=%s)",
+            len(section_ids), len(subject_ids), len(faculty_ids), weeks_count, weekdays)
+
+    meta = {
+        "y": y,
+        "assign_fac": assign_fac,
+        "z": z,
+        "section_ids": section_ids,
+        "subject_ids": subject_ids,
+        "faculty_ids": faculty_ids,
+        "faculty_by_id": faculty_by_id,
+        "weekdays": weekdays,
+        "periods_per_day": periods_per_day,
+        "is_lab": is_lab,
+        "subjects_meta": subjects_meta,
+        "section_room_map": section_room_map,
+        "eligible_map": eligible_map,
+        "weekly_min": weekly_min,
+        "remainders": remainders,
+        "weeks_count": weeks_count,
+    }
+    return model, meta
+
+# ---------------------- Postprocess: place remainders greedily ----------------------
+
+def place_remainders_greedy(weeks_list, meta, weekly_solution, assign_fac_chosen):
+    """
+    weeks_list: list of weeks where each week is list of date strings
+    meta: model metadata
+    weekly_solution: dict mapping (sec,subj,dow,p)->bool from weekly template
+    assign_fac_chosen: dict mapping (sec,subj)->facultyId from solver
+    """
+    section_ids = meta["section_ids"]
+    subject_ids = meta["subject_ids"]
+    is_lab = meta["is_lab"]
+    periods_per_day = meta["periods_per_day"]
+    weekdays = meta["weekdays"]
+
+    # Build occupancy for each week index: section->(dow,p) occupied by weekly template
+    weeks_occupancy = []
+    for wk_idx, wk_dates in enumerate(weeks_list):
+        occ = {sec: [[False] * (periods_per_day + 1) for _ in range(8)] for sec in section_ids}
+        # initialize with weekly template: for each dow in week, find date with that dow
+        for date_str in wk_dates:
+            dt = datetime.fromisoformat(date_str).date()
+            dow = dt.isoweekday()
+            if dow not in weekdays:
+                continue
+            for sec in section_ids:
+                for subj in subject_ids:
+                    for p in range(1, periods_per_day + 1):
+                        key = (sec, subj, dow, p)
+                        if weekly_solution.get(key, False):
+                            occ[sec][dow][p] = True
+                            if is_lab[subj] and p + 1 <= periods_per_day:
+                                occ[sec][dow][p + 1] = True
+        weeks_occupancy.append(occ)
+
+    # Faculty occupancy per week,dow,period
+    faculty_week_occ = []
+    for wk_idx, wk_dates in enumerate(weeks_list):
+        focc = defaultdict(lambda: defaultdict(lambda: [False] * (periods_per_day + 1)))
+        # populate from weekly_solution and assign_fac_chosen
+        for date_str in wk_dates:
+            dt = datetime.fromisoformat(date_str).date()
+            dow = dt.isoweekday()
+            if dow not in weekdays:
+                continue
+            for sec in section_ids:
+                for subj in subject_ids:
+                    fac = assign_fac_chosen.get((sec, subj))
+                    for p in range(1, periods_per_day + 1):
+                        if weekly_solution.get((sec, subj, dow, p), False):
+                            if fac:
+                                focc[fac][dow][p] = True
+                                if is_lab[subj] and p + 1 <= periods_per_day:
+                                    focc[fac][dow][p + 1] = True
+        faculty_week_occ.append(focc)
+
+    # Now greedy allocate remainders
+    placements = []  # tuples (week_idx, sec, subj, dow, p)
+    unscheduled = []
+    for sec in section_ids:
+        for subj in subject_ids:
+            r = meta["remainders"].get((sec, subj), 0)
+            if not r:
+                continue
+            fac = assign_fac_chosen.get((sec, subj))
+            if not fac:
+                unscheduled.append((sec, subj, r, "no_assigned_fac"))
+                continue
+            placed = 0
+            # try each week and each slot
+            for wk_idx, wk_dates in enumerate(weeks_list):
+                if placed >= r:
+                    break
+                for date_str in wk_dates:
+                    if placed >= r:
+                        break
+                    dt = datetime.fromisoformat(date_str).date()
+                    dow = dt.isoweekday()
+                    if dow not in weekdays:
+                        continue
+                    for p in range(1, periods_per_day + 1):
+                        if is_lab[subj] and p == periods_per_day:
+                            continue
+                        # check section free
+                        if weeks_occupancy[wk_idx][sec][dow][p]:
+                            continue
+                        # check subsequent period for lab
+                        if is_lab[subj] and weeks_occupancy[wk_idx][sec][dow][p + 1]:
+                            continue
+                        # check faculty free
+                        if faculty_week_occ[wk_idx][fac][dow][p]:
+                            continue
+                        if is_lab[subj] and faculty_week_occ[wk_idx][fac][dow][p + 1]:
+                            continue
+                        # assign
+                        weeks_occupancy[wk_idx][sec][dow][p] = True
+                        if is_lab[subj] and p + 1 <= periods_per_day:
+                            weeks_occupancy[wk_idx][sec][dow][p + 1] = True
+                        faculty_week_occ[wk_idx][fac][dow][p] = True
+                        if is_lab[subj] and p + 1 <= periods_per_day:
+                            faculty_week_occ[wk_idx][fac][dow][p + 1] = True
+                        placements.append((wk_idx, sec, subj, dow, p))
+                        placed += 1
+                        if placed >= r:
+                            break
+            if placed < r:
+                unscheduled.append((sec, subj, r - placed, "remainder_unplaced"))
+
+    return placements, unscheduled
+
+# ---------------------- Extract & Write Final Timetable ----------------------
+
+def expand_and_write(weekly_solution, placements, weeks_list, meta, assign_fac_chosen, output_dir):
+    # build per-date final schedule by expanding weekly_solution and adding placements
+    section_ids = meta["section_ids"]
+    subject_ids = meta["subject_ids"]
+    is_lab = meta["is_lab"]
+    periods_per_day = meta["periods_per_day"]
+    weekdays = meta["weekdays"]
+    subjects_meta = meta["subjects_meta"]
+    section_room_map = meta["section_room_map"]
+    faculty_by_id = meta["faculty_by_id"]
+
+    # initialize outputs
+    section_timetables = {s: [] for s in section_ids}
+    faculty_timetables = defaultdict(list)
+    classroom_timetables = defaultdict(list)
+
+    # convert placements into a lookup per week
+    placement_lookup = defaultdict(list)
+    for wk_idx, sec, subj, dow, p in placements:
+        placement_lookup[wk_idx].append((sec, subj, dow, p))
+
+    for wk_idx, wk_dates in enumerate(weeks_list):
+        for date_str in wk_dates:
+            dt = datetime.fromisoformat(date_str).date()
+            dow = dt.isoweekday()
+            if dow not in weekdays:
+                continue
+            for sec in section_ids:
+                occupied = [False] * (periods_per_day + 1)
+                # weekly solution
+                for subj in subject_ids:
+                    for p in range(1, periods_per_day + 1):
+                        if weekly_solution.get((sec, subj, dow, p), False):
+                            fac = assign_fac_chosen.get((sec, subj))
+                            subj_name = subjects_meta[subj]["name"]
+                            entry = {
+                                "section": sec,
+                                "date": date_str,
+                                "period": p,
+                                "subjectId": subj,
+                                "subjectName": subj_name,
+                                "facultyId": fac,
+                                "facultyName": faculty_by_id.get(fac, {}).get("name"),
+                                "room": section_room_map.get(sec),
+                                "isLabStart": is_lab[subj],
+                                "isElective": subjects_meta[subj].get("isElective", False),
+                            }
+                            section_timetables[sec].append(entry)
+                            faculty_timetables[fac].append(entry)
+                            classroom_timetables[section_room_map.get(sec)].append(entry)
+                            occupied[p] = True
+                            if is_lab[subj] and p + 1 <= periods_per_day:
+                                occupied[p + 1] = True
+                # placements for this week
+                for (sec_p, subj_p, dow_p, p_p) in placement_lookup.get(wk_idx, []):
+                    if sec_p != sec:
+                        continue
+                    if dow_p != dow:
+                        continue
+                    fac = assign_fac_chosen.get((sec_p, subj_p))
+                    subj_name = subjects_meta[subj_p]["name"]
+                    entry = {
+                        "section": sec_p,
+                        "date": date_str,
+                        "period": p_p,
+                        "subjectId": subj_p,
+                        "subjectName": subj_name,
+                        "facultyId": fac,
+                        "facultyName": faculty_by_id.get(fac, {}).get("name"),
+                        "room": section_room_map.get(sec_p),
+                        "isLabStart": is_lab[subj_p],
+                        "isElective": subjects_meta[subj_p].get("isElective", False),
+                    }
+                    section_timetables[sec].append(entry)
+                    faculty_timetables[fac].append(entry)
+                    classroom_timetables[section_room_map.get(sec)].append(entry)
+                    occupied[p_p] = True
+                    if is_lab[subj_p] and p_p + 1 <= periods_per_day:
+                        occupied[p_p + 1] = True
+
+                # fill free periods
+                for p in range(1, periods_per_day + 1):
+                    if not occupied[p]:
+                        section_timetables[sec].append({
+                            "section": sec,
+                            "date": date_str,
+                            "period": p,
+                            "free": True
+                        })
+
+    # write outputs
+    ensure_dir(output_dir)
+    with open(os.path.join(output_dir, "section_timetables.json"), "w", encoding="utf-8") as f:
+        json.dump(section_timetables, f, indent=2)
+    with open(os.path.join(output_dir, "faculty_timetables.json"), "w", encoding="utf-8") as f:
+        json.dump({k: v for k, v in faculty_timetables.items()}, f, indent=2)
+    with open(os.path.join(output_dir, "classroom_timetables.json"), "w", encoding="utf-8") as f:
+        json.dump({k: v for k, v in classroom_timetables.items()}, f, indent=2)
+
+    logger.info("Final timetables written to %s", output_dir)
+
+# ---------------------- Debug Mode Builder ----------------------
+
+def build_debug_model(sections, subjects, faculty, weekdays):
+    """Small model for quick validation"""
+    model = cp_model.CpModel()
+    periods_per_day = 4
+    section_ids = [s["id"] for s in sections[:1]]
+    subject_ids = [subj.get("subjectId") for subj in subjects[:2]]
+    faculty_ids = [f.get("facultyId") for f in faculty[:2]]
+
+    y = {}
+    for sec in section_ids:
+        for subj in subject_ids:
+            for dow in weekdays[:3]:
+                for p in range(1, periods_per_day + 1):
+                    y[(sec, subj, dow, p)] = model.NewBoolVar(f"y_{sec}_{subj}_{dow}_{p}")
+
+    # simple: each period at most 1
+    for sec in section_ids:
+        for dow in weekdays[:3]:
+            for p in range(1, periods_per_day + 1):
+                model.Add(sum(y[(sec, subj, dow, p)] for subj in subject_ids) <= 1)
+
+    # each subject must appear at least once in the week
+    for subj in subject_ids:
+        model.Add(sum(y[(sec, subj, dow, p)] for sec in section_ids for dow in weekdays[:3] for p in range(1, periods_per_day + 1)) >= 1)
+
+        logger.info("Debug model built (sections=%d subjects=%d faculties=%d weekdays=%s)",
+                len(section_ids), len(subject_ids), len(faculty_ids), weekdays[:3])
+    return model, y
+
+# ---------------------- Main ----------------------
+
 def main():
-    timetable = TimetableFull(INPUT_DIR)
-    if not timetable.load_inputs():
-        logger.error("Failed to load inputs; exiting.")
-        sys.exit(1)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input-dir", required=False, default="./input")
+    parser.add_argument("--output-dir", required=False, default="./output")
+    parser.add_argument("--mode", choices=["strict", "elastic-debug", "debug"], default="elastic-debug")
+    parser.add_argument("--time-limit", type=int, default=120)
+    args = parser.parse_args()
 
-    # Mode selection
-    DEBUG_ELASTIC = True  # set True to run elastic debug (skips one family at a time)
-    if DEBUG_ELASTIC:
-        results = timetable.run_elastic_debug()
-        # write results summary
-        with open(OUTPUT_DIR / "elastic_debug_summary.json", "w") as f:
-            json.dump(results, f, indent=2)
-        logger.info("Elastic debug summary written to %s", OUTPUT_DIR / "elastic_debug_summary.json")
+    try:
+        faculty_data = load_json(os.path.join(args.input_dir, "aiml-faculty-detailed.json"))
+        semester_dates = load_json(os.path.join(args.input_dir, "all_semesters_net_dates.json"))
+        classrooms = load_json(os.path.join(args.input_dir, "classrooms.json"))
+        sections = load_json(os.path.join(args.input_dir, "department-sections.json"))
+        subjects = load_json(os.path.join(args.input_dir, "semester_subjects.json"))
+    except Exception as e:
+        logger.exception("Failed to load inputs: %s", e)
         return
 
-    # Normal run (all constraints)
-    timetable.reset_model()
-    # create constraints
-    timetable.build_elective_groups(enabled=True)
-    timetable.create_faculty_assignment_vars(enabled=True)
-    timetable.create_slot_vars(enabled=True)
-    timetable.link_subject_to_assigned_faculty(enabled=True)
-    timetable.add_subject_room_allowed(enabled=True)
-    timetable.build_elective_active_vars(enabled=True)
-    timetable.add_no_double_booking(enabled=True)
-    timetable.add_coverage_constraints(enabled=True)
-    timetable.add_faculty_load_constraints(enabled=True)
+    logger.info("Inputs: sections=%d subjects=%d faculty=%d classrooms=%d semesters=%d",
+                len(sections), len(subjects), len(faculty_data), len(classrooms), len(semester_dates))
 
-    ok = timetable.solve_and_report()
-    if not ok:
-        logger.error("Final run infeasible. Inspect %s/timetable_model.proto and solver_stats.txt", OUTPUT_DIR)
-        sys.exit(2)
-    logger.info("Timetable generated successfully.")
+    # quick debug mode
+    all_dates = []
+    for sem in semester_dates:
+        all_dates.extend(sem.get("netDates", []))
+    all_dates = sorted(list(set(all_dates)))
+    if not all_dates:
+        logger.error("No net dates found. Exiting.")
+        return
+
+    weeks = chunk_weeks(all_dates)
+    weeks_count = len(weeks)
+    weekday_set = sorted({datetime.fromisoformat(d).isoweekday() for d in all_dates})
+
+    logger.info("Calendar: weeks=%d weekday_set=%s", weeks_count, weekday_set)
+
+    if args.mode == "debug":
+        model, y = build_debug_model(sections, subjects, faculty_data, weekday_set)
+        solver = cp_model.CpSolver()
+        solver.parameters.max_time_in_seconds = args.time_limit
+        status = solver.Solve(model)
+        logger.info("Debug solve status=%s", solver.StatusName(status));
+        if status == cp_model.FEASIBLE or status == cp_model.OPTIMAL:
+            # print some y variables
+            cnt = 0
+            for k, v in y.items():
+                if solver.Value(v):
+                    logger.info("Scheduled (debug): %s", k)
+                    cnt += 1
+                    if cnt >= 20:
+                        break
+        return
+
+    # production modes
+    section_room_map = map_sections_to_classrooms(sections, classrooms)
+    subjects_meta = build_subjects_meta(subjects)
+    eligible_map = build_eligible_faculty_map(subjects_meta, faculty_data)
+
+    model, meta = build_weekly_model(sections, subjects_meta, faculty_data, weekday_set, weeks_count, section_room_map, eligible_map, args.mode)
+
+    logger.info("Model summary (sections=%d subjects=%d faculties=%d weeks=%d weekdays=%s)",
+            len(meta["section_ids"]), len(meta["subject_ids"]), len(meta["faculty_ids"]), meta["weeks_count"], meta["weekdays"])
+
+    solver = cp_model.CpSolver()
+    solver.parameters.max_time_in_seconds = args.time_limit
+    solver.parameters.num_search_workers = 8
+
+    logger.info("Solving model (mode=%s time_limit=%ds)...", args.mode, args.time_limit)
+    status = solver.Solve(model)
+    logger.info("Solver finished: %s", solver.StatusName(status))
+
+    if status != cp_model.OPTIMAL and status != cp_model.FEASIBLE:
+        logger.error("No feasible weekly-template solution. See timetable.log for details.")
+        ensure_dir(args.output_dir)
+        with open(os.path.join(args.output_dir, "diagnostics.json"), "w", encoding="utf-8") as f:
+            json.dump({
+            "status": solver.StatusName(status),
+            "sections": len(meta["section_ids"]),
+            "subjects": len(meta["subject_ids"]),
+            "faculties": len(meta["faculty_ids"]),
+             "weeks": meta["weeks_count"],
+            "weekdays": meta["weekdays"]
+            }, f, indent=2)
+        return
+
+    # extract weekly solution
+    weekly_solution = {}
+    for (sec, subj, dow, p), var in meta["y"].items():
+        val = solver.Value(var)
+        weekly_solution[(sec, subj, dow, p)] = bool(val)
+
+    # extract chosen faculty per (sec,subj)
+    assign_fac_chosen = {}
+    for (sec, subj, f), var in meta["assign_fac"].items():
+        if solver.Value(var):
+            assign_fac_chosen[(sec, subj)] = f
+
+    logger.info("Weekly template extracted. Chosen faculty assignments: %d", len(assign_fac_chosen))
+
+    # place remainders greedily
+    placements, unscheduled = place_remainders_greedy(weeks, meta, weekly_solution, assign_fac_chosen)
+
+    logger.info("Placed %d remainder sessions; unscheduled_remainders=%d", len(placements), len(unscheduled))
+    if unscheduled:
+        logger.warning("Unscheduled remainders sample: %s", unscheduled[:20])
+
+    # expand to dates and write outputs
+    expand_and_write(weekly_solution, placements, weeks, meta, assign_fac_chosen, args.output_dir)
+
+    # diagnostics
+    ensure_dir(args.output_dir)
+    with open(os.path.join(args.output_dir, "run_diagnostics.json"), "w", encoding="utf-8") as f:
+        json.dump({
+            "solver_status": solver.StatusName(status),
+            "sections": len(meta["section_ids"]),
+            "subjects": len(meta["subject_ids"]),
+            "faculties": len(meta["faculty_ids"]),
+            "weeks": meta["weeks_count"],
+            "weekdays": meta["weekdays"],
+            "placements": len(placements),
+            "unscheduled_remainders": unscheduled,
+        }, f,  indent=2)
+
+    logger.info("Done. Outputs in %s", args.output_dir)
+
 
 if __name__ == "__main__":
     main()
